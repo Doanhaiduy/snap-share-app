@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import { updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -17,9 +17,10 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo }) {
     const [imgCover, setImgCover] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [loadingImage, setLoadingImage] = useState(false);
-
     const colorIcon = <LoadingOutlined style={{ fontSize: 24, color: "white" }} spin />;
-
+    useEffect(() => {
+        localStorage.setItem("currentProfile", JSON.stringify(userInfo));
+    }, []);
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
         const userRef = doc(db, "users", currentUser.uid);
@@ -47,7 +48,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo }) {
     const handleShowAvatarImg = async (e) => {
         setLoadingImage(true);
         if (e.target.files[0]) {
-            const storageRef = ref(storage, `/files/${e.target.files[0].name}${id()}`);
+            const storageRef = ref(storage, `/Avatar/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
             const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
             uploadTask.on(
                 "state_changed",
@@ -67,7 +68,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo }) {
     const handleShowCoverImg = async (e) => {
         setLoadingImage(true);
         if (e.target.files[0]) {
-            const storageRef = ref(storage, `/files/${e.target.files[0].name}${id()}`);
+            const storageRef = ref(storage, `/Cover/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
             const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
             uploadTask.on(
                 "state_changed",
@@ -85,7 +86,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo }) {
         }
     };
     return (
-         <div className="relative z-10">
+        <div className="relative z-10">
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-black opacity-70" onClick={handleCloseModal}></div>
             <form className="bg-slate-600 p-5 absolute w-[70vw] rounded-[12px] left-[50%] translate-x-[-50%] ">
                 <span

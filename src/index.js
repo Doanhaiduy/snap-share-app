@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./Components/GlobalStyles/GlobalStyles";
 import AuthContextProvider from "./Context/AuthContextProvider";
+import ProfileContextProvider from "./Context/ProfileContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <AuthContextProvider>
-        <GlobalStyles>
-            <App />
-        </GlobalStyles>
+        <ProfileContextProvider>
+            <GlobalStyles>
+                <App />
+            </GlobalStyles>
+        </ProfileContextProvider>
     </AuthContextProvider>
 );
 

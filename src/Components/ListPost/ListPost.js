@@ -2,10 +2,14 @@ import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import { AiOutlineGlobal, AiTwotoneLock } from "react-icons/ai";
 
-function ListPost() {
+function ListPost({ userRender }) {
     const { userPosts, getUserPost, currentUser } = useContext(AuthContext);
     useEffect(() => {
-        getUserPost(currentUser.uid);
+        if (userRender.uid !== currentUser.uid) {
+            getUserPost(userRender.uid);
+        } else {
+            getUserPost(currentUser.uid);
+        }
     }, []);
     return (
         <div className="grid grid-cols-4 gap-8">

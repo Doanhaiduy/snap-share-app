@@ -17,6 +17,7 @@ function AuthContextProvider({ children }) {
         const docRef = doc(db, "users", uid);
         const userDoc = await getDoc(docRef);
         setUserInfo(userDoc.data());
+        localStorage.setItem("currentProfile", JSON.stringify(userDoc.data()));
     };
 
     const getUserPost = async (uid) => {

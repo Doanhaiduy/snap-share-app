@@ -24,7 +24,7 @@ function PostImage() {
         console.log(e.target.files[0]);
         setLoadingImage(true);
         if (e.target.files[0]) {
-            const storageRef = ref(storage, `/Post/${e.target.files[0].name}${id()}`);
+            const storageRef = ref(storage, `/Post/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
             const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
             uploadTask.on(
                 "state_changed",

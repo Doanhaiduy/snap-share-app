@@ -5,6 +5,8 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import ModalPost from "../ModalPost/ModalPost";
+import { ProfileContext } from "../../Context/ProfileContextProvider";
+import { Link } from "react-router-dom";
 
 function PostItem({ post }) {
     const [authorPost, setAuthorPost] = useState({});
@@ -14,6 +16,7 @@ function PostItem({ post }) {
     const { getUserPost } = useContext(AuthContext);
     const [namePeopleLiked, setNamePeopleLiked] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const { currentProfile, setCurrentProfile } = useContext(ProfileContext);
 
     useEffect(() => {
         getUserPost();
@@ -71,9 +74,17 @@ function PostItem({ post }) {
             {showModal ? <ModalPost handleToggleModal={handleToggleModal} data={post} authorPost={authorPost} /> : null}
             <div className="p-4 shadow-2xl rounded-[12px] " key={post.uid}>
                 <div className="flex items-center gap-3">
-                    <div className="w-[60px] h-[60px] ">
-                        <img src={authorPost?.photoURL} alt="" className="w-full h-full object-cover rounded-[50%]" />
-                    </div>
+                    <Link className="w-[60px] h-[60px] " to={`/profile/${authorPost?.uid}`}>
+                        <img
+                            src={authorPost?.photoURL}
+                            alt=""
+                            className="w-full h-full object-cover rounded-[50%]"
+                            onClick={() => {
+                                localStorage.setItem("currentProfile", JSON.stringify(authorPost));
+                                setCurrentProfile(authorPost);
+                            }}
+                        />
+                    </Link>
                     <div className="">
                         <h2 className="text-[1.3rem] font-bold">{authorPost?.name}</h2>
                         <p>{post.releaseDate}</p>
