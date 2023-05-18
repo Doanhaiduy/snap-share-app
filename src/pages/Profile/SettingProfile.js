@@ -8,7 +8,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
-function SettingProfile({ handleCloseModal, getUserInfo, userInfo }) {
+function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateSuccess }) {
     const { currentUser } = useContext(AuthContext);
     const [name, setName] = useState(userInfo?.name);
     const [email, setEmail] = useState(userInfo?.email);
@@ -20,7 +20,8 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo }) {
     const colorIcon = <LoadingOutlined style={{ fontSize: 24, color: "white" }} spin />;
     useEffect(() => {
         localStorage.setItem("currentProfile", JSON.stringify(userInfo));
-    }, []);
+    }, [userInfo]);
+    console.log("a");
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
         const userRef = doc(db, "users", currentUser.uid);
@@ -29,11 +30,12 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo }) {
             displayName: name,
             photoURL: !imgAvatar ? userInfo.photoURL : imgAvatar,
             coverImg: !imgCover ? userInfo.coverImg : imgCover,
+            email,
         });
         await setDoc(
             userRef,
             {
-                bio,
+                bio: bio.replace(/\n/g, "<br>"),
                 name,
                 photoURL: !imgAvatar ? userInfo.photoURL : imgAvatar,
                 email,
@@ -41,6 +43,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo }) {
             },
             { merge: true }
         );
+        handleUpdateSuccess();
         await getUserInfo(currentUser.uid);
         setIsLoading(false);
         await handleCloseModal();
@@ -190,7 +193,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo }) {
                 <button
                     onClick={handleUpdateProfile}
                     type="submit"
-                    className=" text-white bg-blue-700 min-w-[208px] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[1.6rem]  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className=" inline-flex items-center justify-center px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[60px]"
                 >
                     {isLoading ? <Spin indicator={colorIcon} size="large" /> : "Update Profile"}
                 </button>

@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { connectAuthEmulator, getAuth, GoogleAuthProvider, useAuthEmulator, GithubAuthProvider } from "firebase/auth";
+import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
+import { connectStorageEmulator, getStorage } from "firebase/storage";
 const firebaseConfig = {
     apiKey: "AIzaSyCs2GujRrlTqhK7anNsFbwm_GccRFjSsI4",
     authDomain: "snap-share-78f51.firebaseapp.com",
@@ -16,4 +16,11 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider(auth);
+export const githubProvider = new GithubAuthProvider(auth);
 export const storage = getStorage(app);
+
+if (window.location.hostname === "localhost") {
+    connectAuthEmulator(auth, "http://localhost:9099");
+    connectFirestoreEmulator(db, "localhost", 8080);
+    connectStorageEmulator(storage, "localhost", 9199);
+}

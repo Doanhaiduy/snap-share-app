@@ -21,7 +21,6 @@ function PostImage() {
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
 
     const HandleShowImagePost = (e) => {
-        console.log(e.target.files[0]);
         setLoadingImage(true);
         if (e.target.files[0]) {
             const storageRef = ref(storage, `/Post/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
@@ -44,6 +43,18 @@ function PostImage() {
 
     const handleSubmitPost = async (e) => {
         e.preventDefault();
+        if (!imagePost) {
+            toast.error("Oops! You haven't selected an image.", {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return;
+        }
         setLoadingHandlePost(true);
         const idInit = id();
         const userRef = doc(db, "posts", currentUser.uid + "post" + idInit);
@@ -53,11 +64,11 @@ function PostImage() {
             uidUser: currentUser.uid,
             imagePost,
             public: isPublic,
-            text,
+            text: text.replace(/\n/g, "<br>"),
             like: [],
             comment: [],
         });
-        toast.success("Post successfully", {
+        toast.success("Image uploaded successfully!", {
             position: "top-right",
             autoClose: 4000,
             hideProgressBar: false,
@@ -77,7 +88,7 @@ function PostImage() {
             <div className="flex justify-between">
                 <Link
                     to="/"
-                    className="text-[1.5rem] inline-flex items-center gap-3 py-3 px-4 bg-blue-600 rounded-[12px] text-white cursor-pointer hover:opacity-90"
+                    className="inline-flex gap-3 items-center justify-center px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[60px]"
                 >
                     <FaArrowAltCircleLeft />
                     Home
@@ -87,7 +98,7 @@ function PostImage() {
                 </h2>
                 <h2
                     onClick={handleSubmitPost}
-                    className="text-[1.5rem] inline-flex items-center gap-3 py-3 px-4 bg-blue-600 rounded-[12px] text-white cursor-pointer hover:opacity-90"
+                    className="inline-flex cursor-pointer items-center justify-center px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[60px]"
                 >
                     Post
                 </h2>

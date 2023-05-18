@@ -7,6 +7,7 @@ import { AuthContext } from "./Context/AuthContextProvider";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Protected from "./routes/Protected";
 import PostImage from "./pages/PostImage/PostImage";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
     const { currentUser, isCurrentUser } = useContext(AuthContext);
@@ -25,6 +26,7 @@ function App() {
                     path="/login"
                 />
                 <Route element={<Profile />} path="/profile/:uid" />
+                <Route element={<Admin />} path="/admin" />
             </Routes>
         </BrowserRouter>
     );

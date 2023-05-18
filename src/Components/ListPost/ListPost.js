@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import { AiOutlineGlobal, AiTwotoneLock } from "react-icons/ai";
+import PostItemModal from "./PostItemModal";
 
 function ListPost({ userRender }) {
     const { userPosts, getUserPost, currentUser } = useContext(AuthContext);
@@ -12,13 +13,9 @@ function ListPost({ userRender }) {
         }
     }, []);
     return (
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid grid-cols-4 gap-8 pb-12">
             {userPosts.map((post) => (
-                <div key={post.uid}>
-                    {post.public ? <AiOutlineGlobal /> : <AiTwotoneLock />}
-                    <p>{post.text}</p>
-                    <img src={post.imagePost} height={200} alt="Ảnh" />
-                </div>
+                <PostItemModal key={post.uid} post={post} />
             ))}
         </div>
     );
