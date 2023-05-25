@@ -10,17 +10,15 @@ import Comment from "../Comment/Comment";
 import { ToastContainer, toast } from "react-toastify";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
-function PostItem({ post }) {
+function PostItem({ post, limit }) {
     const [authorPost, setAuthorPost] = useState({});
-    const { currentUser } = useContext(AuthContext);
-    const { getUserPost } = useContext(AuthContext);
+    const { currentUser, getUserPost, setPinPost, unPinPost } = useContext(AuthContext);
     const [showModal, setShowModal] = useState(false);
-    const { currentProfile, setCurrentProfile } = useContext(ProfileContext);
+    const { setCurrentProfile } = useContext(ProfileContext);
     const CommentMemoized = memo(Comment);
     const [shouldGetUserPosts, setShouldGetUserPosts] = useState(false);
-    const isLiked = post.like.includes(currentUser?.uid);
+    const [isLiked, setIsLiked] = useState(post?.like?.includes(currentUser?.uid));
     const [showComment, setShowComment] = useState(false);
-    const [showOption, setShowOption] = useState(false);
     const optionRef = useRef();
     const optionsRef = useRef(null);
     useEffect(() => {
@@ -32,18 +30,6 @@ function PostItem({ post }) {
         setAuthorPost(userDoc.data());
     };
 
-    useEffect(() => {
-        if (optionRef.current) {
-            optionRef.current.onclick = (e) => {
-                if (e.target.tagName === "P") {
-                    return;
-                } else {
-                    setShowOption(false);
-                }
-            };
-        }
-    }, []);
-
     const handleToggleModal = () => {
         setShowComment(false);
         setShowModal(!showModal);
@@ -51,11 +37,9 @@ function PostItem({ post }) {
 
     useEffect(() => {
         if (shouldGetUserPosts) {
-            getUserPost();
-            setShouldGetUserPosts(false); // Đặt lại giá trị biến flag
+            getUserPost(null);
         }
-    }, [shouldGetUserPosts, getUserPost]);
-
+    }, [shouldGetUserPosts]);
     const handleLikePost = useCallback(async () => {
         setShouldGetUserPosts(true);
         setShowComment(false);
@@ -68,7 +52,9 @@ function PostItem({ post }) {
             : [...postData.like, currentUser?.uid];
 
         await setDoc(userRef, { like: updatedLikes }, { merge: true });
-    }, []);
+        getUserPost(null);
+        setIsLiked(!isLiked);
+    }, [isLiked, currentUser?.uid, post.uid]);
     const handleRemovePost = async () => {
         await deleteDoc(doc(db, "posts", post.uid));
         await toast.success("Your post has been removed successfully!", {
@@ -80,15 +66,10 @@ function PostItem({ post }) {
             progress: undefined,
             theme: "light",
         });
+        getUserPost(null);
     };
-
     const handleToggleComment = () => {
         setShowComment(!showComment);
-    };
-
-    const handleShowOption = () => {
-        setShowComment(false);
-        setShowOption(!showOption);
     };
 
     const handleSaveImage = async () => {
@@ -103,7 +84,6 @@ function PostItem({ post }) {
             progress: undefined,
             theme: "light",
         });
-        setShowOption(false);
     };
     const handleHackLike = async () => {
         const userRef = doc(db, "posts", post.uid);
@@ -112,7 +92,6 @@ function PostItem({ post }) {
         const countRandom = Math.floor(Math.random() * (50 - 150) + 150);
         var array = Array(countRandom).fill(1);
         const updatedLikes = [...postData.like, ...array];
-
         await setDoc(userRef, { like: updatedLikes }, { merge: true });
         toast.success(`${countRandom} likes successfully contributed to your post`, {
             position: "top-right",
@@ -125,7 +104,7 @@ function PostItem({ post }) {
         });
     };
     return (
-        <div className="relative bg-white " ref={optionRef}>
+        <div className="relative bg-white rounded-[12px] " ref={optionRef}>
             <ToastContainer />
             {showModal ? <ModalPost handleToggleModal={handleToggleModal} data={post} authorPost={authorPost} /> : null}
             <div className="p-4 shadow-2xl rounded-[12px] transition relative" key={post.uid}>
@@ -153,19 +132,32 @@ function PostItem({ post }) {
 
                 <p dangerouslySetInnerHTML={{ __html: post.text }}></p>
                 <div>
-                    <span
-                        className="absolute top-[0px] text-[2rem] right-[20px] cursor-pointer select-none"
-                        onClick={handleShowOption}
-                    >
+                    <span className="absolute top-[0px] text-[2rem] right-[20px] cursor-pointer select-none group">
                         ...
-                    </span>
-
-                    {showOption ? (
                         <div
                             ref={optionsRef}
-                            className="absolute top-[20px] text-[1.1rem] flex flex-col bg-white font-medium right-[50px] shadow-lg  rounded-[8px] overflow-hidden z-10"
+                            className="absolute top-[30px] text-[1.1rem] flex flex-col bg-white font-medium right-[20px] shadow-lg  rounded-[8px] w-[160px] overflow-hidden z-10 group-hover:flex hidden"
                         >
-                            {post.uidUser === currentUser.uid || currentUser.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" ? (
+                            {currentUser?.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" ? (
+                                !post.isPinPost ? (
+                                    <p
+                                        className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
+                                        onClick={() => setPinPost(post?.uid)}
+                                    >
+                                        Pin Post
+                                    </p>
+                                ) : (
+                                    <p
+                                        className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
+                                        onClick={() => unPinPost(post?.uid)}
+                                    >
+                                        Unpin Post
+                                    </p>
+                                )
+                            ) : null}
+
+                            {post.uidUser === currentUser?.uid ||
+                            currentUser?.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" ? (
                                 <p
                                     className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
                                     onClick={handleRemovePost}
@@ -173,7 +165,7 @@ function PostItem({ post }) {
                                     Remove image
                                 </p>
                             ) : null}
-                            {currentUser.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" && (
+                            {currentUser?.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" && (
                                 <p
                                     className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
                                     onClick={handleHackLike}
@@ -191,7 +183,7 @@ function PostItem({ post }) {
                                 Report image
                             </p>
                         </div>
-                    ) : null}
+                    </span>
                 </div>
                 <div className="w-full">
                     <img
@@ -223,7 +215,7 @@ function PostItem({ post }) {
                         ) : null}
                     </span>
                 </div>
-                <div className="py-4 flex justify-between px-12 border-t-2">
+                <div className="py-4 flex justify-between sm:px-4 border-t-2">
                     <div className="cursor-pointer flex gap-2 items-center font-semibold" onClick={handleLikePost}>
                         {isLiked ? (
                             <AiFillHeart className="text-[2rem] text-red-600" />

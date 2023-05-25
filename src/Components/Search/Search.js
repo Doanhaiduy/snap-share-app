@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../firebase/firebase-config";
 import useDebounce from "../../hooks/useDebounce";
@@ -18,14 +18,14 @@ function Search(props) {
                 }
                 const usersRef = collection(db, "users");
                 const q = query(usersRef);
-                const querySnapshot = await getDocs(q);
+                const querySnapshot = await getDocs(q, orderBy("releaseDate", "desc"));
                 const array = [];
                 querySnapshot.forEach((doc) => {
                     const user = doc.data();
                     array.push(user);
                 });
                 const filteredArray = array.filter((obj) =>
-                    obj.name.toLowerCase().includes(debounceValue.toLowerCase())
+                    obj?.name?.toLowerCase().includes(debounceValue?.toLowerCase())
                 );
                 setUsers(filteredArray);
             } catch (error) {
@@ -36,7 +36,7 @@ function Search(props) {
     }, [debounceValue]);
 
     return (
-        <div className="flex items-center gap-5 border w-[50%] border-gray-200 rounded-lg relative">
+        <div className="flex items-center mx-auto gap-5 border w-[full] border-[#ccc] rounded-lg relative ">
             <span className="flex-shrink-0 text-gray-500 ml-3">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -56,12 +56,12 @@ function Search(props) {
             <input
                 onChange={(e) => setSearchInput(e.target.value)}
                 type="text"
-                className="text-[1.3rem] w-full outline-none bg-transparent"
+                className="text-[1.3rem] w-full outline-none bg-transparent  h-[60px] placeholder:text-[18px] sm:placeholder:text-[22px]"
                 placeholder="Enter the profile name..."
             />
 
             {users.length > 0 && (
-                <div className="absolute top-[50px] z-30 bg-white shadow-xl py-2 rounded-[12px] w-full max-h-[800px] overflow-y-auto">
+                <div className="absolute top-[50px] mt-[12px] z-30 bg-slate-100  shadow-xl py-2 rounded-[12px] w-full max-h-[800px] overflow-y-auto">
                     {users.map((user) => (
                         <ItemSearch user={user} key={user.uid} />
                     ))}

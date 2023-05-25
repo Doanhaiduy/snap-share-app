@@ -8,10 +8,12 @@ import {
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db, googleProvider, githubProvider } from "../../firebase/firebase-config";
-import { FaGoogle } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { format } from "date-fns";
+import { Spin } from "antd";
+import logo from "../../assets/imgs/Logo.png";
+import defaultAvatar from "../../assets/imgs/defaultAvatar.png";
 
 const Login = () => {
     const [name, setName] = useState("");
@@ -19,67 +21,135 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [isLogin, setIsLogin] = useState(true);
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
+    const [loading, setLoading] = useState(false);
+    const handleRegex = (type, value, confirmPassword) => {
+        switch (type) {
+            case "email": {
+                const validRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+                if (validRegex.test(value)) {
+                    return true;
+                } else {
+                    toast.error("Invalid email address!", {
+                        position: "top-right",
+                        autoClose: 4000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    return false;
+                }
+            }
+            case "password": {
+                const validRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
+                if (validRegex.test(value)) {
+                    return true;
+                } else {
+                    toast.error("Invalid password", {
+                        position: "top-right",
+                        autoClose: 4000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    return false;
+                }
+            }
+            case "confirmPassword": {
+                if (value === confirmPassword) {
+                    return true;
+                } else {
+                    alert("Password does not match!");
+                    return false;
+                }
+            }
+            case "fullName": {
+                const validRegex =
+                    /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/g;
+                if (validRegex.test(value)) {
+                    return true;
+                } else {
+                    toast.error("Invalid name, Please enter a valid name.", {
+                        position: "top-right",
+                        autoClose: 4000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    return false;
+                }
+            }
+            default:
+                throw new Error("invalid type Input");
+        }
+    };
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            if (name !== "" && email !== "" && password !== "") {
-                await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-                    updateProfile(userCredential.user, {
-                        displayName: name,
-                        photoURL: "https://giamcanherbalthin.com/meo-tang-hoa/imager_20274.jpg",
-                    });
-                    setDoc(doc(db, "users", userCredential.user.uid), {
-                        name,
-                        email,
-                        joinDate: currentDate,
-                        uid: userCredential.user.uid,
-                        bio: "Congratulations! You have become a member of the FecaBook community. Welcome!",
-                        coverImg:
-                            "https://static.vecteezy.com/system/resources/previews/003/423/831/original/cute-cat-kitten-greeting-cartoon-doodle-background-wallpaper-free-vector.jpg",
-                        photoURL: "https://giamcanherbalthin.com/meo-tang-hoa/imager_20274.jpg",
-                    });
-                });
-            } else {
-                toast.error("Fields cannot be left blank !", {
-                    position: "top-right",
-                    autoClose: 4000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
+            if (handleRegex("fullName", name) && handleRegex("email", email) && handleRegex("password", password)) {
+                setLoading(true);
+                await setTimeout(() => {
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then(async (userCredential) => {
+                            updateProfile(userCredential.user, {
+                                displayName: name,
+                                photoURL: "https://giamcanherbalthin.com/meo-tang-hoa/imager_20274.jpg",
+                            });
+                            setDoc(doc(db, "users", userCredential.user?.uid), {
+                                name,
+                                email,
+                                joinDate: currentDate,
+                                uid: userCredential.user?.uid,
+                                bio: "Congratulations! You have become a member of the SnapShare community. Welcome!",
+                                coverImg:
+                                    "https://static.vecteezy.com/system/resources/previews/003/423/831/original/cute-cat-kitten-greeting-cartoon-doodle-background-wallpaper-free-vector.jpg",
+                                photoURL: defaultAvatar,
+                            });
+                            setLoading(false);
+                        })
+                        .catch((err) => {
+                            toast.error(`The email provided is already in use!`, {
+                                position: "top-right",
+                                autoClose: 4000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                            });
+                            setLoading(false);
+                        });
+                }, 1000);
             }
-        } catch (err) {
-            toast.error(`${err}!`, {
-                position: "top-right",
-                autoClose: 4000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-            console.log(err);
-        }
+        } catch (err) {}
     };
 
     const handleRLogin = async (e) => {
         e.preventDefault();
         try {
-            await signInWithEmailAndPassword(auth, email, password);
-        } catch (err) {
-            toast.error(`${err}!`, {
-                position: "top-right",
-                autoClose: 4000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-            console.log(err);
-        }
+            if (handleRegex("email", email) && handleRegex("password", password)) {
+                setLoading(true);
+                await setTimeout(() => {
+                    signInWithEmailAndPassword(auth, email, password).catch((err) => {
+                        toast.error(`Invalid email or password !`, {
+                            position: "top-right",
+                            autoClose: 4000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                        });
+                    });
+                    setLoading(false);
+                }, 1000);
+            }
+        } catch (err) {}
     };
 
     const handleRLoginGoogle = async (e) => {
@@ -89,11 +159,42 @@ const Login = () => {
             const details = getAdditionalUserInfo(result);
             const isNewUser = details.isNewUser;
             if (isNewUser) {
-                await setDoc(doc(db, "users", result.user.uid), {
+                await setDoc(doc(db, "users", result.user?.uid), {
                     name: result.user.displayName,
                     email: result.user.email,
                     joinDate: currentDate,
-                    uid: result.user.uid,
+                    uid: result.user?.uid,
+                    bio: "Congratulations! You have become a member of the SnapShare community. Welcome!",
+                    coverImg:
+                        "https://static.vecteezy.com/system/resources/previews/003/423/831/original/cute-cat-kitten-greeting-cartoon-doodle-background-wallpaper-free-vector.jpg",
+                    photoURL: result?.user?.photoURL || defaultAvatar,
+                });
+            }
+        } catch (err) {
+            toast.error("Login fail !", {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+    };
+
+    const handleRLoginGithub = async (e) => {
+        e.preventDefault();
+        try {
+            const result = await signInWithPopup(auth, githubProvider);
+            const details = getAdditionalUserInfo(result);
+            const isNewUser = details.isNewUser;
+            if (isNewUser) {
+                await setDoc(doc(db, "users", result.user?.uid), {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    joinDate: currentDate,
+                    uid: result.user?.uid,
                     bio: "Congratulations! You have become a member of the FecaBook community. Welcome!",
                     coverImg:
                         "https://static.vecteezy.com/system/resources/previews/003/423/831/original/cute-cat-kitten-greeting-cartoon-doodle-background-wallpaper-free-vector.jpg",
@@ -110,54 +211,25 @@ const Login = () => {
                 progress: undefined,
                 theme: "light",
             });
-            console.log(err);
         }
     };
-
-    const handleRLoginGithub = async (e) => {
-        e.preventDefault();
-        try {
-            const result = await signInWithPopup(auth, githubProvider);
-            const details = getAdditionalUserInfo(result);
-                const isNewUser = details.isNewUser;
-                if (isNewUser) {
-                    await setDoc(doc(db, "users", result.user.uid), {
-                        name: result.user.displayName,
-                        email: result.user.email,
-                        joinDate: currentDate,
-                        uid: result.user.uid,
-                        bio: "Congratulations! You have become a member of the FecaBook community. Welcome!",
-                        coverImg:
-                            "https://static.vecteezy.com/system/resources/previews/003/423/831/original/cute-cat-kitten-greeting-cartoon-doodle-background-wallpaper-free-vector.jpg",
-                        photoURL: result?.user?.photoURL || "https://giamcanherbalthin.com/meo-tang-hoa/imager_20274.jpg",
-                    });
-                }
-        } catch (err) {
-            toast.error("Login fail !", {
-                position: "top-right",
-                autoClose: 4000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-            console.log(err);
-        }
-    };
-    return isLogin ? (
+    return loading ? (
+        <div className="flex justify-center items-center h-[100vh] flex-col">
+            <Spin />
+            <h2 className="text-[20px] text-blue-600 font-[700]">Login...</h2>
+        </div>
+    ) : isLogin ? (
         <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
             <ToastContainer />
             <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-                    {/* <div>
-                        <img
-                            src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846435184459982716-LogoMakr_7POjrN.png"
-                            className="w-32 mx-auto"
-                            alt=""
-                        />
-                    </div> */}
-                    <div className="mt-5 flex flex-col items-center">
+                    <div>
+                        <img src={logo} className="w-32 mx-auto" alt="" />
+                        <p className="text-center text-[10px] font-[600] font-sans mt-[-12px] mb-[30px] text-gray-500">
+                            Preserve Memories, Share Stories
+                        </p>
+                    </div>
+                    <div className="mt-1 flex flex-col items-center">
                         <h1 className="text-2xl xl:text-3xl font-extrabold">Sign in</h1>
                         <div className="w-full flex-1 mt-8">
                             <div className="flex flex-col items-center">
@@ -245,10 +317,6 @@ const Login = () => {
                                     <span className="ml-3">Sign in</span>
                                 </button>
                                 <div className="mt-6 text-xs text-gray-600 text-center">
-                                    I agree to abide by SnapShare's
-                                    <p href="#" className=" border-gray-500 border-dotted">
-                                        Terms of Service
-                                    </p>
                                     <p className="mx-auto mt-4">
                                         Do not have an account?{" "}
                                         <strong
@@ -283,20 +351,19 @@ const Login = () => {
         <div className="min-h-screen bg-gray-100 text-gray-900 flex  justify-center">
             <ToastContainer />
             <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex-row-reverse flex justify-center flex-1">
-                <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-                    {/* <div>
-                        <img
-                            src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846435184459982716-LogoMakr_7POjrN.png"
-                            className="w-32 mx-auto"
-                            alt=""
-                        />
-                    </div> */}
-                    <div className="mt-5 flex flex-col items-center">
+                <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 sm:mt-0 mt-[50px]">
+                    <div>
+                        <img src={logo} className="w-32 mx-auto" alt="" />
+                        <p className="text-center text-[10px] font-[600] font-sans mt-[-12px] mb-[30px] text-gray-500">
+                            Preserve Memories, Share Stories
+                        </p>
+                    </div>
+                    <div className="mt-2 flex flex-col items-center">
                         <h1 className="text-2xl xl:text-3xl font-extrabold">Sign up</h1>
-                        <div className="w-full flex-1 mt-8">
+                        <div className="w-full flex-1 mt-3">
                             <div className="flex flex-col items-center"></div>
-                            <div className="my-12 border-b text-center">
-                                <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                            <div className="my-3 border-b text-center  mb-[50px]">
+                                <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2 ">
                                     Sign up up with e-mail
                                 </div>
                             </div>

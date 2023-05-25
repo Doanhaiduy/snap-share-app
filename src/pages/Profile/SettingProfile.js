@@ -7,6 +7,7 @@ import { v4 as id } from "uuid";
 import { setDoc, doc } from "firebase/firestore";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
+import { ToastContainer, toast } from "react-toastify";
 
 function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateSuccess }) {
     const { currentUser } = useContext(AuthContext);
@@ -18,35 +19,61 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
     const [isLoading, setIsLoading] = useState(false);
     const [loadingImage, setLoadingImage] = useState(false);
     const colorIcon = <LoadingOutlined style={{ fontSize: 24, color: "white" }} spin />;
+
+    const handleRegex = (type, value) => {
+        switch (type) {
+            case "fullName": {
+                const validRegex =
+                    /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/g;
+                if (validRegex.test(value)) {
+                    return true;
+                } else {
+                    toast.error("Invalid name, Please enter a valid name.", {
+                        position: "top-right",
+                        autoClose: 4000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    return false;
+                }
+            }
+            default:
+                throw new Error("invalid type Input");
+        }
+    };
     useEffect(() => {
         localStorage.setItem("currentProfile", JSON.stringify(userInfo));
     }, [userInfo]);
-    console.log("a");
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
-        const userRef = doc(db, "users", currentUser.uid);
-        setIsLoading(true);
-        await updateProfile(currentUser, {
-            displayName: name,
-            photoURL: !imgAvatar ? userInfo.photoURL : imgAvatar,
-            coverImg: !imgCover ? userInfo.coverImg : imgCover,
-            email,
-        });
-        await setDoc(
-            userRef,
-            {
-                bio: bio.replace(/\n/g, "<br>"),
-                name,
+        if (handleRegex("fullName", name)) {
+            const userRef = doc(db, "users", currentUser.uid);
+            setIsLoading(true);
+            await updateProfile(currentUser, {
+                displayName: name,
                 photoURL: !imgAvatar ? userInfo.photoURL : imgAvatar,
-                email,
                 coverImg: !imgCover ? userInfo.coverImg : imgCover,
-            },
-            { merge: true }
-        );
-        handleUpdateSuccess();
-        await getUserInfo(currentUser.uid);
-        setIsLoading(false);
-        await handleCloseModal();
+                email,
+            });
+            await setDoc(
+                userRef,
+                {
+                    bio: bio.replace(/\n/g, "<br>"),
+                    name,
+                    photoURL: !imgAvatar ? userInfo.photoURL : imgAvatar,
+                    email,
+                    coverImg: !imgCover ? userInfo.coverImg : imgCover,
+                },
+                { merge: true }
+            );
+            handleUpdateSuccess();
+            await getUserInfo(currentUser.uid);
+            setIsLoading(false);
+            await handleCloseModal();
+        }
     };
     const handleShowAvatarImg = async (e) => {
         setLoadingImage(true);
@@ -68,6 +95,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
         } else {
         }
     };
+
     const handleShowCoverImg = async (e) => {
         setLoadingImage(true);
         if (e.target.files[0]) {
@@ -90,30 +118,39 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
     };
     return (
         <div className="relative z-10">
+            <ToastContainer />
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-black opacity-70" onClick={handleCloseModal}></div>
             <form className="bg-slate-600 p-5 absolute w-[70vw] rounded-[12px] left-[50%] translate-x-[-50%] ">
                 <span
                     onClick={handleCloseModal}
-                    className="text-white text-[3rem] absolute right-[12px] top-0 cursor-pointer"
+                    className="text-white text-[3rem] absolute right-[12px] top-[-6px] cursor-pointer"
                 >
                     &times;
                 </span>
-                <h2 className="text-[3rem] text-center font-bold text-white">Update Profile</h2>
+                <h2 className="sm:text-[2rem] mb-[20px] text-[1rem] lg:text-[3rem] text-center font-bold text-white">
+                    Update Profile
+                </h2>
                 <div className="mb-6">
-                    <label htmlFor="name" className="block mb-2 text-[2rem] font-medium text-gray-900 dark:text-white">
+                    <label
+                        htmlFor="name"
+                        className="block mb-2 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] font-medium text-gray-900 dark:text-white"
+                    >
                         Your Name
                     </label>
                     <input
                         value={name}
                         type="text"
                         id="name"
-                        className="shadow-sm  bg-gray-50 border border-gray-300 text-gray-900 text-[2rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        className="shadow-sm  bg-gray-50 border border-gray-300 text-gray-900 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required
                         onChange={(e) => setName(e.target.value)}
                     />
                 </div>
                 <div className="mb-6">
-                    <label htmlFor="bio" className="block mb-2 text-[2rem] font-medium text-gray-900 dark:text-white">
+                    <label
+                        htmlFor="bio"
+                        className="block mb-2 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] font-medium text-gray-900 dark:text-white"
+                    >
                         Your Bio
                     </label>
                     <textarea
@@ -121,12 +158,15 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                         value={bio}
                         onChange={(e) => setBio(e.target.value)}
                         id="bio"
-                        className=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-[2rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light h-[160px]"
+                        className=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light h-[160px]"
                         required
                     />
                 </div>
-                <div className="mb-6">
-                    <label htmlFor="email" className="block mb-2 text-[2rem] font-medium text-gray-900 dark:text-white">
+                <div className="mb-6  pointer-events-none">
+                    <label
+                        htmlFor="email"
+                        className="block mb-2 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] font-medium text-gray-900 dark:text-white"
+                    >
                         Your email
                     </label>
                     <input
@@ -134,16 +174,16 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                         onChange={(e) => setEmail(e.target.value)}
                         type="email"
                         id="email"
-                        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-[2rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        className="opacity-50 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required
                     />
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between lg:flex-row flex-col">
                     <div className="">
                         <div className="mb-6">
                             <label
                                 htmlFor="avatar"
-                                className="block mb-2 text-[2rem] font-medium text-gray-900 dark:text-white"
+                                className="block mb-2 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] font-medium text-gray-900 dark:text-white"
                             >
                                 Avatar
                             </label>
@@ -151,7 +191,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                                 onChange={handleShowAvatarImg}
                                 type="file"
                                 id="avatar"
-                                className="text-white text-[1.5rem]"
+                                className="text-white sm:text-[1.5rem] text-[1rem] lg:text-[2rem]"
                                 required
                             />
                         </div>
@@ -167,7 +207,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                         <div className="mb-6">
                             <label
                                 htmlFor="cover"
-                                className="block mb-2 text-[2rem] font-medium text-gray-900 dark:text-white"
+                                className="block mb-2 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] font-medium text-gray-900 dark:text-white"
                             >
                                 Cover
                             </label>
@@ -175,7 +215,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                                 onChange={handleShowCoverImg}
                                 type="file"
                                 id="cover"
-                                className="text-white text-[1.5rem]"
+                                className="text-white sm:text-[1.5rem] text-[1rem] lg:text-[2rem]"
                                 required
                             />
                         </div>
@@ -193,7 +233,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                 <button
                     onClick={handleUpdateProfile}
                     type="submit"
-                    className=" inline-flex items-center justify-center px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[60px]"
+                    className="sm:text-[1.5rem] text-[1rem] lg:text-[2rem] inline-flex items-center justify-center px-4 md:px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] md:h-[60px]"
                 >
                     {isLoading ? <Spin indicator={colorIcon} size="large" /> : "Update Profile"}
                 </button>

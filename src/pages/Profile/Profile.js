@@ -29,27 +29,27 @@ function Profile() {
             theme: "light",
         });
     };
+
     return (
-        <div className="p-[16px] relative">
+        <div className="p-[16px] relative bg-slate-200">
             <ToastContainer />
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center  mb-[12px]">
                 <Link
                     to="/"
-                    className="inline-flex items-center justify-center gap-3 px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[60px]"
+                    className="inline-flex items-center justify-center gap-3 px-4 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] sm:h-[60px]"
                 >
                     <FaArrowAltCircleLeft />
                     Home
                 </Link>
-                <h2 className="text-[3rem] font-medium text-center">Profile</h2>
                 {userRender.uid === currentUser.uid ? (
                     <h3
-                        className=" inline-flex cursor-pointer items-center justify-center px-8 gap-3 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[60px]"
+                        className=" inline-flex cursor-pointer items-center justify-center px-4 gap-3 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] sm:h-[60px]"
                         onClick={handleShowModal}
                     >
                         Update Profile
                     </h3>
                 ) : (
-                    <h3 className=" inline-flex items-center cursor-pointer justify-center px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[60px]">
+                    <h3 className=" inline-flex items-center cursor-pointer justify-center px-4 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] sm:h-[60px]">
                         Add Friend
                     </h3>
                 )}

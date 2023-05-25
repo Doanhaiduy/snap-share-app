@@ -3,7 +3,7 @@ import Post from "../Post/Post";
 
 function NewsFeed(props) {
     return (
-        <div className="mt-12 w-[60%] mx-auto grid grid-cols-1 gap-y-12 ">
+        <div className="mt-12 sm:w-[60%] w-[90%] mx-auto grid grid-cols-1 gap-y-12 ">
             <Post />
         </div>
     );

@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useMemo, useReducer } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../firebase/firebase-config";
 import { Spin } from "antd";
-import { doc, getDoc, collection, query, where, getDocs, onSnapshot, orderBy, limit } from "firebase/firestore";
+import { doc, getDoc, collection, query, where, getDocs, onSnapshot, orderBy, limit, setDoc } from "firebase/firestore";
 
 export const AuthContext = createContext();
 
@@ -12,6 +12,7 @@ const initialState = {
     isLoading: true,
     userInfo: {},
     userPosts: [],
+    pinnedPosts: [],
 };
 
 const actionTypes = {
@@ -20,6 +21,7 @@ const actionTypes = {
     SET_LOADING: "SET_LOADING",
     SET_USER_INFO: "SET_USER_INFO",
     SET_USER_POSTS: "SET_USER_POSTS",
+    SET_PIN_POSTS: "SET_PIN_POSTS",
 };
 
 const reducer = (state, action) => {
@@ -49,6 +51,11 @@ const reducer = (state, action) => {
                 ...state,
                 userPosts: action.payload,
             };
+        case actionTypes.SET_PIN_POSTS:
+            return {
+                ...state,
+                pinnedPosts: action.payload,
+            };
         default:
             return state;
     }
@@ -56,8 +63,7 @@ const reducer = (state, action) => {
 
 function AuthContextProvider({ children }) {
     const [state, dispatch] = useReducer(reducer, initialState);
-
-    const { currentUser, isCurrentUser, isLoading, userInfo, userPosts } = state;
+    const { currentUser, isCurrentUser, isLoading, userInfo, userPosts, pinnedPosts } = state;
 
     const getUserInfo = async (uid) => {
         const docRef = doc(db, "users", uid);
@@ -68,10 +74,30 @@ function AuthContextProvider({ children }) {
         }
     };
 
-    const getUserPost = async (uid) => {
-        const q = uid
-            ? query(collection(db, "posts"), where("uidUser", "==", uid))
-            : query(collection(db, "posts"), where("public", "==", true), orderBy("releaseDate", "desc"), limit(15));
+    const getUserPost = async (uid, limitCount = 5) => {
+        let q;
+        if (uid !== null) {
+            if (uid === undefined) {
+                return;
+            }
+            if (uid === auth.currentUser?.uid) {
+                q = query(collection(db, "posts"), where("uidUser", "==", uid), orderBy("releaseDate", "desc"));
+            } else {
+                q = query(
+                    collection(db, "posts"),
+                    where("uidUser", "==", uid),
+                    where("public", "==", true),
+                    orderBy("releaseDate", "desc")
+                );
+            }
+        } else {
+            q = query(
+                collection(db, "posts"),
+                where("public", "==", true),
+                orderBy("releaseDate", "desc"),
+                limit(limitCount)
+            );
+        }
 
         const querySnapshot = await getDocs(q);
         const listPostTemp = querySnapshot.docs.map((doc) => doc.data());
@@ -94,7 +120,9 @@ function AuthContextProvider({ children }) {
         });
 
         const unsubscribePosts = onSnapshot(collection(db, "posts"), (snapshot) => {
-            getUserPost(currentUser?.uid);
+            if (snapshot.docChanges().length > 0) {
+                getUserPost(currentUser?.uid);
+            }
         });
         return () => {
             unsubscribe();
@@ -102,16 +130,39 @@ function AuthContextProvider({ children }) {
         };
     }, []);
 
+    const setPinPost = async (uid) => {
+        if (uid) {
+            const docRef = doc(db, "posts", uid);
+            await setDoc(docRef, { isPinPost: true }, { merge: true });
+        }
+        const q = query(collection(db, "posts"), where("isPinPost", "==", true));
+        const querySnapshot = await getDocs(q);
+        const listPinPosts = querySnapshot.docs.map((doc) => doc.data());
+        dispatch({ type: actionTypes.SET_PIN_POSTS, payload: listPinPosts });
+    };
+    const unPinPost = async (uid) => {
+        if (uid) {
+            const docRef = doc(db, "posts", uid);
+            await setDoc(docRef, { isPinPost: false }, { merge: true });
+        }
+        const q = query(collection(db, "posts"), where("isPinPost", "==", true));
+        const querySnapshot = await getDocs(q);
+        const listPinPosts = querySnapshot.docs.map((doc) => doc.data());
+        dispatch({ type: actionTypes.SET_PIN_POSTS, payload: listPinPosts });
+    };
     const authProviderValue = useMemo(
         () => ({
             currentUser,
             isCurrentUser,
             userInfo,
-            getUserInfo,
             userPosts,
+            pinnedPosts,
+            getUserInfo,
             getUserPost,
+            setPinPost,
+            unPinPost,
         }),
-        [currentUser, isCurrentUser, userInfo, userPosts]
+        [currentUser, isCurrentUser, unPinPost, userInfo, userPosts, setPinPost, pinnedPosts]
     );
 
     return (

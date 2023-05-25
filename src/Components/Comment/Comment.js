@@ -12,7 +12,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 function Comment({ authorPost, post }) {
     const [comment, setComment] = useState("");
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser, userInfo } = useContext(AuthContext);
     const [imageComment, setImageComment] = useState(null);
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
 
@@ -21,6 +21,7 @@ function Comment({ authorPost, post }) {
             return;
         } else {
             const idInit = v4();
+            await setComment("");
             const userRef = doc(db, "comments", currentUser.uid + "comment" + idInit);
             await setDoc(userRef, {
                 uid: currentUser.uid + "comment" + idInit,
@@ -30,7 +31,6 @@ function Comment({ authorPost, post }) {
                 uidPost: post.uid,
                 img: imageComment,
             });
-            await setComment("");
             await setImageComment(null);
         }
     }, [post.uid, currentUser.uid, comment, currentDate, imageComment]);
@@ -61,7 +61,7 @@ function Comment({ authorPost, post }) {
     return (
         <div>
             <div className="flex items-center gap-3 relative">
-                <img src={currentUser?.photoURL} className="w-[50px] h-[50px] object-cover rounded-[50%]" alt="" />
+                <img src={userInfo?.photoURL} className="w-[50px] h-[50px] object-cover rounded-[50%]" alt="" />
                 <input
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}

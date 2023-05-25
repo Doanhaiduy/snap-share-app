@@ -43,8 +43,21 @@ function PostImage() {
 
     const handleSubmitPost = async (e) => {
         e.preventDefault();
-        if (!imagePost) {
-            toast.error("Oops! You haven't selected an image.", {
+        if (text !== "" || imagePost !== null) {
+            setLoadingHandlePost(true);
+            const idInit = id();
+            const userRef = doc(db, "posts", currentUser.uid + "post" + idInit);
+            await setDoc(userRef, {
+                uid: currentUser.uid + "post" + idInit,
+                releaseDate: currentDate,
+                uidUser: currentUser.uid,
+                imagePost,
+                public: isPublic,
+                text: text.replace(/\n/g, "<br>"),
+                like: [],
+                comment: [],
+            });
+            toast.success("Image uploaded successfully!", {
                 position: "top-right",
                 autoClose: 4000,
                 hideProgressBar: false,
@@ -53,72 +66,47 @@ function PostImage() {
                 progress: undefined,
                 theme: "light",
             });
-            return;
+            setText("");
+            setImagePost(null);
+            setIsPublic(true);
+            setLoadingHandlePost(false);
         }
-        setLoadingHandlePost(true);
-        const idInit = id();
-        const userRef = doc(db, "posts", currentUser.uid + "post" + idInit);
-        await setDoc(userRef, {
-            uid: currentUser.uid + "post" + idInit,
-            releaseDate: currentDate,
-            uidUser: currentUser.uid,
-            imagePost,
-            public: isPublic,
-            text: text.replace(/\n/g, "<br>"),
-            like: [],
-            comment: [],
-        });
-        toast.success("Image uploaded successfully!", {
-            position: "top-right",
-            autoClose: 4000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
-        setText("");
-        setImagePost(null);
-        setIsPublic(true);
-        setLoadingHandlePost(false);
     };
+
     return (
-        <div className="p-6 h-[100vh] bg-gray-700">
+        <div className="p-6 bg-gray-700 sm:h-auto h-[100vh]">
             <ToastContainer />
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
                 <Link
                     to="/"
-                    className="inline-flex gap-3 items-center justify-center px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[60px]"
+                    className="inline-flex gap-3 items-center justify-center px-4 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg  h-[40px] sm:h-[60px]"
                 >
                     <FaArrowAltCircleLeft />
                     Home
                 </Link>
-                <h2 className="inline-flex items-center gap-3 text-[2.2rem] font-semibold cursor-pointer text-white">
-                    Post Image
-                </h2>
                 <h2
                     onClick={handleSubmitPost}
-                    className="inline-flex cursor-pointer items-center justify-center px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[60px]"
+                    className="inline-flex cursor-pointer items-center justify-center px-4 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg  h-[40px] sm:h-[60px]"
                 >
                     Post
                 </h2>
             </div>
             <div className="">
-                <div className="w-full h-[750px] bg-slate-300 mt-12 rounded-[12px] p-8 ">
+                <div className="w-full sm:h-[750px] bg-slate-300 mt-12 rounded-[12px] p-8 ">
                     <h3 className="text-center text-[1.8rem] font-bold py-[12px]">Create Post</h3>
                     {loadingHandlePost ? (
                         <Spin size="large" />
                     ) : (
-                        <div className="flex gap-12">
-                            <div className=" gap-4 w-[50%] flex-1 flex flex-col p-4 relative">
+                        <div className="flex sm:gap-x-12 sm:flex-row flex-col">
+                            <div className=" gap-4 sm:w-[50%] flex-1 flex flex-col p-4 relative">
                                 <div className="flex items-center gap-4 ">
                                     <img
                                         src={userInfo.photoURL}
-                                        className="w-[80px] h-[80px] object-cover rounded-[50%] "
+                                        className=" sm:w-[80px] sm:h-[80px] w-[40px] h-[40px] object-cover rounded-[50%] "
                                         alt=""
                                     />
                                     <label htmlFor="addImage" className="">
-                                        <FaImage className="w-[80px] h-[80px] cursor-pointer text-gray-600" />
+                                        <FaImage className=" sm:w-[80px] sm:h-[80px] w-[40px] h-[40px] cursor-pointer text-gray-600" />
                                     </label>
                                     <input
                                         type="file"
@@ -130,7 +118,7 @@ function PostImage() {
                                         onChange={(e) => setIsPublic(JSON.parse(e.target.value))}
                                         defaultValue="true"
                                         id="countries"
-                                        className="bg-gray-50 border  border-gray-300 text-gray-900 text-[1.6rem] rounded-lg block w-full p-2.5"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-[1.6rem] text-[1rem] rounded-lg block w-full p-1 sm:p-2.5"
                                     >
                                         <option value="true">Public</option>
                                         <option value="false">Private</option>
@@ -139,24 +127,15 @@ function PostImage() {
                                 <textarea
                                     value={text}
                                     onChange={(e) => setText(e.target.value)}
-                                    className=" flex-1 bg-white w-full rounded-[12px] mt-[12px] outline-none p-4 text-[1.8rem] h-[400px]"
+                                    className=" flex-1 bg-white w-full rounded-[12px] mt-[12px] outline-none p-4 text-[1rem] sm:text-[1.8rem] sm:h-[400px]"
                                     name=""
                                     id=""
                                     placeholder="Write something for picture..."
                                 ></textarea>
-                                {/* <div onClick={handleEmojiPickerToggle} className="absolute bottom-[40px] right-[40px]">
-                                    <div className="flex items-center gap-2 text-[1.2rem] font-semibold border-[4px] p-2 rounded-[12px] cursor-pointer text-gray-700">
-                                        More icon <FaSmile className="text-[2rem]" />
-                                    </div>
-                                </div>
-                                {showEmojiPicker && (
-                                    <div className="absolute bottom-[80px] right-[60px]">
-                                        <EmojiPicker height={300} onEmojiClick={handleEmojiClick} />
-                                    </div>
-                                )} */}
+
                                 <ShowEmoji setText={setText} className={"absolute bottom-[40px] right-[40px]"} />
                             </div>
-                            <div className="w-[50%] h-[600px] p-4 rounded-[12px] flex justify-center items-center">
+                            <div className="sm:w-[50%] sm:h-[600px] h-[100%] p-4 rounded-[12px] flex justify-center items-center">
                                 {loadingImage ? (
                                     <Spin size="large" />
                                 ) : (

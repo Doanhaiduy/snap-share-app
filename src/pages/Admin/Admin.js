@@ -1,39 +1,49 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import { Link } from "react-router-dom";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, limit, orderBy, query, startAfter } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import ItemUserManager from "../../Components/ItemUserManger/ItemUserManager";
+import { Spin } from "antd";
 
 function Admin() {
-    console.log("1");
     const [users, setUsers] = useState([]);
+    const [lastVisible, setLastVisible] = useState(null);
+    const [loading, setLoading] = useState(false);
     const { currentUser } = useContext(AuthContext);
 
     useEffect(() => {
-        if (currentUser?.uid !== "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2") {
+        if (currentUser?.uid !== "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" && window.location.hostname !== "localhost") {
             return;
         }
-        const getUser = async () => {
-            try {
-                const usersRef = collection(db, "users");
-                const q = query(usersRef, orderBy("joinDate", "desc"));
-                const querySnapshot = await getDocs(q);
-                const array = [];
-                querySnapshot.forEach((doc) => {
-                    const user = doc.data();
-                    array.push(user);
-                });
-                setUsers(array);
-            } catch (error) {
-                console.log("Lỗi khi tìm kiếm user:", error);
-            }
-        };
         getUser();
     }, [currentUser?.uid]);
-    return currentUser?.uid !== "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" ? (
-        <section className=" ">
+
+    const getUser = async () => {
+        setLoading(true);
+        try {
+            const usersRef = collection(db, "users");
+            let q = query(usersRef, orderBy("joinDate", "desc"), limit(20));
+            if (lastVisible) {
+                q = query(usersRef, orderBy("joinDate", "desc"), startAfter(lastVisible), limit(20));
+            }
+            const querySnapshot = await getDocs(q);
+            const array = [];
+            querySnapshot.forEach((doc) => {
+                const user = doc.data();
+                array.push(user);
+            });
+            setLastVisible(querySnapshot.docs[querySnapshot.docs.length - 1]);
+            setUsers((prev) => [...prev, ...array]);
+        } catch (error) {
+            console.log("Lỗi khi tìm kiếm user:", error);
+        }
+        setLoading(false);
+    };
+
+    return currentUser?.uid !== "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" && window.location.hostname !== "localhost" ? (
+        <section className="">
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                 <div className="mx-auto max-w-screen-sm text-center">
                     <img
@@ -45,7 +55,7 @@ function Admin() {
                         403
                     </h1>
                     <p className="mb-4 text-3xl tracking-tight font-bold text-[#000] md:text-4xl ">Access Denied</p>
-                    <p className="mb-4 text-lg font-light  text-[#000]">
+                    <p className="mb-4 text-lg font-light text-[#000]">
                         The requested page does not exist. You are not authorized to access the admin area.
                     </p>
                     <Link
@@ -66,7 +76,7 @@ function Admin() {
                 <FaArrowAltCircleLeft />
                 Home
             </Link>
-            <div className="container mx-auto">
+            <div className="container mx-auto p-2">
                 <h1 className="text-4xl font-bold mb-4 text-center">User List</h1>
                 <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {users.map((user) => (
@@ -74,6 +84,22 @@ function Admin() {
                     ))}
                 </ul>
             </div>
+            {!loading && (
+                <button
+                    onClick={getUser}
+                    className="flex justify-center items-center mx-auto rounded-[4px] font-medium text-[12px] bg-blue-300 text-blue-700 px-3 py-1 mt-6"
+                >
+                    load more...
+                </button>
+            )}
+            {loading && (
+                <button
+                    disabled
+                    className="flex justify-center items-center mx-auto rounded-[4px] font-medium text-[12px] bg-blue-200 text-blue-700 px-3 py-1 mt-6"
+                >
+                    <Spin />
+                </button>
+            )}
         </div>
     );
 }
