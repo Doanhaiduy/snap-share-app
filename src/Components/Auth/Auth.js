@@ -29,7 +29,7 @@ const Login = () => {
                 if (validRegex.test(value)) {
                     return true;
                 } else {
-                    toast.error("Invalid email address!", {
+                    toast.error("Invalid email address! Please enter a valid email address.", {
                         position: "top-right",
                         autoClose: 4000,
                         hideProgressBar: false,
@@ -46,15 +46,18 @@ const Login = () => {
                 if (validRegex.test(value)) {
                     return true;
                 } else {
-                    toast.error("Invalid password", {
-                        position: "top-right",
-                        autoClose: 4000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                    });
+                    toast.error(
+                        "Invalid password ! Password must be at least 8 characters long and include both letters and numbers.",
+                        {
+                            position: "top-right",
+                            autoClose: 4000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                        }
+                    );
                     return false;
                 }
             }
@@ -98,7 +101,7 @@ const Login = () => {
                         .then(async (userCredential) => {
                             updateProfile(userCredential.user, {
                                 displayName: name,
-                                photoURL: "https://giamcanherbalthin.com/meo-tang-hoa/imager_20274.jpg",
+                                photoURL: defaultAvatar,
                             });
                             setDoc(doc(db, "users", userCredential.user?.uid), {
                                 name,
@@ -198,7 +201,7 @@ const Login = () => {
                     bio: "Congratulations! You have become a member of the FecaBook community. Welcome!",
                     coverImg:
                         "https://static.vecteezy.com/system/resources/previews/003/423/831/original/cute-cat-kitten-greeting-cartoon-doodle-background-wallpaper-free-vector.jpg",
-                    photoURL: result?.user?.photoURL || "https://giamcanherbalthin.com/meo-tang-hoa/imager_20274.jpg",
+                    photoURL: result?.user?.photoURL || defaultAvatar,
                 });
             }
         } catch (err) {

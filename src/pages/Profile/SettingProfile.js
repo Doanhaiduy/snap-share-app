@@ -8,6 +8,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { ToastContainer, toast } from "react-toastify";
+import { FcAddImage } from "react-icons/fc";
 
 function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateSuccess }) {
     const { currentUser } = useContext(AuthContext);
@@ -117,7 +118,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
         }
     };
     return (
-        <div className="relative z-10">
+        <div className="relative z-[51]">
             <ToastContainer />
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-black opacity-70" onClick={handleCloseModal}></div>
             <form className="bg-slate-600 p-5 absolute w-[70vw] rounded-[12px] left-[50%] translate-x-[-50%] ">
@@ -179,19 +180,20 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                     />
                 </div>
                 <div className="flex justify-between lg:flex-row flex-col">
-                    <div className="">
-                        <div className="mb-6">
+                    <div className="lg:w-[50%] flex flex-col items-center">
+                        <div className="mb-6 flex flex-col items-center ">
                             <label
                                 htmlFor="avatar"
-                                className="block mb-2 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] font-medium text-gray-900 dark:text-white"
+                                className="cursor-pointer mb-2 flex flex-col items-center sm:text-[1.5rem] text-[1rem] lg:text-[2rem] font-medium text-gray-900 dark:text-white"
                             >
                                 Avatar
+                                <FcAddImage className="text-[60px]" />
                             </label>
                             <input
                                 onChange={handleShowAvatarImg}
                                 type="file"
                                 id="avatar"
-                                className="text-white sm:text-[1.5rem] text-[1rem] lg:text-[2rem]"
+                                className="text-transparent hidden  sm:text-[1.5rem] text-[1rem] "
                                 required
                             />
                         </div>
@@ -199,23 +201,28 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                             <Spin size="large" />
                         ) : (
                             imgAvatar && (
-                                <img src={imgAvatar} alt="" className="w-[200px] h-[250px] mb-[12px] object-cover" />
+                                <img
+                                    src={imgAvatar}
+                                    alt=""
+                                    className=" xl:h-[250px] xl:w-[250px] rounded-full h-[200px] w-[200px] border mb-[12px] object-cover"
+                                />
                             )
                         )}
                     </div>
-                    <div className="">
-                        <div className="mb-6">
+                    <div className="flex-1 flex flex-col items-center">
+                        <div className="mb-6 flex flex-col items-center">
                             <label
                                 htmlFor="cover"
-                                className="block mb-2 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] font-medium text-gray-900 dark:text-white"
+                                className="cursor-pointer flex flex-col items-center mb-2 sm:text-[1.5rem] text-[1rem] lg:text-[2rem] font-medium text-gray-900 dark:text-white"
                             >
                                 Cover
+                                <FcAddImage className="text-[60px]" />
                             </label>
                             <input
                                 onChange={handleShowCoverImg}
                                 type="file"
                                 id="cover"
-                                className="text-white sm:text-[1.5rem] text-[1rem] lg:text-[2rem]"
+                                className="text-transparent hidden sm:text-[1.5rem] text-[1rem]"
                                 required
                             />
                         </div>
@@ -224,7 +231,11 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                             <Spin size="large" />
                         ) : (
                             imgCover && (
-                                <img src={imgCover} alt="" className="w-full h-[250px] mb-[12px] object-cover" />
+                                <img
+                                    src={imgCover}
+                                    alt=""
+                                    className=" xl:h-[250px] w-full h-[200px] mb-[12px] object-cover rounded-[12px]"
+                                />
                             )
                         )}
                     </div>
@@ -233,7 +244,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, handleUpdateS
                 <button
                     onClick={handleUpdateProfile}
                     type="submit"
-                    className="sm:text-[1.5rem] text-[1rem] lg:text-[2rem] inline-flex items-center justify-center px-4 md:px-8 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] md:h-[60px]"
+                    className="text-[1rem]  inline-flex items-center justify-center px-4 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] "
                 >
                     {isLoading ? <Spin indicator={colorIcon} size="large" /> : "Update Profile"}
                 </button>

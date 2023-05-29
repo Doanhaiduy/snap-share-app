@@ -10,14 +10,14 @@ import { v4 } from "uuid";
 import { FaImage } from "react-icons/fa";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
-function Comment({ authorPost, post }) {
+function Comment({ post }) {
     const [comment, setComment] = useState("");
     const { currentUser, userInfo } = useContext(AuthContext);
     const [imageComment, setImageComment] = useState(null);
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
 
     const handleSendComment = useCallback(async () => {
-        if (comment === "") {
+        if (comment.trim() === "" && imageComment === null) {
             return;
         } else {
             const idInit = v4();

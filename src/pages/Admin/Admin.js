@@ -43,7 +43,7 @@ function Admin() {
     };
 
     return currentUser?.uid !== "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" && window.location.hostname !== "localhost" ? (
-        <section className="">
+        <section className="py-[80px]">
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                 <div className="mx-auto max-w-screen-sm text-center">
                     <img
@@ -68,14 +68,7 @@ function Admin() {
             </div>
         </section>
     ) : (
-        <div className="bg-blue-200 min-h-[100vh]">
-            <Link
-                to="/"
-                className="inline-flex items-center justify-center px-4 py-2 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] m-4 gap-2"
-            >
-                <FaArrowAltCircleLeft />
-                Home
-            </Link>
+        <div className="bg-slate-200 min-h-[100vh] py-[80px]">
             <div className="container mx-auto p-2">
                 <h1 className="text-4xl font-bold mb-4 text-center">User List</h1>
                 <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

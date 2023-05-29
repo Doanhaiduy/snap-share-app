@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { AiOutlineGlobal, AiTwotoneLock } from "react-icons/ai";
 import PostItem from "../Post/PostItem";
+import moment from "moment";
 
 function PostItemProfile({ post }) {
     const [showModal, setShowModal] = useState(false);
-    console.log("render");
-
     return (
         <>
             {showModal && (
@@ -25,7 +24,7 @@ function PostItemProfile({ post }) {
                         >
                             &times;
                         </span>
-                        <PostItem post={post} />
+                        <PostItem post={post} isProfile />
                     </div>
                 </div>
             )}
@@ -36,7 +35,11 @@ function PostItemProfile({ post }) {
             >
                 <div className="h-[130px]">
                     <p className=" text-[2rem] cursor-pointer flex justify-between">
-                        <span className="text-[0.8rem] font-semibold ">{post.releaseDate}</span>
+                        <span className="text-[0.8rem] font-semibold ">
+                            {moment().diff(post.releaseDate, "days") > 3
+                                ? post.releaseDate
+                                : moment(post.releaseDate).fromNow()}
+                        </span>
                         {post.public ? <AiOutlineGlobal /> : <AiTwotoneLock />}
                     </p>
                     <div className="flex flex-1 gap-3">
@@ -47,12 +50,14 @@ function PostItemProfile({ post }) {
                     </div>
                 </div>
                 <div className="flex-1" onClick={() => setShowModal(true)}>
-                    <img
-                        className="object-cover h-full w-full cursor-pointer z-10 rounded-[12px]"
-                        src={post.imagePost}
-                        height={200}
-                        alt="Ảnh"
-                    />
+                    {post.imagePost ? (
+                        <img
+                            className="object-cover h-full w-full cursor-pointer z-10 rounded-[12px]"
+                            src={post.imagePost}
+                            height={200}
+                            alt="Ảnh"
+                        />
+                    ) : null}
                 </div>
             </div>
         </>

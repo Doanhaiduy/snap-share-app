@@ -5,6 +5,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Spin } from "antd";
+import moment from "moment";
 
 function ItemUserManager({ user }) {
     const { setCurrentProfile } = useContext(ProfileContext);
@@ -56,7 +57,10 @@ function ItemUserManager({ user }) {
                 </span>
             </div>
             <p className="text-sm text-gray-500 mb-2 h-[40px] line-clamp-2">{user.bio || "No bio"}</p>
-            <p className="text-xs text-gray-400 ">Registered on: {user.joinDate}</p>
+            <p className="text-xs text-gray-400 ">
+                Registered on:{" "}
+                {moment().diff(user.joinDate, "days") > 3 ? user.joinDate : moment(user.joinDate).fromNow()}
+            </p>
             <div className="mt-4 flex justify-between">
                 <Link
                     to={`/profile/${user?.uid}`}

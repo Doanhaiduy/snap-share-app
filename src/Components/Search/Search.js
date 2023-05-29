@@ -36,11 +36,11 @@ function Search(props) {
     }, [debounceValue]);
 
     return (
-        <div className="flex items-center mx-auto gap-5 border w-[full] border-[#ccc] rounded-lg relative ">
-            <span className="flex-shrink-0 text-gray-500 ml-3">
+        <div className="flex items-center mx-auto gap-3 border w-[full] border-[#ccc] rounded-[12px] relative ">
+            <span className="flex-shrink-0 text-gray-500 ml-1">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -56,12 +56,12 @@ function Search(props) {
             <input
                 onChange={(e) => setSearchInput(e.target.value)}
                 type="text"
-                className="text-[1.3rem] w-full outline-none bg-transparent  h-[60px] placeholder:text-[18px] sm:placeholder:text-[22px]"
-                placeholder="Enter the profile name..."
+                className="text-[1.3rem] w-full  h-[40px] outline-none bg-transparent pr-2  placeholder:text-[18px] sm:placeholder:text-[22px]"
+                placeholder="Enter  profile name..."
             />
-
+        
             {users.length > 0 && (
-                <div className="absolute top-[50px] mt-[12px] z-30 bg-slate-100  shadow-xl py-2 rounded-[12px] w-full max-h-[800px] overflow-y-auto">
+                <div className="absolute top-[50px] mt-[12px] z-30 bg-slate-100  shadow-xl py-2 rounded-[12px] w-[90vw] sm:left-0 left-[-120px] sm:w-full max-h-[800px] overflow-y-auto">
                     {users.map((user) => (
                         <ItemSearch user={user} key={user.uid} />
                     ))}

@@ -1,12 +1,12 @@
 import React, { memo, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
-
 import { ProfileContext } from "../../Context/ProfileContextProvider";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import { ToastContainer, toast } from "react-toastify";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import moment from "moment";
 
 const CommentItem = React.memo(({ data }) => {
     const [authorComment, setAuthorComment] = useState({});
@@ -35,7 +35,7 @@ const CommentItem = React.memo(({ data }) => {
             await deleteDoc(doc(db, "comments", data.uid));
             await toast.success("Comment successfully deleted!", {
                 position: "top-right",
-                autoClose: 4000,
+                autoClose: 1000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 draggable: true,
@@ -67,7 +67,9 @@ const CommentItem = React.memo(({ data }) => {
             </Link>
             <div className="flex flex-col  rounded-[12px] px-3 bg-gray-300 py-2 w-[90%]">
                 <div className="text-[12px] font-medium relative">
-                    {data.releaseDate}
+                    {moment().diff(data.releaseDate, "days") > 3
+                        ? data.releaseDate
+                        : moment(data.releaseDate).fromNow()}
                     <span
                         className="ml-[12px] select-none font-bold text-[2rem] right-0 absolute top-[-24px] cursor-pointer"
                         onClick={(e) => {

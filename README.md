@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# SNAP SHARE APP DESCRIPTION
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+URL website: [https://snap-share-78f51.web.app/](https://snap-share-78f51.web.app/)
 
-## Available Scripts
+The Snap Share app is a real-time social networking platform that allows users to connect and interact with each other. It offers a range of features designed to enhance the user experience and foster engagement. The following is a description of the app's key features:
 
-In the project directory, you can run:
+-   The website is built using:
 
-### `npm start`
+    -   ReactJS
+    -   React-Router-Dom
+    -   Redux
+    -   Firebase
+    -   Tailwind CSS.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   Authentication:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    -   Login: Users can log in using their email and password credentials, or they have the option to log in through their Google or Github accounts.
+    -   Registration: New users can create an account by providing the necessary information.
 
-### `npm test`
+-   User Discovery:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    -   User Search: Users can search for other users within the app.
+    -   User Profile Viewing: Users can view the profiles of other users, accessing their personal information.
 
-### `npm run build`
+-   Personal Information Management:
+    -   Profile Editing: Users can modify their personal information, including their name, email, bio, profile picture, and cover photo.
+-   Post Creation and Management:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    -   Post Publishing: Users can create posts by adding a caption, attaching images, and selecting an icon. They have the option to publish their posts as public or private.
+    -   Post Deletion: Users can delete their own posts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   Engagement Features:
+    -   Post Liking: Users can like posts shared by other users.
+    -   Post Commenting: Users can comment on posts, including text, images, icons, and more.
+    -   Comment Deletion: Users can delete their own comments.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+All the features of the Snap Share app operate in real-time, allowing users to interact and receive updates instantaneously.

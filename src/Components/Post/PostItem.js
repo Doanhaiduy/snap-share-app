@@ -9,8 +9,10 @@ import { Link } from "react-router-dom";
 import Comment from "../Comment/Comment";
 import { ToastContainer, toast } from "react-toastify";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import { FacebookShareButton } from "react-share";
+import moment from "moment";
 
-function PostItem({ post, limit }) {
+function PostItem({ post, limit, isProfile = false }) {
     const [authorPost, setAuthorPost] = useState({});
     const { currentUser, getUserPost, setPinPost, unPinPost } = useContext(AuthContext);
     const [showModal, setShowModal] = useState(false);
@@ -34,10 +36,13 @@ function PostItem({ post, limit }) {
         setShowComment(false);
         setShowModal(!showModal);
     };
-
     useEffect(() => {
         if (shouldGetUserPosts) {
-            getUserPost(null);
+            if (isProfile) {
+                getUserPost(post.uidUser);
+            } else {
+                getUserPost(null, limit);
+            }
         }
     }, [shouldGetUserPosts]);
     const handleLikePost = useCallback(async () => {
@@ -52,21 +57,25 @@ function PostItem({ post, limit }) {
             : [...postData.like, currentUser?.uid];
 
         await setDoc(userRef, { like: updatedLikes }, { merge: true });
-        getUserPost(null);
+        if (isProfile) {
+            await getUserPost(post.uidUser);
+        } else {
+            await getUserPost(null, limit);
+        }
         setIsLiked(!isLiked);
-    }, [isLiked, currentUser?.uid, post.uid]);
+    }, [isLiked, currentUser?.uid, post.uid, limit]);
     const handleRemovePost = async () => {
         await deleteDoc(doc(db, "posts", post.uid));
         await toast.success("Your post has been removed successfully!", {
             position: "top-right",
-            autoClose: 4000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             draggable: true,
             progress: undefined,
             theme: "light",
         });
-        getUserPost(null);
+        getUserPost(null, limit);
     };
     const handleToggleComment = () => {
         setShowComment(!showComment);
@@ -77,7 +86,7 @@ function PostItem({ post, limit }) {
         // ...
         toast.success("Save successfully", {
             position: "top-right",
-            autoClose: 4000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             draggable: true,
@@ -95,7 +104,7 @@ function PostItem({ post, limit }) {
         await setDoc(userRef, { like: updatedLikes }, { merge: true });
         toast.success(`${countRandom} likes successfully contributed to your post`, {
             position: "top-right",
-            autoClose: 4000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             draggable: true,
@@ -126,7 +135,11 @@ function PostItem({ post, limit }) {
                                 <BsFillCheckCircleFill className="text-[16px] inline text-[#5890ff]  ml-[6px]" />
                             )}
                         </h2>
-                        <p>{post.releaseDate}</p>
+                        <p>
+                            {moment().diff(post.releaseDate, "days") > 3
+                                ? post.releaseDate
+                                : moment(post.releaseDate).fromNow()}
+                        </p>
                     </div>
                 </Link>
 
@@ -232,9 +245,16 @@ function PostItem({ post, limit }) {
                         <span></span>
                         <span>Comment</span>
                     </div>
-                    <div className="cursor-pointer flex gap-2 items-center font-semibold">
-                        <AiOutlineShareAlt className="text-[2rem]" />
-                        <span>Share</span>
+                    <div className="cursor-pointer  items-center font-semibold">
+                        <FacebookShareButton
+                            url={post.imagePost}
+                            quote={post.text}
+                            hashtag="#SnapShare"
+                            className="flex items-center gap-2"
+                        >
+                            <AiOutlineShareAlt className="text-[2rem]" />
+                            <span>Share</span>
+                        </FacebookShareButton>
                     </div>
                 </div>
                 {showComment ? <CommentMemoized authorPost={authorPost} post={post} /> : null}

@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import SettingProfile from "./SettingProfile";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import ListPost from "../../Components/ListPost/ListPost";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import { AiFillEdit, AiOutlineUserAdd } from "react-icons/ai";
 
 function Profile() {
     const { currentUser, userInfo, getUserInfo } = useContext(AuthContext);
@@ -31,29 +30,7 @@ function Profile() {
     };
 
     return (
-        <div className="p-[16px] relative bg-slate-200">
-            <ToastContainer />
-            <div className="flex justify-between items-center  mb-[12px]">
-                <Link
-                    to="/"
-                    className="inline-flex items-center justify-center gap-3 px-4 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] sm:h-[60px]"
-                >
-                    <FaArrowAltCircleLeft />
-                    Home
-                </Link>
-                {userRender.uid === currentUser.uid ? (
-                    <h3
-                        className=" inline-flex cursor-pointer items-center justify-center px-4 gap-3 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] sm:h-[60px]"
-                        onClick={handleShowModal}
-                    >
-                        Update Profile
-                    </h3>
-                ) : (
-                    <h3 className=" inline-flex items-center cursor-pointer justify-center px-4 py-4 hover:opacity-90 font-sans font-semibold tracking-wide text-white bg-blue-500 rounded-lg h-[40px] sm:h-[60px]">
-                        Add Friend
-                    </h3>
-                )}
-            </div>
+        <div className="p-[16px]  bg-slate-200 pt-[90px] ">
             {isShowModal ? (
                 <SettingProfile
                     handleCloseModal={handleCloseModal}
@@ -62,7 +39,23 @@ function Profile() {
                     handleUpdateSuccess={handleUpdateSuccess}
                 />
             ) : null}
-            <div className=" flex flex-col items-center">
+            <div className=" flex flex-col items-center relative">
+                <div className="absolute right-2 top-2">
+                    {userRender?.uid === currentUser?.uid ? (
+                        <h3
+                            className=" flex items-center gap-2 font-medium border-4  px-2 py-1 rounded-[12px] cursor-pointer hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-colors"
+                            onClick={handleShowModal}
+                        >
+                            <AiFillEdit />
+                            Update Profile
+                        </h3>
+                    ) : (
+                        <h3 className=" flex items-center gap-2 font-medium border-4  px-2 py-1 rounded-[12px] cursor-pointer hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-colors">
+                            <AiOutlineUserAdd />
+                            Add Friend
+                        </h3>
+                    )}
+                </div>
                 <div
                     className="bg-cover bg-center w-full h-[500px] bg-blue-700 rounded-[18px]"
                     style={{ backgroundImage: `url('${userRender.coverImg}')` }}

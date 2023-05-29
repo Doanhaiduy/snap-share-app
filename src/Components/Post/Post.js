@@ -27,14 +27,14 @@ function Post() {
 
     return (
         <>
-            <div className="">
-                <h2 className="text-[20px] font-medium flex items-center gap-2 mb-4">
+            <div className="mt-[12px]">
+                <h2 className="text-[20px] font-medium flex items-center gap-2 mb-4 ">
                     <AiFillPushpin className="inline" /> Pinned Posts
                 </h2>
 
                 <div className="flex flex-col gap-[50px]">
                     {pinnedPosts?.map((post) => (
-                        <PostItem limit={limit} post={post} key={post?.uid} />
+                        <PostItem post={post} key={post?.uid} />
                     ))}
                 </div>
             </div>
@@ -44,7 +44,7 @@ function Post() {
             {userPosts
                 .filter((item) => item.isPinPost !== true)
                 ?.map((post) => (
-                    <PostItem post={post} key={post?.uid} />
+                    <PostItem post={post} key={post?.uid} limit={limit} />
                 ))}
             {!loading && (
                 <button
