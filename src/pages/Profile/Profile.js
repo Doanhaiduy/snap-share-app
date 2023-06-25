@@ -4,16 +4,29 @@ import SettingProfile from "./SettingProfile";
 import ListPost from "../../Components/ListPost/ListPost";
 import { toast } from "react-toastify";
 import { BsFillCheckCircleFill } from "react-icons/bs";
-import { AiFillEdit, AiOutlineUserAdd } from "react-icons/ai";
+import { AiFillEdit } from "react-icons/ai";
+import { ProfileContext } from "../../Context/ProfileContextProvider";
+import Tippy from "@tippyjs/react";
+import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { NavLink, Route, Routes, useResolvedPath } from "react-router-dom";
+import Friends from "../../Components/Friends/Friends";
+import Followers from "../../Components/Followers/Followers";
+import Following from "../../Components/Following/Following";
+import Saved from "../../Components/Saved/Saved";
+import About from "./About";
+import Action from "./Action";
 
-function Profile() {
+function Profile(props) {
     const { currentUser, userInfo, getUserInfo } = useContext(AuthContext);
     const userRender = JSON.parse(localStorage.getItem("currentProfile")) || userInfo;
-    const [isShowModal, setIsShowModal] = useState(false);
+    const { currentProfile } = useContext(ProfileContext);
+    const { t } = useContext(MultiLanguageContext);
 
+    const [isShowModal, setIsShowModal] = useState(false);
     const handleShowModal = () => {
         setIsShowModal(true);
     };
+    const isCurrent = userRender?.uid === currentUser?.uid;
     const handleCloseModal = () => {
         setIsShowModal(false);
     };
@@ -28,65 +41,210 @@ function Profile() {
             theme: "light",
         });
     };
-
+    const url = useResolvedPath("").pathname;
     return (
-        <div className="p-[16px]  bg-slate-200 pt-[90px] ">
+        <div className="p-[16px]  bg-slate-200 dark:bg-[#18191a] dark:text-primary5 pt-[90px] lg:col-span-4 col-span-5 h-[100vh] overflow-y-auto">
             {isShowModal ? (
                 <SettingProfile
+                    toast={toast}
                     handleCloseModal={handleCloseModal}
                     userInfo={userRender}
                     getUserInfo={getUserInfo}
                     handleUpdateSuccess={handleUpdateSuccess}
+                    t={t}
                 />
             ) : null}
             <div className=" flex flex-col items-center relative">
                 <div className="absolute right-2 top-2">
-                    {userRender?.uid === currentUser?.uid ? (
+                    {isCurrent ? (
                         <h3
-                            className=" flex items-center gap-2 font-medium border-4  px-2 py-1 rounded-[12px] cursor-pointer hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-colors"
+                            className=" flex items-center gap-2 font-medium border-4 bg-black/30 px-2 py-1 rounded-[12px] cursor-pointer hover:bg-blue-600 hover:border-blue-600 hover:text-white dark:hover:bg-primary1 dark:hover:text-primary2 dark:hover:border-primary1 dark:border-[#333] dark:text-[#333] transition-colors"
                             onClick={handleShowModal}
                         >
                             <AiFillEdit />
-                            Update Profile
+                            {t("profile.update")}
                         </h3>
-                    ) : (
-                        <h3 className=" flex items-center gap-2 font-medium border-4  px-2 py-1 rounded-[12px] cursor-pointer hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-colors">
-                            <AiOutlineUserAdd />
-                            Add Friend
-                        </h3>
-                    )}
+                    ) : null}
                 </div>
                 <div
-                    className="bg-cover bg-center w-full h-[500px] bg-blue-700 rounded-[18px]"
+                    className="bg-cover bg-center w-full h-[300px] bg-blue-700 dark:bg-primary1 rounded-[18px]"
                     style={{ backgroundImage: `url('${userRender.coverImg}')` }}
                 ></div>
 
-                <div className="">
-                    <img
-                        src={userRender?.photoURL}
-                        alt=""
-                        className="w-[240px] h-[240px] rounded-full  object-cover  relative translate-y-[-120px] z-[9]"
-                    />
-                </div>
-                <div className="mt-2 translate-y-[-120px]">
-                    <h2 className="text-[3rem] font-bold text-center ">
-                        {userRender?.name}{" "}
-                        {userRender.verified && (
-                            <div className="inline relative group">
-                                <BsFillCheckCircleFill className="text-[18px] inline text-[#5890ff] ml-[-6px] mt-[4px] cursor-pointer"></BsFillCheckCircleFill>
-                                <p className="text-[16px] w-[330px] text-gray-700 font-[500] text-left shadow-2xl group-hover:block hidden absolute p-3 bg-[#fff] rounded-[6px] top-[-30px] right-[-330px]">
-                                    SnapShare đã xác nhận trang cá nhân này là thật - Nạp 100k để được sở hữu nó
-                                </p>
+                <div className="absolute lg:left-0 left-1/2 translate-x-[-50%] lg:translate-x-[0]  top-[200px] lg:top-[250px] flex items-center justify-between w-auto lg:w-full gap-3 ">
+                    <div className="flex flex-col lg:flex-row items-center lg:gap-3 gap-1">
+                        <img
+                            src={userRender?.photoURL}
+                            alt=""
+                            className="lg:w-[180px] w-[160px] lg:h-[180px] h-[160px] rounded-full  object-cover  relative  z-[9]"
+                        />
+                        <div className="lg:text-[2.6rem] sm:text-[2.2rem] text-[1.6rem] font-bold text-center flex flex-col">
+                            <div className="flex  gap-3 text-center">
+                                {userRender?.name}
+                                {userRender.verified && (
+                                    <div className="inline relative group ">
+                                        <Tippy
+                                            placement="top"
+                                            content={
+                                                <p className="text-[14px] max-w-[350px] text-white font-[500] text-left shadow-2xl p-1  rounded-[6px] ">
+                                                    {t("profile.confirmed")}
+                                                </p>
+                                            }
+                                        >
+                                            <div className="inline-flex pt-[12px]">
+                                                <BsFillCheckCircleFill className="text-[18px] inline text-[#5890ff] ml-[-6px] mt-[4px] cursor-pointer"></BsFillCheckCircleFill>
+                                            </div>
+                                        </Tippy>
+                                    </div>
+                                )}
                             </div>
-                        )}
-                    </h2>
-
-                    <p className="text-[1.6rem] text-center" dangerouslySetInnerHTML={{ __html: userRender?.bio }}></p>
+                            <span className="lg:text-xl text-sm font-semibold text-center lg:text-left ">
+                                {userRender?.nameId}
+                            </span>
+                        </div>
+                    </div>
                 </div>
+                {!isCurrent && <Action />}
             </div>
-            <div className="">
-                <h2 className="text-[3rem] font-bold mb-8">Posts:</h2>
-                <ListPost userRender={userRender} />
+            <div className="lg:grid grid-cols-3 mt-[160px] gap-4">
+                <About userRender={userRender} isCurrent={isCurrent} handleShowModal={handleShowModal} />
+                <div className="col-span-2 ">
+                    <nav className="relative lg:px-8 px-4 py-4  ">
+                        <ul className="flex justify-between items-center ">
+                            <li>
+                                <NavLink
+                                    to={`${url}`}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "font-semibold text-lg hover:text-blue-600 border-b-2 border-blue-600 dark:border-primary1 dark:hover:text-primary1 dark:text-primary1 text-blue-600 "
+                                            : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
+                                    }
+                                >
+                                    Post
+                                </NavLink>
+                            </li>
+                            <li className="text-primary2 dark:text-primary5 ">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    className="w-4 h-4 current-fill"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+                                    />
+                                </svg>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to={`${url}/friend`}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? " font-semibold text-lg hover:text-blue-600 border-b-2 border-blue-600 dark:border-primary1 dark:hover:text-primary1 dark:text-primary1 text-blue-600 "
+                                            : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
+                                    }
+                                >
+                                    Friend
+                                </NavLink>
+                            </li>
+                            <li className="text-primary2 dark:text-primary5 ">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    className="w-4 h-4 current-fill"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+                                    />
+                                </svg>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to={`${url}/followers`}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "font-semibold text-lg hover:text-blue-600 border-b-2 border-blue-600 dark:border-primary1 dark:hover:text-primary1 dark:text-primary1 text-blue-600 "
+                                            : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
+                                    }
+                                >
+                                    Followers
+                                </NavLink>
+                            </li>
+                            <li className="text-primary2 dark:text-primary5 ">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    className="w-4 h-4 current-fill"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+                                    />
+                                </svg>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to={`${url}/following`}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "font-semibold text-lg hover:text-blue-600 border-b-2 border-blue-600 dark:border-primary1 dark:hover:text-primary1 dark:text-primary1 text-blue-600 "
+                                            : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
+                                    }
+                                >
+                                    Following
+                                </NavLink>
+                            </li>
+                            <li className="text-primary2 dark:text-primary5 ">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    className="w-4 h-4 current-fill"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+                                    />
+                                </svg>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to={`${url}/saved`}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "font-semibold text-lg hover:text-blue-600 border-b-2 border-blue-600 dark:border-primary1 dark:hover:text-primary1 dark:text-primary1 text-blue-600 "
+                                            : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
+                                    }
+                                >
+                                    Saved
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </nav>
+                    <Routes>
+                        <Route path={`/`} element={<ListPost userRender={userRender} />} />
+                        <Route path={`/friend`} element={<Friends />} />
+                        <Route path={`/followers`} element={<Followers />} />
+                        <Route path={`/following`} element={<Following />} />
+                        <Route path={`/saved`} element={<Saved />} />
+                    </Routes>
+                </div>
             </div>
         </div>
     );

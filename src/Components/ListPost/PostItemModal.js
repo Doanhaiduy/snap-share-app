@@ -31,7 +31,7 @@ function PostItemProfile({ post }) {
 
             <div
                 key={post.uid}
-                className="h-[400px] shadow-2xl border-[#ccc] border-[2px] p-3 flex flex-col  justify-between w-full relative rounded-[12px] overflow-hidden"
+                className="h-[400px] bg-white shadow-2xl border-[#ccc]  dark:border-[#aaa] border-[2px] p-3 flex flex-col dark:bg-[#282828]  justify-between w-full relative rounded-[12px] overflow-hidden"
             >
                 <div className="h-[130px]">
                     <p className=" text-[2rem] cursor-pointer flex justify-between">

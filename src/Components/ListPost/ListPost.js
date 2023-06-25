@@ -5,11 +5,16 @@ import PostItemModal from "./PostItemModal";
 function ListPost({ userRender }) {
     const { userPosts, getUserPost } = useContext(AuthContext);
     useEffect(() => {
-        getUserPost(userRender.uid);
+        if (userRender.uid !== null) {
+            getUserPost(userRender.uid);
+        }
     }, [userRender.uid]);
 
     return (
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2 grid-cols-1 xl  gap-8 pb-12">
+        <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 pb-12 mt-5">
+            {userPosts.length === 0 && (
+                <p className="text-[20px] font-semibold col-span-2">The user has not posted any posts yet</p>
+            )}
             {userPosts.map((post) => (
                 <PostItemModal key={post.uid} post={post} />
             ))}

@@ -7,16 +7,23 @@ import ModalPost from "../ModalPost/ModalPost";
 import { ProfileContext } from "../../Context/ProfileContextProvider";
 import { Link } from "react-router-dom";
 import Comment from "../Comment/Comment";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { FacebookShareButton } from "react-share";
 import moment from "moment";
+import ShowText from "../ShowText/ShowText";
+import { Modal, Button } from "antd";
+import "antd/dist/antd";
+import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+
+const { confirm } = Modal;
 
 function PostItem({ post, limit, isProfile = false }) {
     const [authorPost, setAuthorPost] = useState({});
     const { currentUser, getUserPost, setPinPost, unPinPost } = useContext(AuthContext);
     const [showModal, setShowModal] = useState(false);
     const { setCurrentProfile } = useContext(ProfileContext);
+    const { t } = useContext(MultiLanguageContext);
     const CommentMemoized = memo(Comment);
     const [shouldGetUserPosts, setShouldGetUserPosts] = useState(false);
     const [isLiked, setIsLiked] = useState(post?.like?.includes(currentUser?.uid));
@@ -65,17 +72,25 @@ function PostItem({ post, limit, isProfile = false }) {
         setIsLiked(!isLiked);
     }, [isLiked, currentUser?.uid, post.uid, limit]);
     const handleRemovePost = async () => {
-        await deleteDoc(doc(db, "posts", post.uid));
-        await toast.success("Your post has been removed successfully!", {
-            position: "top-right",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
-        getUserPost(null, limit);
+        const onConfirmDelete = async () => {
+            try {
+                await deleteDoc(doc(db, "posts", post.uid));
+                toast.success(t("post.toast-1"), {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                getUserPost(null, limit);
+            } catch (error) {
+                console.log("Oops, an error occurred during deletion!", error);
+            }
+        };
+
+        showConfirm(onConfirmDelete);
     };
     const handleToggleComment = () => {
         setShowComment(!showComment);
@@ -84,7 +99,7 @@ function PostItem({ post, limit, isProfile = false }) {
     const handleSaveImage = async () => {
         // Logic
         // ...
-        toast.success("Save successfully", {
+        toast.success(t("post.toast-2"), {
             position: "top-right",
             autoClose: 1000,
             hideProgressBar: false,
@@ -102,7 +117,7 @@ function PostItem({ post, limit, isProfile = false }) {
         var array = Array(countRandom).fill(1);
         const updatedLikes = [...postData.like, ...array];
         await setDoc(userRef, { like: updatedLikes }, { merge: true });
-        toast.success(`${countRandom} likes successfully contributed to your post`, {
+        toast.success(`${countRandom} ${t("post.toast-3")}`, {
             position: "top-right",
             autoClose: 1000,
             hideProgressBar: false,
@@ -112,13 +127,30 @@ function PostItem({ post, limit, isProfile = false }) {
             theme: "light",
         });
     };
+
+    const showConfirm = (onConfirm) => {
+        confirm({
+            title: t("post.diaLog.title"),
+            content: t("post.diaLog.content"),
+            async onOk() {
+                try {
+                    await new Promise((resolve) => setTimeout(resolve, 1000));
+                    onConfirm();
+                } catch (error) {
+                    console.log("Oops, an error occurred during confirmation!", error);
+                }
+            },
+            onCancel() {
+                return false;
+            },
+        });
+    };
     return (
-        <div className="relative bg-white rounded-[12px] " ref={optionRef}>
-            <ToastContainer />
+        <div className="relative bg-white dark:bg-[#282828] dark:text-primary5  rounded-[12px] " ref={optionRef}>
             {showModal ? <ModalPost handleToggleModal={handleToggleModal} data={post} authorPost={authorPost} /> : null}
             <div className="p-4 shadow-2xl rounded-[12px] transition relative" key={post.uid}>
                 <Link
-                    to={`/profile/${authorPost?.uid}`}
+                    to={`/profile/${authorPost?.nameId || authorPost?.uid}`}
                     className="inline-flex items-center gap-3"
                     onClick={() => {
                         localStorage.setItem("currentProfile", JSON.stringify(authorPost));
@@ -132,24 +164,26 @@ function PostItem({ post, limit, isProfile = false }) {
                         <h2 className="text-[1.3rem] font-bold">
                             {authorPost?.name}
                             {authorPost.verified && (
-                                <BsFillCheckCircleFill className="text-[16px] inline text-[#5890ff]  ml-[6px]" />
+                                <BsFillCheckCircleFill className="text-[16px] inline text-[#5890ff] dark:text-primary1 ml-[6px]" />
                             )}
                         </h2>
-                        <p>
+                        <p className="dark:text-primary1">
                             {moment().diff(post.releaseDate, "days") > 3
                                 ? post.releaseDate
                                 : moment(post.releaseDate).fromNow()}
                         </p>
                     </div>
                 </Link>
+                <ShowText
+                    text={<p dangerouslySetInnerHTML={{ __html: post.text }} className="break-words font-normal"></p>}
+                />
 
-                <p dangerouslySetInnerHTML={{ __html: post.text }}></p>
                 <div>
                     <span className="absolute top-[0px] text-[2rem] right-[20px] cursor-pointer select-none group">
                         ...
                         <div
                             ref={optionsRef}
-                            className="absolute top-[30px] text-[1.1rem] flex flex-col bg-white font-medium right-[20px] shadow-lg  rounded-[8px] w-[160px] overflow-hidden z-10 group-hover:flex hidden"
+                            className="absolute top-[30px] text-[1.1rem] flex flex-col bg-white dark:bg-[#282828] dark:shadow-[#adadad] font-medium right-[20px] shadow-lg  rounded-[8px] w-[160px] overflow-hidden z-10 group-hover:flex hidden"
                         >
                             {currentUser?.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" ? (
                                 !post.isPinPost ? (
@@ -157,14 +191,14 @@ function PostItem({ post, limit, isProfile = false }) {
                                         className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
                                         onClick={() => setPinPost(post?.uid)}
                                     >
-                                        Pin Post
+                                        {t("post.pin")}
                                     </p>
                                 ) : (
                                     <p
                                         className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
                                         onClick={() => unPinPost(post?.uid)}
                                     >
-                                        Unpin Post
+                                        {t("post.unpin")}
                                     </p>
                                 )
                             ) : null}
@@ -175,7 +209,7 @@ function PostItem({ post, limit, isProfile = false }) {
                                     className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
                                     onClick={handleRemovePost}
                                 >
-                                    Remove image
+                                    {t("post.remove")}
                                 </p>
                             ) : null}
                             {currentUser?.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" && (
@@ -183,17 +217,17 @@ function PostItem({ post, limit, isProfile = false }) {
                                     className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
                                     onClick={handleHackLike}
                                 >
-                                    + Random Like
+                                    + {t("post.random")}
                                 </p>
                             )}
                             <p
                                 className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
                                 onClick={handleSaveImage}
                             >
-                                Save image
+                                {t("post.save")}
                             </p>
                             <p className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer ">
-                                Report image
+                                {t("post.report")}
                             </p>
                         </div>
                     </span>
@@ -208,22 +242,22 @@ function PostItem({ post, limit, isProfile = false }) {
                 </div>
                 <div className="py-4 flex gap-2 items-center text-[1.5rem] ">
                     <AiOutlineHeart className="text-[2rem] cursor-pointer" />
-                    <span className="text-gray-400 font-thin">{post.like.length}</span>
+                    <span className="text-gray-400 dark:text-primary5  font-thin ">{post.like.length}</span>
                     <span className="text-[1rem]">
                         {post.like.length > 0 ? (
                             <span>
-                                {isLiked ? <span>Bạn </span> : null}
+                                {isLiked ? <span>{t("post.you")} </span> : null}
                                 {post.like.length > 1 ? (
                                     <span>
-                                        {isLiked ? `và ${post.like.length - 1} ` : `${post.like.length} `}
-                                        người khác{" "}
+                                        {isLiked ? `${t("post.and")} ${post.like.length - 1} ` : `${post.like.length} `}
+                                        {t("post.otherPeople")}{" "}
                                     </span>
                                 ) : isLiked ? (
                                     <span></span>
                                 ) : (
-                                    <span>1 người khác </span>
+                                    <span>1 {t("post.otherPeople")} </span>
                                 )}
-                                đã thích bài viết này
+                                {t("post.liked")}
                             </span>
                         ) : null}
                     </span>
@@ -235,15 +269,14 @@ function PostItem({ post, limit, isProfile = false }) {
                         ) : (
                             <AiOutlineHeart className="text-[2rem]" />
                         )}
-                        <span>Like</span>
+                        <span>{t("post.like")}</span>
                     </div>
                     <div
                         className="cursor-pointer flex gap-2 items-center font-semibold "
                         onClick={handleToggleComment}
                     >
                         <AiOutlineComment className="text-[2rem]" />
-                        <span></span>
-                        <span>Comment</span>
+                        <span>{t("post.comment")}</span>
                     </div>
                     <div className="cursor-pointer  items-center font-semibold">
                         <FacebookShareButton
@@ -253,7 +286,7 @@ function PostItem({ post, limit, isProfile = false }) {
                             className="flex items-center gap-2"
                         >
                             <AiOutlineShareAlt className="text-[2rem]" />
-                            <span>Share</span>
+                            <span>{t("post.share")}</span>
                         </FacebookShareButton>
                     </div>
                 </div>

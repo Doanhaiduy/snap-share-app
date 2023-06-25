@@ -1,0 +1,112 @@
+{
+    "loading": "Loading",
+    "gif": "Choose your gif",
+    "more": "Show more",
+    "less": "Show less",
+    "home": {
+        "home": "Home",
+        "createPost": "Create Post",
+        "admin": "Admin",
+        "logout": "Logout",
+        "profile": "Profile"
+    },
+    "auth": {
+        "slogan": "Preserve Memories, Share Stories",
+        "signIn": "Sign in",
+        "signUp": "sign up",
+        "google": "Sign in with Google",
+        "github": "Sign in with Github",
+        "other": "Sign in with e-mail and password",
+        "otherSignUp": "Sign up with e-mail and password",
+        "password": "Password",
+        "noAccount": "Do not have an account ?",
+        "hasAccount": "Do you already have an account?",
+        "fullName": "Full Name",
+        "agree": "I agree to abide by SnapShare's",
+        "TOF": "Terms of Service",
+        "toast-1": "Invalid email address! Please enter a valid email address.",
+        "toast-2": "Invalid password ! Password must be at least 8 characters long and include both letters and numbers.",
+        "toast-3": "Invalid name, Please enter a valid name.",
+        "toast-4": "The email provided is already in use!",
+        "toast-5": "Invalid email or password !",
+        "toast-6": "Login fail !"
+    },
+    "post": {
+        "pinned": "Pinned Posts",
+        "other": "Other Posts",
+        "like": "Like",
+        "comment": "Comment",
+        "share": "Share",
+        "pin": "Pin Post",
+        "unpin": "Unpin Post",
+        "remove": "Remove post",
+        "random": "Random Like",
+        "save": "Save post",
+        "report": "Report post",
+        "you": "You",
+        "and": "and",
+        "otherPeople": "other",
+        "liked": "liked this post",
+        "toast-1": "Your post has been removed successfully!",
+        "toast-2": "Save successfully",
+        "toast-3": "likes successfully contributed to your post",
+        "diaLog": {
+            "title": "Do you want to delete this post?",
+            "content": "When you click the OK button, the dialog will close after 1 second."
+        }
+    },
+    "comment": {
+        "toast-1": "Comment successfully deleted!",
+        "delete": "Delete Comment",
+        "edit": "Edit Comment",
+        "report": "Report Comment"
+    },
+    "search": {
+        "all": "Search all results for",
+        "placeholder": "Enter profile name..."
+    },
+    "profile": {
+        "update": "Update Profile",
+        "add": "Add Friend",
+        "confirmed": "SnapShare confirmed this profile is authentic.",
+        "posts": "Posts:",
+        "setting": {
+            "toast": "Invalid name, Please enter a valid name.",
+            "title": "Update Profile",
+            "name": "Full Name",
+            "bio": "Bio",
+            "email": "email",
+            "avatar": "Avatar",
+            "cover": "Cover",
+            "submit": "Update Profile"
+        }
+    },
+    "createPost": {
+        "toast-1": "Image uploaded successfully!",
+        "toast-2": "Failed to submit the post. Please make sure your post meets the requirements.",
+        "submit": "Post",
+        "title": "Create Post",
+        "public": "Public",
+        "private": "Private",
+        "placeholder": "Write something for picture..."
+    },
+    "admin": {
+        "title": "User List",
+        "more": "load more...",
+        "registered": "Registered on",
+        "view": "View",
+        "unverify": "Unverify",
+        "verify": "Verify"
+    },
+    "pageError": {
+        "button": "Back to Home",
+        "403": {
+            "title": "Access Denied",
+            "desc": "The requested page does not exist. You are not authorized to access the admin area."
+        },
+        "404": {
+            "title": "Page not found",
+            "desc": "Page not found. Please check the URL or return to the homepage."
+        }
+    }
+}

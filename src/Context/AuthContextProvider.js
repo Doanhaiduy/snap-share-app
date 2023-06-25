@@ -98,7 +98,6 @@ function AuthContextProvider({ children }) {
                 limit(limitCount)
             );
         }
-
         const querySnapshot = await getDocs(q);
         const listPostTemp = querySnapshot.docs.map((doc) => doc.data());
         dispatch({ type: actionTypes.SET_USER_POSTS, payload: listPostTemp });
@@ -121,7 +120,10 @@ function AuthContextProvider({ children }) {
 
         const unsubscribePosts = onSnapshot(collection(db, "posts"), (snapshot) => {
             if (snapshot.docChanges().length > 0) {
-                getUserPost(currentUser?.uid);
+                if (window.location.pathname === "/") {
+                    getUserPost(currentUser?.uid);
+                    getUserPost(null);
+                }
             }
         });
         return () => {

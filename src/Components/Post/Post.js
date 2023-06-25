@@ -2,34 +2,38 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import PostItem from "./PostItem";
 import { AiFillPushpin } from "react-icons/ai";
-import { Spin } from "antd";
+import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
 
-function Post() {
+function Post({ scrollRef }) {
     const { getUserPost, userPosts, pinnedPosts, setPinPost } = useContext(AuthContext);
-    const [loading, setLoading] = useState(false);
-    const [limit, setLimit] = useState(5);
-    const handleLoadMore = () => {
-        if (limit >= 40) {
-            return;
-        }
-        setLoading(true);
-        setTimeout(() => {
-            setLimit((prevLimit) => prevLimit + 5);
-            setLoading(false);
-        }, 1000);
-    };
+    const [visiblePosts, setVisiblePosts] = useState(2);
+    const [limit, setLimit] = useState(30);
+    const { t } = useContext(MultiLanguageContext);
+
     useEffect(() => {
         setPinPost(null);
     }, []);
     useEffect(() => {
         getUserPost(null, limit);
     }, [limit]);
+    const handleScroll = () => {
+        const { scrollTop, clientHeight, scrollHeight } = scrollRef;
+        if (scrollTop + clientHeight >= scrollHeight - 100) {
+            setVisiblePosts((prevVisiblePosts) => prevVisiblePosts + 2);
+        }
+    };
+
+    useEffect(() => {
+        scrollRef?.addEventListener("scroll", handleScroll);
+
+        return () => scrollRef?.removeEventListener("scroll", handleScroll);
+    }, [scrollRef]);
 
     return (
         <>
-            <div className="mt-[12px]">
+            <div className="mt-[12px] ">
                 <h2 className="text-[20px] font-medium flex items-center gap-2 mb-4 ">
-                    <AiFillPushpin className="inline" /> Pinned Posts
+                    <AiFillPushpin className="inline" /> {t("post.pinned")}
                 </h2>
 
                 <div className="flex flex-col gap-[50px]">
@@ -38,30 +42,13 @@ function Post() {
                     ))}
                 </div>
             </div>
-
-            <h2 className="text-[20px] font-medium flex items-center gap-2 mb-[-14px]">Other Posts</h2>
-
+            <h2 className="text-[20px] font-medium flex items-center gap-2 mb-[-14px]">{t("post.other")}</h2>
             {userPosts
                 .filter((item) => item.isPinPost !== true)
+                ?.slice(0, visiblePosts)
                 ?.map((post) => (
-                    <PostItem post={post} key={post?.uid} limit={limit} />
+                    <PostItem post={post} key={post?.uid} />
                 ))}
-            {!loading && (
-                <button
-                    onClick={handleLoadMore}
-                    className="flex justify-center my-12 items-center mx-auto rounded-[4px] font-medium text-[12px] bg-blue-300 text-blue-700 px-3 py-1 mt-6"
-                >
-                    load more.post..
-                </button>
-            )}
-            {loading && (
-                <button
-                    disabled
-                    className="flex justify-center my-12 items-center mx-auto rounded-[4px] font-medium text-[12px] bg-blue-200 text-blue-700 px-3 py-1 mt-6"
-                >
-                    <Spin />
-                </button>
-            )}
         </>
     );
 }

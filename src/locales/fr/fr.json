@@ -1,0 +1,112 @@
+{
+    "loading": "Chargement",
+    "gif": "Choisissez votre gif",
+    "more": "Afficher plus",
+    "less": "Afficher moins",
+    "home": {
+        "home": "Accueil",
+        "createPost": "Créer une publication",
+        "admin": "Administrateur",
+        "logout": "Déconnexion",
+        "profile": "Profil"
+    },
+    "auth": {
+        "slogan": "Préservez les souvenirs, partagez des histoires",
+        "signIn": "Se connecter",
+        "signUp": "S'inscrire",
+        "google": "Se connecter avec Google",
+        "github": "Se connecter avec Github",
+        "other": "Se connecter avec adresse e-mail et mot de passe",
+        "otherSignUp": "S'inscrire avec adresse e-mail et mot de passe",
+        "password": "Mot de passe",
+        "noAccount": "Vous n'avez pas de compte ?",
+        "hasAccount": "Vous avez déjà un compte ?",
+        "fullName": "Nom complet",
+        "agree": "J'accepte de respecter les",
+        "TOF": "Conditions d'utilisation de SnapShare",
+        "toast-1": "Adresse e-mail invalide ! Veuillez saisir une adresse e-mail valide.",
+        "toast-2": "Mot de passe invalide ! Le mot de passe doit comporter au moins 8 caractères et inclure à la fois des lettres et des chiffres.",
+        "toast-3": "Nom invalide, veuillez saisir un nom valide.",
+        "toast-4": "L'adresse e-mail fournie est déjà utilisée !",
+        "toast-5": "E-mail ou mot de passe invalide !",
+        "toast-6": "Échec de la connexion !"
+    },
+    "post": {
+        "pinned": "Publications épinglées",
+        "other": "Autres publications",
+        "like": "J'aime",
+        "comment": "Commentaire",
+        "share": "Partager",
+        "pin": "Épingler la publication",
+        "unpin": "Désépingler la publication",
+        "remove": "Supprimer la publication",
+        "random": "J'aime aléatoire",
+        "save": "Enregistrer la publication",
+        "report": "Signaler la publication",
+        "you": "Vous",
+        "and": "et",
+        "otherPeople": "autres",
+        "liked": "ont aimé cette publication",
+        "toast-1": "Votre publication a été supprimée avec succès !",
+        "toast-2": "Enregistrement réussi",
+        "toast-3": "j'aime ont contribué avec succès à votre publication",
+        "diaLog": {
+            "title": "Voulez-vous supprimer cette publication ?",
+            "content": "Lorsque vous cliquez sur le bouton OK, la boîte de dialogue se fermera après 1 seconde."
+        }
+    },
+    "comment": {
+        "toast-1": "Commentaire supprimé avec succès !",
+        "delete": "Supprimer le commentaire",
+        "edit": "Modifier le commentaire",
+        "report": "Signaler le commentaire"
+    },
+    "search": {
+        "all": "Rechercher tous les résultats pour",
+        "placeholder": "Entrer le nom de profil..."
+    },
+    "profile": {
+        "update": "Mettre à jour le profil",
+        "add": "Ajouter un ami",
+        "confirmed": "SnapShare a confirmé que ce profil est authentique.",
+        "posts": "Publications :",
+        "setting": {
+            "toast": "Nom invalide, veuillez saisir un nom valide.",
+            "title": "Mettre à jour le profil",
+            "name": "Nom complet",
+            "bio": "Bio",
+            "email": "E-mail",
+            "avatar": "Avatar",
+            "cover": "Image de couverture",
+            "submit": "Mettre à jour le profil"
+        }
+    },
+    "createPost": {
+        "toast-1": "Image téléchargée avec succès !",
+        "toast-2": "Échec de l'envoi de la publication. Veuillez vous assurer que votre publication respecte les exigences.",
+        "submit": "Publier",
+        "title": "Créer une publication",
+        "public": "Public",
+        "private": "Privé",
+        "placeholder": "Écrivez quelque chose pour accompagner l'image..."
+    },
+    "admin": {
+        "title": "Liste des utilisateurs",
+        "more": "Charger plus...",
+        "registered": "Inscrit le",
+        "view": "Voir",
+        "unverify": "Décertifier",
+        "verify": "Certifier"
+    },
+    "pageError": {
+        "button": "Retour à l'accueil",
+        "403": {
+            "title": "Accès refusé",
+            "desc": "La page demandée n'existe pas. Vous n'êtes pas autorisé à accéder à la zone d'administration."
+        },
+        "404": {
+            "title": "Page introuvable",
+            "desc": "Page introuvable. Veuillez vérifier l'URL ou revenir à la page d'accueil."
+        }
+    }
+}

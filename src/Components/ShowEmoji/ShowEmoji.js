@@ -17,7 +17,7 @@ function ShowEmoji({ setText, className }) {
         <div>
             <div onClick={handleEmojiPickerToggle} className={className}>
                 <div className="flex items-center gap-2 text-[1.2rem] font-semibold p-2 rounded-[12px] cursor-pointer text-gray-700">
-                    <FaSmile className="text-[2rem]" />
+                    <FaSmile className="text-[2rem] text-black dark:text-primary5 " />
                 </div>
             </div>
             {showEmojiPicker && (

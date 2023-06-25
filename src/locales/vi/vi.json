@@ -1,0 +1,113 @@
+{
+    "loading": "Đang tải",
+    "gif": "Chọn ảnh gif của bạn",
+    "more": "Xem thêm",
+    "less": "Thu gọn",
+    "home": {
+        "home": "Trang chủ",
+        "createPost": "Tạo bài viết",
+        "admin": "Quản trị viên",
+        "logout": "Đăng xuất",
+        "profile": "Trang cá nhân"
+    },
+    "auth": {
+        "slogan": "Lưu giữ những kỷ niệm, Chia sẻ những câu chuyện",
+        "signIn": "Đăng nhập",
+        "signUp": "Đăng ký",
+        "google": "Đăng nhập bằng Google",
+        "github": "Đăng nhập bằng Github",
+        "other": "Đăng nhập bằng email và mật khẩu",
+        "otherSignUp": "Đăng ký bằng email và mật khẩu",
+        "password": "Mật khẩu",
+        "noAccount": "Chưa có tài khoản?",
+        "hasAccount": "Bạn đã có tài khoản?",
+        "fullName": "Họ và tên",
+        "agree": "Tôi đồng ý tuân thủ",
+        "TOF": "Điều khoản dịch vụ",
+        "toast-1": "Địa chỉ email không hợp lệ! Vui lòng nhập một địa chỉ email hợp lệ.",
+        "toast-2": "Mật khẩu không hợp lệ! Mật khẩu phải chứa ít nhất 8 ký tự và bao gồm cả chữ và số.",
+        "toast-3": "Tên không hợp lệ! Vui lòng nhập một tên hợp lệ.",
+        "toast-4": "Địa chỉ email đã được sử dụng!",
+        "toast-5": "Email hoặc mật khẩu không hợp lệ!",
+        "toast-6": "Đăng nhập không thành công!"
+    },
+    "post": {
+        "pinned": "Bài viết đã ghim",
+        "other": "Các bài viết khác",
+        "like": "Thích",
+        "comment": "Bình luận",
+        "share": "Chia sẻ",
+        "pin": "Ghim bài viết",
+        "unpin": "Bỏ ghim bài viết",
+        "remove": "Xóa bài viết",
+        "random": "Thích ngẫu nhiên",
+        "save": "Lưu bài viết",
+        "report": "Báo cáo bài viết",
+        "you": "Bạn",
+        "and": "và",
+        "otherPeople": "người khác",
+        "liked": "thích bài viết này",
+        "toast-1": "Bài viết của bạn đã được xóa thành công!",
+        "toast-2": "Lưu thành công",
+        "toast-3": "thích đã góp phần vào bài viết của bạn",
+        "diaLog": {
+            "title": "Bạn có muốn xóa bài viết này?",
+            "content": "Khi bạn nhấn nút OK, hộp thoại sẽ đóng sau 1 giây."
+        }
+    },
+    "comment": {
+        "toast-1": "Xóa bình luận thành công!",
+        "delete": "Xóa bình luận",
+        "edit": "Chỉnh sửa bình luận",
+        "report": "Báo cáo bình luận"
+    },
+    "search": {
+        "all": "Tìm kiếm tất cả kết quả cho",
+        "placeholder": "Nhập tên hồ sơ..."
+    },
+    "profile": {
+        "update": "Cập nhật Hồ sơ",
+        "add": "Kết bạn",
+        "confirmed": "SnapShare đã xác nhận hồ sơ này là thật.",
+        "posts": "Bài viết:",
+        "setting": {
+            "toast": "Tên không hợp lệ, Vui lòng nhập tên hợp lệ.",
+            "title": "Cập nhật Hồ sơ",
+            "name": "Họ và tên",
+            "bio": "Tiểu sử",
+            "email": "Email",
+            "avatar": "Ảnh đại diện",
+            "cover": "Ảnh bìa",
+            "submit": "Cập nhật Hồ sơ"
+        }
+    },
+    "createPost": {
+        "toast-1": "Hình ảnh đã được tải lên thành công!",
+        "toast-2": "Không thể đăng bài. Vui lòng đảm bảo bài viết của bạn đáp ứng các yêu cầu.",
+        "submit": "Đăng bài",
+        "title": "Tạo bài viết",
+        "public": "Công khai",
+        "private": "Riêng tư",
+        "placeholder": "Viết gì đó cho hình ảnh..."
+    },
+
+    "admin": {
+        "title": "Danh sách người dùng",
+        "more": "Xem thêm...",
+        "registered": "Đăng ký vào",
+        "view": "Xem",
+        "unverify": "Bỏ xác minh",
+        "verify": "Xác minh"
+    },
+    "pageError": {
+        "button": "Quay lại Trang chủ",
+        "403": {
+            "title": "Truy cập bị từ chối",
+            "desc": "Trang yêu cầu không tồn tại. Bạn không có quyền truy cập vào khu vực quản trị."
+        },
+        "404": {
+            "title": "Không tìm thấy trang",
+            "desc": "Không tìm thấy trang. Vui lòng kiểm tra URL hoặc quay lại trang chủ."
+        }
+    }
+}

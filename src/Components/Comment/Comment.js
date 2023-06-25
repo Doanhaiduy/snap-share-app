@@ -9,15 +9,17 @@ import ListComment from "./ListComment";
 import { v4 } from "uuid";
 import { FaImage } from "react-icons/fa";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import Gif from "../Gif/Gif";
 
 function Comment({ post }) {
     const [comment, setComment] = useState("");
     const { currentUser, userInfo } = useContext(AuthContext);
     const [imageComment, setImageComment] = useState(null);
+    const [gifComment, setGifComment] = useState(null);
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
 
     const handleSendComment = useCallback(async () => {
-        if (comment.trim() === "" && imageComment === null) {
+        if (comment.trim() === "" && imageComment === null && gifComment === null) {
             return;
         } else {
             const idInit = v4();
@@ -30,10 +32,12 @@ function Comment({ post }) {
                 text: comment,
                 uidPost: post.uid,
                 img: imageComment,
+                gif: gifComment,
             });
             await setImageComment(null);
+            await setGifComment(null);
         }
-    }, [post.uid, currentUser.uid, comment, currentDate, imageComment]);
+    }, [post.uid, currentUser.uid, comment, currentDate, imageComment, gifComment]);
 
     const handlePostImage = async (e) => {
         if (e.target.files[0]) {
@@ -53,6 +57,42 @@ function Comment({ post }) {
         } else {
         }
     };
+
+    const convertUrlToFile = async (url) => {
+        try {
+            const response = await fetch(url);
+            const blob = await response.blob();
+            const file = new File([blob], "SnapShare.gif", { type: "image/gif" });
+            return file;
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    };
+
+    const handlePostGif = async (id) => {
+        convertUrlToFile(id)
+            .then((file) => {
+                if (file) {
+                    const storageRef = ref(storage, `/Comments/${currentUser.displayName}/Gif/${v4()}`);
+                    const uploadTask = uploadBytesResumable(storageRef, file);
+                    uploadTask.on(
+                        "state_changed",
+                        (snapshot) => {},
+                        (err) => console.log(err),
+                        () => {
+                            getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                                console.log(url);
+                                setGifComment(url);
+                            });
+                        }
+                    );
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             handleSendComment();
@@ -67,9 +107,10 @@ function Comment({ post }) {
                     onChange={(e) => setComment(e.target.value)}
                     onKeyDown={handleKeyDown}
                     type="text"
-                    className="text-[1.6rem] w-[80%] rounded-[20px] outline-none border-[2px] px-3 py-1"
+                    className="text-[1.6rem] w-[80%] dark:bg-[#282828] rounded-[20px] outline-none border-[2px] px-3 py-1"
                 />
                 {imageComment && <img src={imageComment} className="w-[120px] object-cover h-[70px]" alt="" />}
+                {gifComment && <img src={gifComment} className="w-[120px] object-cover h-[70px]" alt="" />}
 
                 <div className="cursor-pointer">
                     <AiOutlineSend className="text-[2.4rem]" onClick={handleSendComment} />
@@ -80,6 +121,7 @@ function Comment({ post }) {
                 </label>
 
                 <ShowEmoji setText={setComment} className="" />
+                <Gif handlePostGif={handlePostGif} />
             </div>
             <ListComment post={post} />
         </div>

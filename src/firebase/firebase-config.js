@@ -1,5 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { connectAuthEmulator, getAuth, GoogleAuthProvider, useAuthEmulator, GithubAuthProvider } from "firebase/auth";
+import {
+    connectAuthEmulator,
+    getAuth,
+    GoogleAuthProvider,
+    useAuthEmulator,
+    GithubAuthProvider,
+    FacebookAuthProvider,
+} from "firebase/auth";
 import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
 import { connectStorageEmulator, getStorage } from "firebase/storage";
 const firebaseConfig = {
@@ -17,6 +24,7 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider(auth);
 export const githubProvider = new GithubAuthProvider(auth);
+export const facebookProvider = new FacebookAuthProvider(auth);
 export const storage = getStorage(app);
 
 if (window.location.hostname === "localhost") {

@@ -1,0 +1,112 @@
+{
+    "loading": "載入中",
+    "gif": "選擇你的 GIF",
+    "more": "显示更多",
+    "less": "显示更少",
+    "home": {
+        "home": "首頁",
+        "createPost": "創建帖子",
+        "admin": "管理員",
+        "logout": "登出",
+        "profile": "個人資料"
+    },
+    "auth": {
+        "slogan": "保存回憶，分享故事",
+        "signIn": "登入",
+        "signUp": "註冊",
+        "google": "使用 Google 登入",
+        "github": "使用 Github 登入",
+        "other": "使用電子郵件和密碼登入",
+        "otherSignUp": "使用電子郵件和密碼註冊",
+        "password": "密碼",
+        "noAccount": "還沒有帳號嗎？",
+        "hasAccount": "已經有帳號了嗎？",
+        "fullName": "全名",
+        "agree": "我同意遵守 SnapShare 的",
+        "TOF": "服務條款",
+        "toast-1": "無效的電子郵件地址！請輸入有效的電子郵件地址。",
+        "toast-2": "無效的密碼！密碼必須至少包含8個字符，並且包含字母和數字。",
+        "toast-3": "無效的名稱，請輸入有效的名稱。",
+        "toast-4": "提供的電子郵件已在使用中！",
+        "toast-5": "無效的電子郵件或密碼！",
+        "toast-6": "登入失敗！"
+    },
+    "post": {
+        "pinned": "置頂帖子",
+        "other": "其他帖子",
+        "like": "讚",
+        "comment": "評論",
+        "share": "分享",
+        "pin": "置頂帖子",
+        "unpin": "取消置頂帖子",
+        "remove": "刪除帖子",
+        "random": "隨機讚",
+        "save": "保存帖子",
+        "report": "舉報帖子",
+        "you": "你",
+        "and": "和",
+        "otherPeople": "其他人",
+        "liked": "喜歡這個帖子",
+        "toast-1": "你的帖子已成功刪除！",
+        "toast-2": "保存成功",
+        "toast-3": "讚成功添加到你的帖子",
+        "diaLog": {
+            "title": "你要刪除這個帖子嗎？",
+            "content": "當你點擊確定按鈕後，對話框將在1秒後關閉。"
+        }
+    },
+    "comment": {
+        "toast-1": "評論成功刪除！",
+        "delete": "刪除評論",
+        "edit": "編輯評論",
+        "report": "舉報評論"
+    },
+    "search": {
+        "all": "搜尋所有結果",
+        "placeholder": "輸入個人資料名稱..."
+    },
+    "profile": {
+        "update": "更新個人資料",
+        "add": "添加好友",
+        "confirmed": "SnapShare 確認此個人資料為真實。",
+        "posts": "帖子：",
+        "setting": {
+            "toast": "無效的名稱，請輸入有效的名稱。",
+            "title": "更新個人資料",
+            "name": "全名",
+            "bio": "個人簡介",
+            "email": "電子郵件",
+            "avatar": "頭像",
+            "cover": "封面圖片",
+            "submit": "更新個人資料"
+        }
+    },
+    "createPost": {
+        "toast-1": "圖片上傳成功！",
+        "toast-2": "無法提交帖子。請確保你的帖子符合要求。",
+        "submit": "發佈",
+        "title": "創建帖子",
+        "public": "公開",
+        "private": "私密",
+        "placeholder": "為圖片寫點什麼..."
+    },
+    "admin": {
+        "title": "用戶列表",
+        "more": "載入更多...",
+        "registered": "註冊於",
+        "view": "查看",
+        "unverify": "取消驗證",
+        "verify": "驗證"
+    },
+    "pageError": {
+        "button": "返回首頁",
+        "403": {
+            "title": "訪問被拒",
+            "desc": "所請求的頁面不存在。您無權訪問管理區域。"
+        },
+        "404": {
+            "title": "找不到頁面",
+            "desc": "找不到頁面。請檢查網址或返回首頁。"
+        }
+    }
+}

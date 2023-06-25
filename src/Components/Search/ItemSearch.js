@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { ProfileContext } from "../../Context/ProfileContextProvider";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
-function ItemSearch({ user }) {
+function ItemSearch({ user, handleHideResult }) {
     const { setCurrentProfile } = useContext(ProfileContext);
     return (
         <Link
-            to={`/profile/${user.uid}`}
+            to={`/profile/${user?.nameId || user?.uid}`}
             onClick={() => {
+                handleHideResult();
                 localStorage.setItem("currentProfile", JSON.stringify(user));
                 setCurrentProfile(user);
             }}

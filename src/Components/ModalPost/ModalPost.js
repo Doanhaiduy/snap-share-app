@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function ModalPost({ data, handleToggleModal, authorPost }) {
     return (
-        <div className="fixed top-[10%] left-[50%] z-20">
+        <div className="fixed top-[10%] left-[50%] z-[100]">
             <div
                 className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 "
                 onClick={handleToggleModal}

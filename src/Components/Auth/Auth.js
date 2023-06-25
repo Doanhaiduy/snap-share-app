@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -7,13 +7,15 @@ import {
     getAdditionalUserInfo,
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-import { auth, db, googleProvider, githubProvider } from "../../firebase/firebase-config";
-import { ToastContainer, toast } from "react-toastify";
+import { auth, db, googleProvider, githubProvider, facebookProvider } from "../../firebase/firebase-config";
+import {toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { format } from "date-fns";
 import { Spin } from "antd";
 import logo from "../../assets/imgs/Logo.png";
 import defaultAvatar from "../../assets/imgs/defaultAvatar.png";
+import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { ThemeContext } from "../../Context/ThemeContextProvider";
 
 const Login = () => {
     const [name, setName] = useState("");
@@ -22,6 +24,8 @@ const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
     const [loading, setLoading] = useState(false);
+    const { t } = useContext(MultiLanguageContext);
+    const { darkToggle } = useContext(ThemeContext);
     const handleRegex = (type, value, confirmPassword) => {
         switch (type) {
             case "email": {
@@ -29,14 +33,14 @@ const Login = () => {
                 if (validRegex.test(value)) {
                     return true;
                 } else {
-                    toast.error("Invalid email address! Please enter a valid email address.", {
+                    toast.error(t("auth.toast-1"), {
                         position: "top-right",
                         autoClose: 4000,
                         hideProgressBar: false,
                         closeOnClick: true,
                         draggable: true,
                         progress: undefined,
-                        theme: "light",
+                        theme: darkToggle ? "dark" : "light",
                     });
                     return false;
                 }
@@ -46,18 +50,15 @@ const Login = () => {
                 if (validRegex.test(value)) {
                     return true;
                 } else {
-                    toast.error(
-                        "Invalid password ! Password must be at least 8 characters long and include both letters and numbers.",
-                        {
-                            position: "top-right",
-                            autoClose: 4000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "light",
-                        }
-                    );
+                    toast.error(t("auth.toast-2"), {
+                        position: "top-right",
+                        autoClose: 4000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: darkToggle ? "dark" : "light",
+                    });
                     return false;
                 }
             }
@@ -75,14 +76,14 @@ const Login = () => {
                 if (validRegex.test(value)) {
                     return true;
                 } else {
-                    toast.error("Invalid name, Please enter a valid name.", {
+                    toast.error(t("auth.toast-3"), {
                         position: "top-right",
                         autoClose: 4000,
                         hideProgressBar: false,
                         closeOnClick: true,
                         draggable: true,
                         progress: undefined,
-                        theme: "light",
+                        theme: darkToggle ? "dark" : "light",
                     });
                     return false;
                 }
@@ -116,14 +117,14 @@ const Login = () => {
                             setLoading(false);
                         })
                         .catch((err) => {
-                            toast.error(`The email provided is already in use!`, {
+                            toast.error(t("auth.toast-4"), {
                                 position: "top-right",
                                 autoClose: 4000,
                                 hideProgressBar: false,
                                 closeOnClick: true,
                                 draggable: true,
                                 progress: undefined,
-                                theme: "light",
+                                theme: darkToggle ? "dark" : "light",
                             });
                             setLoading(false);
                         });
@@ -139,14 +140,14 @@ const Login = () => {
                 setLoading(true);
                 await setTimeout(() => {
                     signInWithEmailAndPassword(auth, email, password).catch((err) => {
-                        toast.error(`Invalid email or password !`, {
+                        toast.error(t("auth.toast-5"), {
                             position: "top-right",
                             autoClose: 4000,
                             hideProgressBar: false,
                             closeOnClick: true,
                             draggable: true,
                             progress: undefined,
-                            theme: "light",
+                            theme: darkToggle ? "dark" : "light",
                         });
                     });
                     setLoading(false);
@@ -174,14 +175,14 @@ const Login = () => {
                 });
             }
         } catch (err) {
-            toast.error("Login fail !", {
+            toast.error(t("auth.toast-6"), {
                 position: "top-right",
                 autoClose: 4000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 draggable: true,
                 progress: undefined,
-                theme: "light",
+                theme: darkToggle ? "dark" : "light",
             });
         }
     };
@@ -198,49 +199,74 @@ const Login = () => {
                     email: result.user.email,
                     joinDate: currentDate,
                     uid: result.user?.uid,
-                    bio: "Congratulations! You have become a member of the FecaBook community. Welcome!",
+                    bio: "Congratulations! You have become a member of the SnapShare community. Welcome!",
                     coverImg:
                         "https://static.vecteezy.com/system/resources/previews/003/423/831/original/cute-cat-kitten-greeting-cartoon-doodle-background-wallpaper-free-vector.jpg",
                     photoURL: result?.user?.photoURL || defaultAvatar,
                 });
             }
         } catch (err) {
-            toast.error("Login fail !", {
+            toast.error(t("auth.toast-6"), {
                 position: "top-right",
                 autoClose: 4000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 draggable: true,
                 progress: undefined,
-                theme: "light",
+                theme: darkToggle ? "dark" : "light",
             });
         }
     };
+    // const handleRLoginFacebook = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const result = await signInWithPopup(auth, facebookProvider);
+    //         await setDoc(doc(db, "users", result.user?.uid), {
+    //             name: result.user.displayName,
+    //             email: result.user.email,
+    //             joinDate: currentDate,
+    //             uid: result.user?.uid,
+    //             bio: "Congratulations! You have become a member of the SnapShare community. Welcome!",
+    //             coverImg:
+    //                 "https://static.vecteezy.com/system/resources/previews/003/423/831/original/cute-cat-kitten-greeting-cartoon-doodle-background-wallpaper-free-vector.jpg",
+    //             photoURL: result?.user?.photoURL || defaultAvatar,
+    //         });
+    //     } catch (err) {
+    //         toast.error("Login fail !", {
+    //             position: "top-right",
+    //             autoClose: 4000,
+    //             hideProgressBar: false,
+    //             closeOnClick: true,
+    //             draggable: true,
+    //             progress: undefined,
+    //             theme: darkToggle? "dark" : "light",
+    //         });
+    //     }
+    // };
     return loading ? (
         <div className="flex justify-center items-center h-[100vh] flex-col">
             <Spin />
-            <h2 className="text-[20px] text-blue-600 font-[700]">Login...</h2>
+            <h2 className="text-[20px] text-blue-600 font-[700]">{t("loading")}...</h2>
         </div>
     ) : isLogin ? (
-        <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
-            <ToastContainer />
-            <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+        <div className="transition-all duration-300 ease-in-out  min-h-screen bg-gray-100 dark:bg-primary2 dark:text-primary5  text-gray-900  flex justify-center">
+            <div className="transition-all duration-300 ease-in-out  max-w-screen-xl m-0 sm:m-10 bg-white overflow-hidden dark:bg-[#282828] shadow sm:rounded-lg flex justify-center flex-1">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
                     <div>
                         <img src={logo} className="w-32 mx-auto" alt="" />
-                        <p className="text-center text-[10px] font-[600] font-sans mt-[-12px] mb-[30px] text-gray-500">
-                            Preserve Memories, Share Stories
+                        <p className="transition-all duration-300 ease-in-out  text-center text-[10px] font-[600] font-sans mt-[-12px] mb-[30px] text-gray-500 dark:text-primary5">
+                            {t("auth.slogan")}
                         </p>
                     </div>
                     <div className="mt-1 flex flex-col items-center">
-                        <h1 className="text-2xl xl:text-3xl font-extrabold">Sign in</h1>
+                        <h1 className="text-2xl xl:text-3xl font-extrabold">{t("auth.signIn")}</h1>
                         <div className="w-full flex-1 mt-8">
                             <div className="flex flex-col items-center">
                                 <button
-                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 dark:bg-primary1 dark:bg-opacity-90 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
                                     onClick={handleRLoginGoogle}
                                 >
-                                    <div className="bg-white p-2 rounded-full">
+                                    <div className="bg-white  p-2 rounded-full">
                                         <svg className="w-4" viewBox="0 0 533.5 544.3">
                                             <path
                                                 d="M533.5 278.4c0-18.5-1.5-37.1-4.7-55.3H272.1v104.8h147c-6.1 33.8-25.7 63.7-54.4 82.7v68h87.7c51.5-47.4 81.1-117.4 81.1-200.2z"
@@ -260,10 +286,10 @@ const Login = () => {
                                             />
                                         </svg>
                                     </div>
-                                    <span className="ml-4">Sign in with Google</span>
+                                    <span className="ml-4">{t("auth.google")}</span>
                                 </button>
                                 <button
-                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5"
+                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 dark:bg-primary1 dark:bg-opacity-90 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5"
                                     onClick={handleRLoginGithub}
                                 >
                                     <div className="bg-white p-1 rounded-full">
@@ -274,31 +300,45 @@ const Login = () => {
                                             />
                                         </svg>
                                     </div>
-                                    <span className="ml-4">Sign in with GitHub</span>
+                                    <span className="ml-4">{t("auth.github")}</span>
                                 </button>
+                                {/* <button
+                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5"
+                                    onClick={handleRLoginFacebook}
+                                >
+                                    <div className="bg-white p-1 rounded-full">
+                                        <svg className="w-6" viewBox="0 0 32 32">
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M16 4C9.371 4 4 9.371 4 16c0 5.3 3.438 9.8 8.207 11.387.602.11.82-.258.82-.578 0-.286-.011-1.04-.015-2.04-3.34.723-4.043-1.609-4.043-1.609-.547-1.387-1.332-1.758-1.332-1.758-1.09-.742.082-.726.082-.726 1.203.086 1.836 1.234 1.836 1.234 1.07 1.836 2.808 1.305 3.492 1 .11-.777.422-1.305.762-1.605-2.664-.301-5.465-1.332-5.465-5.93 0-1.313.469-2.383 1.234-3.223-.121-.3-.535-1.523.117-3.175 0 0 1.008-.32 3.301 1.23A11.487 11.487 0 0116 9.805c1.02.004 2.047.136 3.004.402 2.293-1.55 3.297-1.23 3.297-1.23.656 1.652.246 2.875.12 3.175.77.84 1.231 1.91 1.231 3.223 0 4.61-2.804 5.621-5.476 5.922.43.367.812 1.101.812 2.219 0 1.605-.011 2.898-.011 3.293 0 .32.214.695.824.578C24.566 25.797 28 21.3 28 16c0-6.629-5.371-12-12-12z"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <span className="ml-4">Sign in with Facebook</span>
+                                </button> */}
                             </div>
                             <div className="my-12 border-b text-center">
-                                <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                                    Sign in up with e-mail
+                                <div className="transition-all duration-300 ease-in-out  leading-none px-2 inline-block text-sm text-gray-600 dark:text-primary5 tracking-wide font-medium bg-white dark:bg-[#282828] transform translate-y-1/2">
+                                    {t("auth.other")}
                                 </div>
                             </div>
                             <div className="mx-auto max-w-xs">
                                 <input
-                                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                    className="transition-all duration-300 ease-in-out  w-full px-8 py-4 rounded-lg font-medium bg-gray-100 dark:bg-[#282828]  border border-gray-200 dark:border-gray-400 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-200 focus:bg-white"
                                     type="email"
                                     placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <input
-                                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                    className="transition-all duration-300 ease-in-out  w-full px-8 py-4 rounded-lg font-medium bg-gray-100 dark:bg-[#282828]  border border-gray-200 dark:border-gray-400 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-200 focus:bg-white mt-5"
                                     type="password"
-                                    placeholder="Password"
+                                    placeholder={t("auth.password")}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <button
-                                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                                    className=" mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 dark:bg-primary1 dark:text-primary2 w-full py-4 rounded-lg hover:bg-indigo-700 dark:hover:bg-yellow-500 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                                     onClick={handleRLogin}
                                 >
                                     <svg
@@ -317,11 +357,11 @@ const Login = () => {
                                         <polyline points="10 17 15 12 10 7"></polyline>
                                         <line x1="15" y1="12" x2="3" y2="12"></line>
                                     </svg>
-                                    <span className="ml-3">Sign in</span>
+                                    <span className="ml-3">{t("auth.signIn")}</span>
                                 </button>
-                                <div className="mt-6 text-xs text-gray-600 text-center">
+                                <div className="transition-all duration-300 ease-in-out  mt-6 text-xs text-gray-600 dark:text-gray-200 text-center">
                                     <p className="mx-auto mt-4">
-                                        Do not have an account?{" "}
+                                        {t("auth.noAccount")}{" "}
                                         <strong
                                             className="cursor-pointer"
                                             onClick={() => {
@@ -331,7 +371,7 @@ const Login = () => {
                                                 setIsLogin(false);
                                             }}
                                         >
-                                            Sign up
+                                            {t("auth.signUp")}
                                         </strong>
                                     </p>
                                 </div>
@@ -339,7 +379,7 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
+                <div className="transition-all duration-300 ease-in-out  flex-1 bg-indigo-100 dark:bg-primary1  text-center hidden lg:flex">
                     <div
                         className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
                         style={{
@@ -351,51 +391,50 @@ const Login = () => {
             </div>
         </div>
     ) : (
-        <div className="min-h-screen bg-gray-100 text-gray-900 flex  justify-center">
-            <ToastContainer />
-            <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex-row-reverse flex justify-center flex-1">
+        <div className="transition-all duration-300 ease-in-out  min-h-screen bg-gray-100 text-gray-900 dark:text-primary5 dark:bg-primary2 flex  justify-center">
+            <div className="transition-all duration-300 ease-in-out  max-w-screen-xl m-0 sm:m-10 bg-white dark:bg-[#282828] shadow sm:rounded-lg flex-row-reverse flex justify-center flex-1">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 sm:mt-0 mt-[50px]">
                     <div>
                         <img src={logo} className="w-32 mx-auto" alt="" />
-                        <p className="text-center text-[10px] font-[600] font-sans mt-[-12px] mb-[30px] text-gray-500">
-                            Preserve Memories, Share Stories
+                        <p className="text-center text-[10px] font-[600] font-sans mt-[-12px] mb-[30px] text-gray-500 dark:text-primary5">
+                            {t("auth.slogan")}
                         </p>
                     </div>
-                    <div className="mt-2 flex flex-col items-center">
-                        <h1 className="text-2xl xl:text-3xl font-extrabold">Sign up</h1>
+                    <div className="mt-2 flex flex-col items-center ">
+                        <h1 className="text-2xl xl:text-3xl font-extrabold "> {t("auth.signUp")}</h1>
                         <div className="w-full flex-1 mt-3">
                             <div className="flex flex-col items-center"></div>
                             <div className="my-3 border-b text-center  mb-[50px]">
-                                <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2 ">
-                                    Sign up up with e-mail
+                                <div className="transition-all duration-300 ease-in-out  leading-none px-2 inline-block text-sm text-gray-600 dark:bg-[#282828] dark:text-primary5 tracking-wide font-medium bg-white transform translate-y-1/2 ">
+                                    {t("auth.otherSignUp")}
                                 </div>
                             </div>
                             <div className="mx-auto max-w-xs">
                                 <input
-                                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                    className="transition-all duration-300 ease-in-out  w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                     type="name"
-                                    placeholder="Full Name"
+                                    placeholder={t("auth.fullName")}
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
 
                                 <input
-                                    className="w-full px-8 py-4 mt-5 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                    className="transition-all duration-300 ease-in-out w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 mt-5 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                     type="email"
                                     placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <input
-                                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                    className="transition-all duration-300 ease-in-out  w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                                     type="password"
-                                    placeholder="Password"
+                                    placeholder={t("auth.password")}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
 
                                 <button
-                                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 dark:bg-primary1 dark:text-primary2 w-full py-4 rounded-lg hover:bg-indigo-700 dark:hover:bg-yellow-500 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                                     onClick={handleRegister}
                                 >
                                     <svg
@@ -411,15 +450,15 @@ const Login = () => {
                                         <path d="M20 8v6M23 11h-6" />
                                     </svg>
 
-                                    <span className="ml-3">Sign up</span>
+                                    <span className="ml-3"> {t("auth.signUp")}</span>
                                 </button>
-                                <div className="mt-6 text-xs text-gray-600 text-center">
-                                    I agree to abide by SnapShare's
+                                <div className="transition-all duration-300 ease-in-out  mt-6 text-xs text-gray-600 dark:text-gray-200 text-center">
+                                    {t("auth.agree")}
                                     <p href="#" className=" border-gray-500 border-dotted">
-                                        Terms of Service
+                                        {t("auth.TOF")}
                                     </p>
                                     <p className="mx-auto mt-4">
-                                        Do you already have an account?{" "}
+                                        {t("auth.hasAccount")}{" "}
                                         <strong
                                             className="cursor-pointer"
                                             onClick={() => {
@@ -428,7 +467,7 @@ const Login = () => {
                                                 setIsLogin(true);
                                             }}
                                         >
-                                            Sign in
+                                            {t("auth.signIn")}
                                         </strong>
                                     </p>
                                 </div>
@@ -436,9 +475,9 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
+                <div className="transition-all duration-300 ease-in-out  flex-1 bg-indigo-100 dark:bg-primary1  text-center hidden lg:flex">
                     <div
-                        className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
+                        className="m-12  xl:m-16 w-full bg-contain bg-center bg-no-repeat"
                         style={{
                             backgroundImage:
                                 'url("https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp")',
