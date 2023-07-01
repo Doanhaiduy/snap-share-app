@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db, googleProvider, githubProvider, facebookProvider } from "../../firebase/firebase-config";
-import {toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { format } from "date-fns";
 import { Spin } from "antd";
@@ -249,12 +249,12 @@ const Login = () => {
             <h2 className="text-[20px] text-blue-600 font-[700]">{t("loading")}...</h2>
         </div>
     ) : isLogin ? (
-        <div className="transition-all duration-300 ease-in-out  min-h-screen bg-gray-100 dark:bg-primary2 dark:text-primary5  text-gray-900  flex justify-center">
-            <div className="transition-all duration-300 ease-in-out  max-w-screen-xl m-0 sm:m-10 bg-white overflow-hidden dark:bg-[#282828] shadow sm:rounded-lg flex justify-center flex-1">
+        <div className="min-h-screen bg-gray-100 dark:bg-primary2 dark:text-primary5  text-gray-900  flex justify-center">
+            <div className="  max-w-screen-xl m-0 sm:m-10 bg-white overflow-hidden dark:bg-[#282828] shadow sm:rounded-lg flex justify-center flex-1">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
                     <div>
                         <img src={logo} className="w-32 mx-auto" alt="" />
-                        <p className="transition-all duration-300 ease-in-out  text-center text-[10px] font-[600] font-sans mt-[-12px] mb-[30px] text-gray-500 dark:text-primary5">
+                        <p className="  text-center text-[10px] font-[600] font-sans mt-[-12px] mb-[30px] text-gray-500 dark:text-primary5">
                             {t("auth.slogan")}
                         </p>
                     </div>
@@ -263,7 +263,7 @@ const Login = () => {
                         <div className="w-full flex-1 mt-8">
                             <div className="flex flex-col items-center">
                                 <button
-                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 dark:bg-primary1 dark:bg-opacity-90 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 dark:bg-primary1 dark:bg-opacity-90 flex items-center justify-center  focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
                                     onClick={handleRLoginGoogle}
                                 >
                                     <div className="bg-white  p-2 rounded-full">
@@ -289,7 +289,7 @@ const Login = () => {
                                     <span className="ml-4">{t("auth.google")}</span>
                                 </button>
                                 <button
-                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 dark:bg-primary1 dark:bg-opacity-90 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5"
+                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 dark:bg-primary1 dark:bg-opacity-90 flex items-center justify-center  focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5"
                                     onClick={handleRLoginGithub}
                                 >
                                     <div className="bg-white p-1 rounded-full">
@@ -303,7 +303,7 @@ const Login = () => {
                                     <span className="ml-4">{t("auth.github")}</span>
                                 </button>
                                 {/* <button
-                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5"
+                                    className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center  focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5"
                                     onClick={handleRLoginFacebook}
                                 >
                                     <div className="bg-white p-1 rounded-full">
@@ -318,27 +318,27 @@ const Login = () => {
                                 </button> */}
                             </div>
                             <div className="my-12 border-b text-center">
-                                <div className="transition-all duration-300 ease-in-out  leading-none px-2 inline-block text-sm text-gray-600 dark:text-primary5 tracking-wide font-medium bg-white dark:bg-[#282828] transform translate-y-1/2">
+                                <div className="  leading-none px-2 inline-block text-sm text-gray-600 dark:text-primary5 tracking-wide font-medium bg-white dark:bg-[#282828] transform translate-y-1/2">
                                     {t("auth.other")}
                                 </div>
                             </div>
                             <div className="mx-auto max-w-xs">
                                 <input
-                                    className="transition-all duration-300 ease-in-out  w-full px-8 py-4 rounded-lg font-medium bg-gray-100 dark:bg-[#282828]  border border-gray-200 dark:border-gray-400 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-200 focus:bg-white"
+                                    className="  w-full px-8 py-4 rounded-lg font-medium bg-gray-100 dark:bg-[#282828]  border border-gray-200 dark:border-gray-400 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-200 focus:bg-white"
                                     type="email"
                                     placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <input
-                                    className="transition-all duration-300 ease-in-out  w-full px-8 py-4 rounded-lg font-medium bg-gray-100 dark:bg-[#282828]  border border-gray-200 dark:border-gray-400 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-200 focus:bg-white mt-5"
+                                    className="  w-full px-8 py-4 rounded-lg font-medium bg-gray-100 dark:bg-[#282828]  border border-gray-200 dark:border-gray-400 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-200 focus:bg-white mt-5"
                                     type="password"
                                     placeholder={t("auth.password")}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <button
-                                    className=" mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 dark:bg-primary1 dark:text-primary2 w-full py-4 rounded-lg hover:bg-indigo-700 dark:hover:bg-yellow-500 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                                    className=" mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 dark:bg-primary1 dark:text-primary2 w-full py-4 rounded-lg hover:bg-indigo-700 dark:hover:bg-yellow-500  flex items-center justify-center focus:shadow-outline focus:outline-none"
                                     onClick={handleRLogin}
                                 >
                                     <svg
@@ -359,7 +359,7 @@ const Login = () => {
                                     </svg>
                                     <span className="ml-3">{t("auth.signIn")}</span>
                                 </button>
-                                <div className="transition-all duration-300 ease-in-out  mt-6 text-xs text-gray-600 dark:text-gray-200 text-center">
+                                <div className="  mt-6 text-xs text-gray-600 dark:text-gray-200 text-center">
                                     <p className="mx-auto mt-4">
                                         {t("auth.noAccount")}{" "}
                                         <strong
@@ -379,7 +379,7 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-                <div className="transition-all duration-300 ease-in-out  flex-1 bg-indigo-100 dark:bg-primary1  text-center hidden lg:flex">
+                <div className="  flex-1 bg-indigo-100 dark:bg-primary1  text-center hidden lg:flex">
                     <div
                         className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
                         style={{
@@ -391,8 +391,8 @@ const Login = () => {
             </div>
         </div>
     ) : (
-        <div className="transition-all duration-300 ease-in-out  min-h-screen bg-gray-100 text-gray-900 dark:text-primary5 dark:bg-primary2 flex  justify-center">
-            <div className="transition-all duration-300 ease-in-out  max-w-screen-xl m-0 sm:m-10 bg-white dark:bg-[#282828] shadow sm:rounded-lg flex-row-reverse flex justify-center flex-1">
+        <div className="  min-h-screen bg-gray-100 text-gray-900 dark:text-primary5 dark:bg-primary2 flex  justify-center">
+            <div className="  max-w-screen-xl m-0 sm:m-10 bg-white dark:bg-[#282828] shadow sm:rounded-lg flex-row-reverse flex justify-center flex-1">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 sm:mt-0 mt-[50px]">
                     <div>
                         <img src={logo} className="w-32 mx-auto" alt="" />
@@ -405,13 +405,13 @@ const Login = () => {
                         <div className="w-full flex-1 mt-3">
                             <div className="flex flex-col items-center"></div>
                             <div className="my-3 border-b text-center  mb-[50px]">
-                                <div className="transition-all duration-300 ease-in-out  leading-none px-2 inline-block text-sm text-gray-600 dark:bg-[#282828] dark:text-primary5 tracking-wide font-medium bg-white transform translate-y-1/2 ">
+                                <div className="  leading-none px-2 inline-block text-sm text-gray-600 dark:bg-[#282828] dark:text-primary5 tracking-wide font-medium bg-white transform translate-y-1/2 ">
                                     {t("auth.otherSignUp")}
                                 </div>
                             </div>
                             <div className="mx-auto max-w-xs">
                                 <input
-                                    className="transition-all duration-300 ease-in-out  w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                    className="  w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                     type="name"
                                     placeholder={t("auth.fullName")}
                                     value={name}
@@ -419,14 +419,14 @@ const Login = () => {
                                 />
 
                                 <input
-                                    className="transition-all duration-300 ease-in-out w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 mt-5 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                    className=" w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 mt-5 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                     type="email"
                                     placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <input
-                                    className="transition-all duration-300 ease-in-out  w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                    className="  w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                                     type="password"
                                     placeholder={t("auth.password")}
                                     value={password}
@@ -434,7 +434,7 @@ const Login = () => {
                                 />
 
                                 <button
-                                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 dark:bg-primary1 dark:text-primary2 w-full py-4 rounded-lg hover:bg-indigo-700 dark:hover:bg-yellow-500 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 dark:bg-primary1 dark:text-primary2 w-full py-4 rounded-lg hover:bg-indigo-700 dark:hover:bg-yellow-500  flex items-center justify-center focus:shadow-outline focus:outline-none"
                                     onClick={handleRegister}
                                 >
                                     <svg
@@ -452,7 +452,7 @@ const Login = () => {
 
                                     <span className="ml-3"> {t("auth.signUp")}</span>
                                 </button>
-                                <div className="transition-all duration-300 ease-in-out  mt-6 text-xs text-gray-600 dark:text-gray-200 text-center">
+                                <div className="  mt-6 text-xs text-gray-600 dark:text-gray-200 text-center">
                                     {t("auth.agree")}
                                     <p href="#" className=" border-gray-500 border-dotted">
                                         {t("auth.TOF")}
@@ -475,7 +475,7 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-                <div className="transition-all duration-300 ease-in-out  flex-1 bg-indigo-100 dark:bg-primary1  text-center hidden lg:flex">
+                <div className="  flex-1 bg-indigo-100 dark:bg-primary1  text-center hidden lg:flex">
                     <div
                         className="m-12  xl:m-16 w-full bg-contain bg-center bg-no-repeat"
                         style={{

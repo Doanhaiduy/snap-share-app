@@ -1,17 +1,44 @@
 {
     "loading": "Đang tải",
-    "gif": "Chọn ảnh gif của bạn",
+    "gif": "Chọn gif của bạn",
     "more": "Xem thêm",
     "less": "Thu gọn",
+    "loadFile": "Tải lên một tệp",
+    "limit": "PNG, JPG, GIF lên đến 10MB",
+    "create": "Tạo",
+    "noOnePost": "Người dùng chưa đăng bất kỳ bài viết nào",
+    "noOneSaved": "Người dùng chưa lưu bất kỳ bài viết nào",
+    "copyRight": "Đã đăng ký Bản quyền.",
+
+    "nav": {
+        "home": "Trang chủ",
+        "createPost": "Tạo bài viết",
+        "admin": "Quản trị",
+        "logout": "Đăng xuất",
+        "profile": "Hồ sơ",
+        "friend": "Bạn bè",
+        "mess": "Tin nhắn",
+        "language": "Ngôn ngữ"
+    },
+    "about": {
+        "aboutMe": "Thông tin về tôi",
+        "livesIn": "Sống tại",
+        "joined": "Tham gia",
+        "followedBy": "Được theo dõi bởi",
+        "editDetails": "Chỉnh sửa thông tin",
+        "coding": "lập trình"
+    },
     "home": {
         "home": "Trang chủ",
         "createPost": "Tạo bài viết",
-        "admin": "Quản trị viên",
+        "admin": "Quản trị",
         "logout": "Đăng xuất",
-        "profile": "Trang cá nhân"
+        "profile": "Hồ sơ",
+        "new": "Có gì mới",
+        "post": "Đăng!"
     },
     "auth": {
-        "slogan": "Lưu giữ những kỷ niệm, Chia sẻ những câu chuyện",
+        "slogan": "Lưu giữ kỷ niệm, Chia sẻ câu chuyện",
         "signIn": "Đăng nhập",
         "signUp": "Đăng ký",
         "google": "Đăng nhập bằng Google",
@@ -19,17 +46,17 @@
         "other": "Đăng nhập bằng email và mật khẩu",
         "otherSignUp": "Đăng ký bằng email và mật khẩu",
         "password": "Mật khẩu",
-        "noAccount": "Chưa có tài khoản?",
+        "noAccount": "Bạn chưa có tài khoản?",
         "hasAccount": "Bạn đã có tài khoản?",
         "fullName": "Họ và tên",
         "agree": "Tôi đồng ý tuân thủ",
         "TOF": "Điều khoản dịch vụ",
-        "toast-1": "Địa chỉ email không hợp lệ! Vui lòng nhập một địa chỉ email hợp lệ.",
-        "toast-2": "Mật khẩu không hợp lệ! Mật khẩu phải chứa ít nhất 8 ký tự và bao gồm cả chữ và số.",
-        "toast-3": "Tên không hợp lệ! Vui lòng nhập một tên hợp lệ.",
-        "toast-4": "Địa chỉ email đã được sử dụng!",
+        "toast-1": "Địa chỉ email không hợp lệ! Vui lòng nhập địa chỉ email hợp lệ.",
+        "toast-2": "Mật khẩu không hợp lệ! Mật khẩu phải chứa ít nhất 8 ký tự và bao gồm cả chữ cái và số.",
+        "toast-3": "Tên không hợp lệ, Vui lòng nhập tên hợp lệ.",
+        "toast-4": "Email đã được sử dụng!",
         "toast-5": "Email hoặc mật khẩu không hợp lệ!",
-        "toast-6": "Đăng nhập không thành công!"
+        "toast-6": "Đăng nhập thất bại!"
     },
     "post": {
         "pinned": "Bài viết đã ghim",
@@ -38,7 +65,7 @@
         "comment": "Bình luận",
         "share": "Chia sẻ",
         "pin": "Ghim bài viết",
-        "unpin": "Bỏ ghim bài viết",
+        "unpin": "Hủy ghim bài viết",
         "remove": "Xóa bài viết",
         "random": "Thích ngẫu nhiên",
         "save": "Lưu bài viết",
@@ -49,10 +76,10 @@
         "liked": "thích bài viết này",
         "toast-1": "Bài viết của bạn đã được xóa thành công!",
         "toast-2": "Lưu thành công",
-        "toast-3": "thích đã góp phần vào bài viết của bạn",
+        "toast-3": "lượt thích đã đóng góp thành công cho bài viết của bạn",
         "diaLog": {
             "title": "Bạn có muốn xóa bài viết này?",
-            "content": "Khi bạn nhấn nút OK, hộp thoại sẽ đóng sau 1 giây."
+            "content": "Khi bạn nhấp vào nút OK, hộp thoại sẽ đóng sau 1 giây."
         }
     },
     "comment": {
@@ -66,48 +93,392 @@
         "placeholder": "Nhập tên hồ sơ..."
     },
     "profile": {
-        "update": "Cập nhật Hồ sơ",
-        "add": "Kết bạn",
-        "confirmed": "SnapShare đã xác nhận hồ sơ này là thật.",
-        "posts": "Bài viết:",
+        "follow": "Theo dõi",
+        "update": "Cập nhật hồ sơ",
+        "add": "Thêm bạn",
+        "confirmed": "SnapShare xác nhận hồ sơ này là chính xác.",
+        "posts": "Bài viết",
+        "friend": "Bạn bè",
+        "followers": "Người theo dõi",
+        "following": "Đang theo dõi",
+        "saved": "Đã lưu",
         "setting": {
             "toast": "Tên không hợp lệ, Vui lòng nhập tên hợp lệ.",
-            "title": "Cập nhật Hồ sơ",
+            "toast-2": "Thành công! Những thay đổi của bạn đã được lưu.",
+            "title": "Cài đặt tài khoản",
             "name": "Họ và tên",
             "bio": "Tiểu sử",
-            "email": "Email",
-            "avatar": "Ảnh đại diện",
+            "email": "Địa chỉ email",
+            "website": "Website",
+            "address": "Địa chỉ",
+            "userId": "User Id",
+            "avatar": "Hình đại diện",
             "cover": "Ảnh bìa",
-            "submit": "Cập nhật Hồ sơ"
+            "submit": "Lưu"
         }
     },
     "createPost": {
-        "toast-1": "Hình ảnh đã được tải lên thành công!",
-        "toast-2": "Không thể đăng bài. Vui lòng đảm bảo bài viết của bạn đáp ứng các yêu cầu.",
-        "submit": "Đăng bài",
+        "toast-1": "Tải ảnh lên thành công!",
+        "toast-2": "Không thể đăng bài viết. Vui lòng đảm bảo bài viết của bạn đáp ứng các yêu cầu.",
+        "submit": "Đăng",
         "title": "Tạo bài viết",
         "public": "Công khai",
         "private": "Riêng tư",
-        "placeholder": "Viết gì đó cho hình ảnh..."
+        "placeholder": "Bạn đang nghĩ gì"
     },
-
     "admin": {
         "title": "Danh sách người dùng",
         "more": "Xem thêm...",
-        "registered": "Đăng ký vào",
+        "registered": "Đã đăng ký vào",
         "view": "Xem",
-        "unverify": "Bỏ xác minh",
+        "unverify": "Không xác minh",
         "verify": "Xác minh"
     },
     "pageError": {
-        "button": "Quay lại Trang chủ",
+        "button": "Trở về Trang chủ",
         "403": {
             "title": "Truy cập bị từ chối",
-            "desc": "Trang yêu cầu không tồn tại. Bạn không có quyền truy cập vào khu vực quản trị."
+            "desc": "Trang yêu cầu không tồn tại. Bạn không được phép truy cập vào khu vực quản trị."
         },
         "404": {
             "title": "Không tìm thấy trang",
             "desc": "Không tìm thấy trang. Vui lòng kiểm tra URL hoặc quay lại trang chủ."
+        }
+    },
+    "Language": {
+        "title": "Chọn ngôn ngữ"
+    },
+    "suggestion": {
+        "request": {
+            "title": "Yêu cầu",
+            "desc": "muốn thêm bạn vào danh sách bạn bè",
+            "accept": "Chấp nhận",
+            "decline": "Từ chối"
+        },
+        "friendActive": {
+            "title": "Danh bạ"
+        }
+    },
+    "theme": {
+        "theme": "Giao diện",
+        "dark": "Dark",
+        "light": "Light"
+    },
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsConditions": "Điều khoản và Điều kiện",
+    "cookiesPolicy": "Chính sách Cookie",
+    "privacyPolicyPage": {
+        "title": "Chính sách bảo mật",
+        "lastUpdated": "Cập nhật lần cuối: 25 tháng 6, 2023",
+        "description1": "Chính sách bảo mật này mô tả các chính sách và quy trình của chúng tôi về việc thu thập, sử dụng và tiết lộ thông tin của bạn khi bạn sử dụng Dịch vụ và thông báo cho bạn về quyền riêng tư của bạn và cách luật pháp bảo vệ bạn.",
+        "description2": "Chúng tôi sử dụng thông tin cá nhân của bạn để cung cấp và cải thiện Dịch vụ. Bằng cách sử dụng Dịch vụ, bạn đồng ý với việc thu thập và sử dụng thông tin theo Chính sách bảo mật này.",
+        "interpretation": {
+            "title": "Diễn giải và Định nghĩa",
+            "interpretationHeading": "Diễn giải",
+            "interpretationDescription": "Các từ được viết hoa chữ cái đầu có ý nghĩa được xác định dưới các điều kiện sau đây. Các định nghĩa sau đây sẽ có cùng ý nghĩa bất kể liệu chúng xuất hiện dưới dạng số ít hay số nhiều.",
+            "definitionsHeading": "Định nghĩa",
+            "definitions": {
+                "overView": "Với mục đích của Chính sách bảo mật này:",
+                "arrayMap": [
+                    {
+                        "title": "Tài khoản",
+                        "description": "được hiểu là một tài khoản duy nhất được tạo ra cho bạn để truy cập Dịch vụ của chúng tôi hoặc một phần của Dịch vụ của chúng tôi."
+                    },
+                    {
+                        "title": "Đối tác liên kết",
+                        "description": "được hiểu là một thực thể kiểm soát, được kiểm soát bởi hoặc cùng kiểm soát với một bên, trong đó \"kiểm soát\" có nghĩa là sở hữu 50% hoặc nhiều hơn cổ phần, quyền sở hữu vốn hoặc chứng quyền khác có quyền bỏ phiếu cho việc bầu cử các giám đốc hoặc các cơ quan quản lý khác."
+                    },
+                    {
+                        "title": "Công ty",
+                        "description": "(được gọi là \"Công ty\", \"Chúng tôi\", \"Chúng tôi\" hoặc \"Của chúng tôi\" trong Thỏa thuận này) đề cập đến Snap Share."
+                    },
+                    {
+                        "title": "Cookie",
+                        "description": "là các tệp tin nhỏ được đặt trên máy tính, thiết bị di động hoặc bất kỳ thiết bị nào khác của bạn bởi một trang web, chứa các chi tiết về lịch sử duyệt web của bạn trên trang web đó."
+                    },
+                    {
+                        "title": "Quốc gia",
+                        "description": "đề cập đến: Việt Nam"
+                    },
+                    {
+                        "title": "Thiết bị",
+                        "description": "được hiểu là bất kỳ thiết bị nào có thể truy cập Dịch vụ như máy tính, điện thoại di động hoặc máy tính bảng."
+                    },
+                    {
+                        "title": "Dữ liệu cá nhân",
+                        "description": "là bất kỳ thông tin nào liên quan đến một cá nhân được xác định hoặc có thể xác định được."
+                    },
+                    {
+                        "title": "Dịch vụ",
+                        "description": "đề cập đến Trang web."
+                    },
+                    {
+                        "title": "Nhà cung cấp dịch vụ",
+                        "description": "được hiểu là bất kỳ cá nhân hoặc tổ chức pháp nhân nào xử lý dữ liệu thay mặt cho Công ty. Đây là những công ty hoặc cá nhân bên thứ ba được Công ty thuê để hỗ trợ Dịch vụ, cung cấp Dịch vụ thay mặt cho Công ty, thực hiện dịch vụ liên quan đến Dịch vụ hoặc hỗ trợ Công ty trong việc phân tích cách Dịch vụ được sử dụng."
+                    },
+                    {
+                        "title": "Dịch vụ Mạng xã hội của bên thứ ba",
+                        "description": "đề cập đến bất kỳ trang web nào hoặc bất kỳ trang web mạng xã hội nào thông qua đó người dùng có thể đăng nhập hoặc tạo tài khoản để sử dụng Dịch vụ."
+                    },
+                    {
+                        "title": "Dữ liệu Sử dụng",
+                        "description": "đề cập đến dữ liệu được thu thập tự động, được tạo ra bởi việc sử dụng Dịch vụ hoặc từ cơ sở hạ tầng của Dịch vụ chính nó (ví dụ: thời gian truy cập một trang)."
+                    }
+                ],
+                "website": {
+                    "title": "Trang web",
+                    "description": "đề cập đến Snap Share, có thể truy cập từ ",
+                    "URL": "https://snap-share-78f51.web.app/"
+                },
+                "you": {
+                    "title": "Bạn",
+                    "description": "đề cập đến cá nhân truy cập hoặc sử dụng Dịch vụ, hoặc công ty, hoặc thực thể pháp lý khác đại diện cho cá nhân đó trong việc truy cập hoặc sử dụng Dịch vụ, tùy thuộc vào từng trường hợp."
+                }
+            }
+        },
+        "collectingAndUsingData": {
+            "title": "Thu thập và sử dụng dữ liệu cá nhân của bạn",
+            "dataCollected": {
+                "title": "Các loại dữ liệu được thu thập",
+                "personalData": {
+                    "title": "Dữ liệu cá nhân",
+                    "description": "Trong khi sử dụng Dịch vụ của chúng tôi, chúng tôi có thể yêu cầu Bạn cung cấp cho chúng tôi một số thông tin nhận dạng cá nhân nhất định có thể được sử dụng để liên hệ hoặc nhận dạng Bạn. Thông tin nhận dạng cá nhân có thể bao gồm, nhưng không giới hạn ở:"
+                },
+                "personalDataPoints": ["Địa chỉ email", "Họ và tên", "Dữ liệu sử dụng"]
+            },
+            "usageData": {
+                "title": "Dữ liệu sử dụng",
+                "description": "Dữ liệu sử dụng được tự động thu thập khi sử dụng Dịch vụ."
+            },
+            "usageDataPoints": [
+                "Dữ liệu sử dụng có thể bao gồm thông tin như địa chỉ Giao thức Internet của Thiết bị của bạn (ví dụ: địa chỉ IP), loại trình duyệt, phiên bản trình duyệt, các trang của Dịch vụ chúng tôi mà bạn truy cập, thời gian và ngày bạn truy cập, thời gian dành trên những trang đó, các định danh thiết bị duy nhất và dữ liệu chẩn đoán khác.",
+                "Khi bạn truy cập Dịch vụ bằng cách sử dụng thiết bị di động, chúng tôi có thể tự động thu thập một số thông tin, bao gồm, nhưng không giới hạn, loại thiết bị di động bạn sử dụng, ID duy nhất của thiết bị di động của bạn, địa chỉ IP của thiết bị di động của bạn, hệ điều hành di động của bạn, loại trình duyệt Internet di động bạn sử dụng, các định danh thiết bị duy nhất và dữ liệu chẩn đoán khác.",
+                "Chúng tôi cũng có thể thu thập thông tin mà trình duyệt của bạn gửi mỗi khi bạn truy cập Dịch vụ của chúng tôi hoặc khi bạn truy cập Dịch vụ bằng cách sử dụng thiết bị di động."
+            ],
+            "mobileDeviceData": {
+                "title": "Thông tin từ Dịch vụ Mạng xã hội Bên thứ ba",
+                "description": "Công ty cho phép bạn tạo tài khoản và đăng nhập để sử dụng Dịch vụ thông qua các Dịch vụ Mạng xã hội Bên thứ ba sau:"
+            },
+            "mobileDeviceDataPoints": ["Google", "Facebook", "Instagram", "Twitter", "LinkedIn"],
+            "mobileDeviceDataAdditionalInfo": {
+                "title": "Thông tin từ Dịch vụ Mạng xã hội Bên thứ ba (tiếp tục)",
+                "description_1": "Nếu bạn quyết định đăng ký thông qua hoặc cấp quyền truy cập cho chúng tôi vào Dịch vụ Mạng xã hội Bên thứ ba, chúng tôi có thể thu thập dữ liệu cá nhân đã liên kết với tài khoản Dịch vụ Mạng xã hội Bên thứ ba của bạn, chẳng hạn như tên của bạn, địa chỉ email của bạn, các hoạt động của bạn hoặc danh sách liên lạc của bạn liên quan đến tài khoản đó.",
+                "description_2": "Bạn cũng có thể có khả năng chia sẻ thông tin bổ sung với Công ty thông qua tài khoản Dịch vụ Mạng xã hội Bên thứ ba của bạn. Nếu bạn chọn cung cấp thông tin và Dữ liệu cá nhân như vậy, trong quá trình đăng ký hoặc sau đó, bạn đang cho phép Công ty sử dụng, chia sẻ và lưu trữ nó theo cách phù hợp với Chính sách bảo mật này."
+            },
+            "trackingTechnologies": {
+                "title": "Công nghệ theo dõi và Cookies",
+                "description": "Chúng tôi sử dụng Cookies và các công nghệ theo dõi tương tự để theo dõi hoạt động trên Dịch vụ của chúng tôi và lưu trữ một số thông tin. Các công nghệ theo dõi được sử dụng bao gồm cờ, thẻ và mã lệnh để thu thập và theo dõi thông tin và cải thiện và phân tích Dịch vụ của chúng tôi. Các công nghệ chúng tôi sử dụng có thể bao gồm:"
+            },
+            "trackingTechnologiesPoints": [
+                {
+                    "title": "Cookies hoặc Cookies của Trình duyệt: ",
+                    "desc": "Một cookie là một tệp nhỏ được đặt trên Thiết bị của bạn. Bạn có thể chỉ dẫn trình duyệt từ chối tất cả Cookies hoặc thông báo khi một Cookie được gửi. Tuy nhiên, nếu bạn không chấp nhận Cookies, bạn có thể không thể sử dụng một số phần của Dịch vụ của chúng tôi. Trừ khi bạn đã điều chỉnh cài đặt trình duyệt để từ chối Cookies, Dịch vụ của chúng tôi có thể sử dụng Cookies."
+                },
+                {
+                    "title": "Cờ Web: ",
+                    "desc": "Một số phần của Dịch vụ của chúng tôi và email của chúng tôi có thể chứa các tệp điện tử nhỏ được gọi là cờ web (còn được gọi là hình ảnh rõ ràng, thẻ pixel và hình ảnh pixel đơn) cho phép Công ty, ví dụ, đếm người dùng đã truy cập các trang đó hoặc mở một email và cho các số liệu thống kê trang web liên quan khác (ví dụ: ghi lại mức độ phổ biến của một phần nhất định và xác minh tính toàn vẹn của hệ thống và máy chủ)."
+                }
+            ],
+            "trackingTechnologiesPointsOverview": "Cookie có thể là \"Persistent Cookies\" (Cookie lưu trữ) hoặc \"Session Cookies\" (Cookie phiên làm việc). Cookie Persistent tồn tại trên máy tính cá nhân hoặc thiết bị di động của bạn khi bạn offline, trong khi Cookie phiên làm việc được xóa ngay khi bạn đóng trình duyệt web. Tìm hiểu thêm về cookie trên bài viết trang web Chính sách quyền riêng tư miễn phí.",
+            "cookiesPolicy": {
+                "title": "Chính sách Cookie: ",
+                "description": "Chúng tôi sử dụng cả Cookie phiên làm việc và Cookie lưu trữ cho các mục đích sau đây:"
+            },
+            "cookiesPolicyPoints": [
+                {
+                    "typeName": "Loại",
+                    "type": "Cookie Cần thiết / Cookie Cốt yếu",
+                    "cookieType": "Cookie phiên làm việc",
+                    "administeredByName": "Quản lý bởi",
+                    "administeredBy": "Chúng tôi",
+                    "purposeName": "Mục đích",
+                    "purpose": "Cookie này là cần thiết để cung cấp cho bạn các dịch vụ có sẵn thông qua Trang web và cho phép bạn sử dụng một số tính năng của nó. Chúng giúp xác thực người dùng và ngăn chặn việc sử dụng gian lận tài khoản người dùng. Nếu không có Cookie này, chúng tôi không thể cung cấp các dịch vụ mà bạn đã yêu cầu, và chúng tôi chỉ sử dụng Cookie này để cung cấp cho bạn các dịch vụ đó."
+                },
+                {
+                    "typeName": "Loại",
+                    "administeredByName": "Quản lý bởi",
+                    "purposeName": "Mục đích",
+                    "type": "Cookies Chính sách / Cookie Chấp nhận Thông báo",
+                    "cookieType": "Cookie lưu trữ",
+                    "administeredBy": "Chúng tôi",
+                    "purpose": "Cookie này xác định xem người dùng đã chấp nhận việc sử dụng cookie trên Trang web hay chưa."
+                },
+                {
+                    "typeName": "Loại",
+                    "administeredByName": "Quản lý bởi",
+                    "purposeName": "Mục đích",
+                    "type": "Cookies Chức năng",
+                    "cookieType": "Cookie lưu trữ",
+                    "administeredBy": "Chúng tôi",
+                    "purpose": "Cookie này cho phép chúng tôi ghi nhớ các lựa chọn mà bạn thực hiện khi sử dụng Trang web, chẳng hạn như ghi nhớ chi tiết đăng nhập hoặc ưu tiên ngôn ngữ của bạn. Mục đích của Cookie này là cung cấp cho bạn trải nghiệm cá nhân hóa hơn và tránh bạn phải nhập lại các lựa chọn của mình mỗi khi bạn sử dụng Trang web."
+                }
+            ],
+            "additionalInfo": "Để biết thêm thông tin về các cookie chúng tôi sử dụng và các lựa chọn của bạn liên quan đến cookie, vui lòng truy cập Chính sách Cookie hoặc phần Cookie của Chính sách quyền riêng tư của chúng tôi."
+        },
+        "useOfPersonalData": {
+            "title": "Sử dụng Dữ liệu Cá nhân của Bạn",
+            "overView_1": "Công ty có thể sử dụng Dữ liệu Cá nhân cho các mục đích sau đây:",
+            "purposes": [
+                {
+                    "purpose_highlight": "Để cung cấp và duy trì dịch vụ của chúng tôi,",
+                    "purpose": "bao gồm giám sát việc sử dụng dịch vụ của chúng tôi."
+                },
+                {
+                    "purpose_highlight": "Quản lý Tài khoản của Bạn:",
+                    "purpose": "để quản lý việc đăng ký của Bạn làm người dùng dịch vụ. Dữ liệu Cá nhân mà Bạn cung cấp có thể cho phép Bạn truy cập vào các chức năng khác nhau của dịch vụ mà Bạn có sẵn là một người dùng đã đăng ký."
+                },
+                {
+                    "purpose_highlight": "Đối với việc thực hiện một hợp đồng:",
+                    "purpose": "việc phát triển, tuân thủ và thực hiện hợp đồng mua bán cho các sản phẩm, hàng hóa hoặc dịch vụ Bạn đã mua hoặc bất kỳ hợp đồng nào khác với chúng tôi thông qua dịch vụ."
+                },
+                {
+                    "purpose_highlight": "Liên lạc với Bạn:",
+                    "purpose": "Liên lạc với Bạn qua email, cuộc gọi điện thoại, tin nhắn SMS hoặc các hình thức truyền thông điện tử tương đương khác, chẳng hạn như thông báo đẩy của ứng dụng di động liên quan đến cập nhật hoặc thông tin thông tin liên quan đến các chức năng, sản phẩm hoặc dịch vụ đã được hợp đồng, bao gồm cả việc cập nhật bảo mật, khi cần thiết hoặc hợp lý cho việc thực hiện chúng."
+                },
+                {
+                    "purpose_highlight": "Cung cấp cho Bạn tin tức, ưu đãi đặc biệt và thông tin chung về các hàng hóa, dịch vụ và sự kiện khác",
+                    "purpose": "mà chúng tôi cung cấp tương tự như những gì Bạn đã mua hoặc yêu cầu thông tin, trừ khi Bạn đã chọn không nhận thông tin đó."
+                },
+                {
+                    "purpose_highlight": "Quản lý yêu cầu của Bạn:",
+                    "purpose": "Để đáp ứng và quản lý các yêu cầu của Bạn đối với chúng tôi."
+                },
+                {
+                    "purpose_highlight": "Đối với việc chuyển giao kinh doanh:",
+                    "purpose": "Chúng tôi có thể sử dụng thông tin của Bạn để đánh giá hoặc tiến hành sáp nhập, chuyển nhượng, cơ cấu lại, tổ chức lại, giải thể hoặc bán hoặc chuyển giao một phần hoặc toàn bộ tài sản của chúng tôi, dù là theo hình thức hoạt động kinh doanh hoặc như một phần của quá trình phá sản, thanh lý hoặc các thủ tục tương tự khác, trong đó Dữ liệu Cá nhân được chúng tôi giữ về người dùng dịch vụ của chúng tôi là một trong những tài sản được chuyển giao."
+                },
+                {
+                    "purpose_highlight": "Đối với các mục đích khác:",
+                    "purpose": "Chúng tôi có thể sử dụng thông tin của Bạn cho các mục đích khác như phân tích dữ liệu, xác định xu hướng sử dụng, xác định hiệu quả của các chiến dịch quảng cáo và để đánh giá và cải thiện dịch vụ, sản phẩm, dịch vụ, tiếp thị và trải nghiệm của Bạn."
+                }
+            ],
+            "overView_2": "Chúng tôi có thể chia sẻ thông tin cá nhân của Bạn trong các tình huống sau:",
+            "sharingSituations": [
+                {
+                    "situation_highlight": "Với Nhà cung cấp Dịch vụ:",
+                    "situation": "Chúng tôi có thể chia sẻ thông tin cá nhân của Bạn với Nhà cung cấp Dịch vụ để giám sát và phân tích việc sử dụng dịch vụ của chúng tôi, để liên lạc với Bạn."
+                },
+                {
+                    "situation_highlight": "Đối với việc chuyển giao kinh doanh:",
+                    "situation": "Chúng tôi có thể chia sẻ hoặc chuyển giao thông tin cá nhân của Bạn liên quan đến hoặc trong quá trình đàm phán, bất kỳ sáp nhập nào, việc bán tài sản của Công ty, việc tài trợ hoặc việc mua lại toàn bộ hoặc một phần của doanh nghiệp chúng tôi cho một công ty khác."
+                },
+                {
+                    "situation_highlight": "Với Các liên kết:",
+                    "situation": "Chúng tôi có thể chia sẻ thông tin của Bạn với các liên kết của chúng tôi, trong trường hợp đó chúng tôi sẽ yêu cầu những liên kết đó tuân thủ Chính sách Bảo mật này. Các liên kết bao gồm Công ty mẹ của chúng tôi và bất kỳ công ty con khác, đối tác liên doanh hoặc các công ty khác mà chúng tôi kiểm soát hoặc được kiểm soát chung với chúng tôi."
+                },
+                {
+                    "situation_highlight": "Với đối tác kinh doanh:",
+                    "situation": "Chúng tôi có thể chia sẻ thông tin của Bạn với các đối tác kinh doanh của chúng tôi để cung cấp cho Bạn các sản phẩm, dịch vụ hoặc khuyến mãi cụ thể."
+                },
+                {
+                    "situation_highlight": "Với các người dùng khác:",
+                    "situation": "Khi Bạn chia sẻ thông tin cá nhân hoặc tương tác ở các khu vực công cộng khác với người dùng khác, thông tin đó có thể được tất cả người dùng xem và có thể được phân phối công khai bên ngoài. Nếu Bạn tương tác với người dùng khác hoặc đăng ký qua Dịch vụ Truyền thông Xã hội của Bên thứ ba, danh sách liên hệ của Bạn trên Dịch vụ Truyền thông Xã hội của Bên thứ ba có thể xem tên, hồ sơ, hình ảnh và mô tả hoạt động của Bạn. Tương tự, người dùng khác sẽ có thể xem mô tả hoạt động của Bạn, giao tiếp với Bạn và xem hồ sơ của Bạn."
+                },
+                {
+                    "situation_highlight": "Với sự đồng ý của Bạn:",
+                    "situation": "Chúng tôi có thể tiết lộ thông tin cá nhân của Bạn cho bất kỳ mục đích nào khác với sự đồng ý của Bạn."
+                }
+            ]
+        },
+        "retentionOfData": {
+            "title": "Lưu giữ Dữ liệu Cá nhân của Bạn",
+            "paragraphs": [
+                {
+                    "text": "Công ty chỉ sẽ lưu giữ Dữ liệu Cá nhân của Bạn trong thời gian cần thiết cho các mục đích được nêu trong Chính sách Bảo mật này. Chúng tôi sẽ lưu giữ và sử dụng Dữ liệu Cá nhân của Bạn trong phạm vi cần thiết để tuân thủ các nghĩa vụ pháp lý của chúng tôi (ví dụ: nếu chúng tôi được yêu cầu lưu giữ dữ liệu của Bạn để tuân thủ các luật pháp áp dụng), giải quyết tranh chấp và thực thi các thỏa thuận pháp lý và chính sách của chúng tôi."
+                },
+                {
+                    "text": "Công ty cũng sẽ lưu giữ Dữ liệu Sử dụng cho mục đích phân tích nội bộ. Dữ liệu Sử dụng thường được lưu giữ trong một thời gian ngắn, trừ khi dữ liệu này được sử dụng để củng cố bảo mật hoặc cải thiện chức năng của Dịch vụ của chúng tôi, hoặc chúng tôi có nghĩa vụ pháp lý lưu giữ dữ liệu này trong thời gian lâu hơn."
+                }
+            ]
+        },
+        "transferOfData": {
+            "title": "Chuyển Dữ liệu Cá nhân của Bạn",
+            "paragraphs": [
+                {
+                    "text": "Thông tin của Bạn, bao gồm Dữ liệu Cá nhân, được xử lý tại văn phòng hoạt động của Công ty và tại bất kỳ địa điểm nào mà các bên liên quan đến quá trình xử lý đang đặt. Điều này có nghĩa là thông tin này có thể được chuyển đến — và được duy trì trên — máy tính nằm ngoài bang, tỉnh, quốc gia hoặc các thẩm quyền chính phủ khác nơi các luật bảo vệ dữ liệu có thể khác so với thẩm quyền của Bạn."
+                },
+                {
+                    "text": "Sự đồng ý của Bạn với Chính sách Bảo mật này và việc Bạn gửi thông tin như vậy đều đại diện cho sự đồng ý của Bạn với việc chuyển giao đó."
+                },
+                {
+                    "text": "Công ty sẽ thực hiện tất cả các biện pháp cần thiết để đảm bảo rằng dữ liệu của Bạn được xử lý một cách an toàn và theo đúng Chính sách Bảo mật này và không có việc chuyển giao Dữ liệu Cá nhân của Bạn sẽ diễn ra cho một tổ chức hoặc một quốc gia trừ khi có các biện pháp kiểm soát đảm bảo đầy đủ bao gồm an ninh dữ liệu và thông tin cá nhân của Bạn."
+                }
+            ]
+        },
+        "deletePersonalData": {
+            "title": "Xóa Dữ liệu Cá nhân của Bạn",
+            "paragraphs": [
+                {
+                    "text": "Bạn có quyền xóa hoặc yêu cầu Chúng tôi hỗ trợ xóa Dữ liệu Cá nhân mà Chúng tôi đã thu thập về Bạn."
+                },
+                {
+                    "text": "Dịch vụ của chúng tôi có thể cho phép Bạn xóa một số thông tin về Bạn từ bên trong Dịch vụ."
+                },
+                {
+                    "text": "Bạn có thể cập nhật, điều chỉnh hoặc xóa thông tin của Bạn bất kỳ lúc nào bằng cách đăng nhập vào Tài khoản của Bạn, nếu có, và truy cập phần cài đặt tài khoản cho phép bạn quản lý thông tin cá nhân của Bạn. Bạn cũng có thể liên hệ với Chúng tôi để yêu cầu truy cập, sửa đổi hoặc xóa bất kỳ thông tin cá nhân nào Bạn đã cung cấp cho Chúng tôi."
+                },
+                {
+                    "text": "Vui lòng lưu ý, tuy nhiên, rằng Chúng tôi có thể cần lưu giữ một số thông tin khi chúng tôi có nghĩa vụ pháp lý hoặc cơ sở hợp pháp để làm như vậy."
+                }
+            ]
+        },
+        "disclosureOfPersonalData": {
+            "title": "Tiết lộ Dữ liệu Cá nhân của Bạn",
+            "businessTransactions": {
+                "title": "Giao dịch kinh doanh",
+                "content": "Nếu Công ty tham gia vào một cuộc sáp nhập, mua lại hoặc bán tài sản, Dữ liệu Cá nhân của Bạn có thể được chuyển giao. Chúng tôi sẽ thông báo trước khi Dữ liệu Cá nhân của Bạn được chuyển giao và trở thành một Chính sách Bảo mật khác."
+            },
+            "lawEnforcement": {
+                "title": "Cơ quan thực thi pháp luật",
+                "content": "Trong các trường hợp cụ thể, Công ty có thể bắt buộc tiết lộ Dữ liệu Cá nhân của Bạn nếu yêu cầu làm như vậy bởi pháp luật hoặc để đáp ứng yêu cầu hợp lệ từ các cơ quan công quyền (ví dụ: tòa án hoặc cơ quan chính phủ)."
+            },
+            "otherLegalRequirements": {
+                "title": "Yêu cầu pháp lý khác",
+                "content": "Công ty có thể tiết lộ Dữ liệu Cá nhân của Bạn với niềm tin tốt rằng việc hành động như vậy là cần thiết để:",
+                "listItems": [
+                    "Tuân thủ nghĩa vụ pháp lý",
+                    "Bảo vệ và bảo vệ quyền lợi hoặc tài sản của Công ty",
+                    "Ngăn chặn hoặc điều tra các hành vi sai trái có thể liên quan đến Dịch vụ",
+                    "Bảo vệ sự an toàn cá nhân của Người dùng Dịch vụ hoặc công chúng",
+                    "Bảo vệ chống lại trách nhiệm pháp lý"
+                ]
+            }
+        },
+        "securityOfPersonalData": {
+            "title": "Bảo mật Dữ liệu Cá nhân của Bạn",
+            "content": "Bảo mật Dữ liệu Cá nhân của Bạn là quan trọng đối với chúng tôi, nhưng hãy nhớ rằng không có phương pháp truyền tải trên Internet hoặc phương pháp lưu trữ điện tử nào là an toàn 100%. Trong khi Chúng tôi cố gắng sử dụng các biện pháp chấp nhận được thương mại để bảo vệ Dữ liệu Cá nhân của Bạn, Chúng tôi không thể đảm bảo an toàn tuyệt đối của nó."
+        },
+        "childrensPrivacy": {
+            "title": "Quyền riêng tư của trẻ em",
+            "content_1": "Dịch vụ của chúng tôi không áp dụng cho bất kỳ ai dưới 13 tuổi. Chúng tôi không cố ý thu thập thông tin cá nhân có thể xác định được từ bất kỳ ai dưới 13 tuổi. Nếu Bạn là bậc cha mẹ hoặc người giám hộ và Bạn nhận thấy rằng con của Bạn đã cung cấp Dữ liệu Cá nhân cho Chúng tôi, vui lòng liên hệ với Chúng tôi. Nếu chúng tôi nhận thấy rằng chúng tôi đã thu thập Dữ liệu Cá nhân từ bất kỳ ai dưới 13 tuổi mà không có xác nhận của cha mẹ, chúng tôi sẽ thực hiện các biện pháp để loại bỏ thông tin đó khỏi máy chủ của chúng tôi.",
+            "content_2": "Nếu chúng tôi cần phải dựa vào sự đồng ý như là cơ sở hợp pháp để xử lý thông tin của Bạn và quốc gia của Bạn yêu cầu sự đồng ý từ phụ huynh, chúng tôi có thể yêu cầu sự đồng ý của cha mẹ trước khi thu thập và sử dụng thông tin đó."
+        },
+        "linksToOtherWebsites": {
+            "title": "Liên kết đến các trang web khác",
+            "content_1": "Dịch vụ của chúng tôi có thể chứa liên kết đến các trang web khác không do Chúng tôi vận hành. Nếu Bạn nhấp vào một liên kết của bên thứ ba, Bạn sẽ được chuyển hướng đến trang web của bên thứ ba đó. Chúng tôi khuyến nghị Bạn xem lại Chính sách Bảo mật của mọi trang web Bạn truy cập.",
+            "content_2": "Chúng tôi không kiểm soát và không chịu trách nhiệm về nội dung, chính sách bảo mật hoặc thực tiễn của bất kỳ trang web hoặc dịch vụ của bên thứ ba nào."
+        },
+        "changesToPrivacyPolicy": {
+            "title": "Thay đổi Chính sách Bảo mật này",
+            "content_1": "Chúng tôi có thể cập nhật Chính sách Bảo mật này theo thời gian. Chúng tôi sẽ thông báo cho Bạn về bất kỳ thay đổi nào bằng cách đăng Chính sách Bảo mật mới trên trang này.",
+            "content_2": "Chúng tôi sẽ thông báo cho Bạn qua email và/hoặc thông báo nổi bật trên Dịch vụ của Chúng tôi, trước khi các thay đổi có hiệu lực và cập nhật ngày \"Cập nhật lần cuối\" ở đầu Chính sách Bảo mật này.",
+            "content_3": "Chúng tôi khuyến nghị Bạn xem lại Chính sách Bảo mật này định kỳ để nắm bắt những thay đổi. Các thay đổi của Chính sách Bảo mật này có hiệu lực khi được đăng trên trang này."
+        },
+        "contactUs": {
+            "title": "Liên hệ chúng tôi",
+            "overView": "Nếu Bạn có bất kỳ câu hỏi nào về Chính sách Bảo mật này, Bạn có thể liên hệ với chúng tôi:",
+            "content": [
+                {
+                    "href": "mailto:",
+                    "title": "Email: ",
+                    "content": "support@snap-share-78f51.firebaseapp.com"
+                },
+                {
+                    "href": "tel:",
+                    "title": "Số điện thoại: ",
+                    "content": "+84 399998943"
+                }
+            ]
         }
     }
 }

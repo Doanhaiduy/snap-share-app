@@ -41,9 +41,9 @@ function Header() {
                     <Search />
                     <Link
                         to={"/createPost"}
-                        className="text-[14px] sm:flex hidden transition-all duration-300 ease-in-out  gap-1 items-center cursor-pointer hover:opacity-90 h-[40px] px-3 text-white font-medium rounded-[12px] bg-blue-600  dark:text-primary2 dark:bg-primary1"
+                        className="text-[14px] sm:flex hidden   gap-1 items-center cursor-pointer hover:opacity-90 h-[40px] px-3 text-white font-medium rounded-[12px] bg-blue-600  dark:text-primary2 dark:bg-primary1"
                     >
-                        <AiOutlinePlusSquare className="text-[20px]" /> Create
+                        <AiOutlinePlusSquare className="text-[20px]" /> {t("create")}
                     </Link>
                     <div className="">
                         <img
@@ -63,8 +63,8 @@ function Header() {
                             to="/"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2  hover:bg-slate-400 transition-colors border-b-4 border-blue-600  rounded-[8px] bg-gray-300 text-blue-600"
-                                    : "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400 transition-colors rounded-[8px]"
+                                    ? "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2  hover:bg-slate-400  border-b-4 border-blue-600  rounded-[8px] bg-gray-300 text-blue-600"
+                                    : "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400  rounded-[8px]"
                             }
                         >
                             <AiFillHome />
@@ -79,8 +79,8 @@ function Header() {
                             to={`/profile/${userInfo?.nameId || currentUser?.uid}`}
                             className={({ isActive }) =>
                                 isActive
-                                    ? "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2  hover:bg-slate-400 transition-colors border-b-4 border-blue-600  rounded-[8px] bg-gray-300 text-blue-600"
-                                    : "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400 transition-colors rounded-[8px]"
+                                    ? "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2  hover:bg-slate-400  border-b-4 border-blue-600  rounded-[8px] bg-gray-300 text-blue-600"
+                                    : "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400  rounded-[8px]"
                             }
                         >
                             <img
@@ -96,8 +96,8 @@ function Header() {
                             to="/createPost"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2  hover:bg-slate-400 transition-colors border-b-4 border-blue-600  rounded-[8px] bg-gray-300 text-blue-600"
-                                    : "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400 transition-colors rounded-[8px]"
+                                    ? "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2  hover:bg-slate-400  border-b-4 border-blue-600  rounded-[8px] bg-gray-300 text-blue-600"
+                                    : "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400  rounded-[8px]"
                             }
                         >
                             <BsImages />
@@ -110,22 +110,22 @@ function Header() {
                                 to="/admin"
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2  hover:bg-slate-400 transition-colors border-b-4 border-blue-600  rounded-[8px] bg-gray-300 text-blue-600"
-                                        : "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400 transition-colors rounded-[8px]"
+                                        ? "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2  hover:bg-slate-400  border-b-4 border-blue-600  rounded-[8px] bg-gray-300 text-blue-600"
+                                        : "flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400  rounded-[8px]"
                                 }
                             >
                                 <ImUserTie />
                             </NavLink>
                         </Tippy>
                     )}
-                    <button className="flex items-center gap-2 font-semibold text-[24px] relative sm:px-3 lg:px-8 group py-2 bg-slate-200 hover:bg-slate-400 transition-colors rounded-[8px]">
+                    <button className="flex items-center gap-2 font-semibold text-[24px] relative sm:px-3 lg:px-8 group py-2 bg-slate-200 hover:bg-slate-400  rounded-[8px]">
                         <FaLanguage />
                         <div className="group-hover:block hover:block hidden absolute bottom-[-280px] left-0">
                             <Link
                                 onClick={() => {
                                     handleChangeLanguage("vi");
                                 }}
-                                className="py-[6px]  px-[10px] cursor-pointer transition-colors  hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px]  px-[10px] cursor-pointer   hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">VI</span>
                                 <FaArrowRight />
@@ -135,7 +135,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("en");
                                 }}
-                                className="py-[6px]  px-[10px] cursor-pointer transition-colors  hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px]  px-[10px] cursor-pointer   hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">EN</span>
                                 <FaArrowRight />
@@ -144,7 +144,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("ko");
                                 }}
-                                className="py-[6px]  px-[10px] cursor-pointer transition-colors  hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px]  px-[10px] cursor-pointer   hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">KO</span>
                                 <FaArrowRight />
@@ -153,7 +153,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("th");
                                 }}
-                                className="py-[6px]  px-[10px] cursor-pointer transition-colors  hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px]  px-[10px] cursor-pointer   hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">TH</span>
                                 <FaArrowRight />
@@ -162,7 +162,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("fr");
                                 }}
-                                className="py-[6px]  px-[10px] cursor-pointer transition-colors  hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px]  px-[10px] cursor-pointer   hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">FR</span>
                                 <FaArrowRight />
@@ -171,7 +171,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("tw");
                                 }}
-                                className="py-[6px]  px-[10px] cursor-pointer transition-colors  hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px]  px-[10px] cursor-pointer   hover:bg-slate-100 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">TW</span>
                                 <FaArrowRight />
@@ -180,7 +180,7 @@ function Header() {
                     </button>
                     <Tippy content={t("home.logout")}>
                         <button
-                            className="flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400 transition-colors rounded-[8px]"
+                            className="flex items-center gap-2 font-semibold text-[24px] sm:px-3 lg:px-8 py-2 bg-slate-200 hover:bg-slate-400  rounded-[8px]"
                             onClick={handleLogout}
                         >
                             <IoLogOut />
@@ -209,7 +209,7 @@ function Header() {
                                     handleCloseOption();
                                 }}
                                 to={`/profile/${currentUser?.nameId || currentUser?.uid}`}
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex items-center gap-[12px] border-b-2"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex items-center gap-[12px] border-b-2"
                             >
                                 <img
                                     src={userInfo.photoURL}
@@ -223,7 +223,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("vi");
                                 }}
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">VI</span>
                                 <FaArrowRight />
@@ -233,7 +233,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("en");
                                 }}
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">EN</span>
                                 <FaArrowRight />
@@ -242,7 +242,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("ko");
                                 }}
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">KO</span>
                                 <FaArrowRight />
@@ -251,7 +251,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("th");
                                 }}
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">TH</span>
                                 <FaArrowRight />
@@ -260,7 +260,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("fr");
                                 }}
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">FR</span>
                                 <FaArrowRight />
@@ -269,7 +269,7 @@ function Header() {
                                 onClick={() => {
                                     handleChangeLanguage("tw");
                                 }}
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">TW</span>
                                 <FaArrowRight />
@@ -278,7 +278,7 @@ function Header() {
                             <Link
                                 onClick={handleCloseOption}
                                 to="/"
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">
                                     <AiFillHome /> {t("home.home")}
@@ -288,7 +288,7 @@ function Header() {
                             <Link
                                 onClick={handleCloseOption}
                                 to="/createPost"
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">
                                     <BsFilePlusFill /> {t("home.createPost")}
@@ -300,7 +300,7 @@ function Header() {
                                 <Link
                                     onClick={handleCloseOption}
                                     to="/admin"
-                                    className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                    className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                                 >
                                     <span className="flex gap-2 items-center">
                                         <AiOutlineUserDelete />
@@ -311,7 +311,7 @@ function Header() {
                             )}
                             <div
                                 onClick={handleLogout}
-                                className="py-[6px] px-[10px] cursor-pointer transition-colors  hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
+                                className="py-[6px] px-[10px] cursor-pointer   hover:bg-slate-200 flex font-semibold items-center justify-between gap-[12px]"
                             >
                                 <span className="flex gap-2 items-center">
                                     <AiOutlineLogout />

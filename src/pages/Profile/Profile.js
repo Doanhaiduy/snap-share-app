@@ -31,7 +31,7 @@ function Profile(props) {
         setIsShowModal(false);
     };
     const handleUpdateSuccess = async () => {
-        await toast.success("Success! Your changes have been saved.", {
+        await toast.success(t("profile.setting.toast-2"), {
             position: "top-right",
             autoClose: 4000,
             hideProgressBar: false,
@@ -58,7 +58,7 @@ function Profile(props) {
                 <div className="absolute right-2 top-2">
                     {isCurrent ? (
                         <h3
-                            className=" flex items-center gap-2 font-medium border-4 bg-black/30 px-2 py-1 rounded-[12px] cursor-pointer hover:bg-blue-600 hover:border-blue-600 hover:text-white dark:hover:bg-primary1 dark:hover:text-primary2 dark:hover:border-primary1 dark:border-[#333] dark:text-[#333] transition-colors"
+                            className=" flex items-center gap-2 font-medium border-4 bg-black/30 px-2 py-1 rounded-[12px] cursor-pointer hover:bg-blue-600 hover:border-blue-600 hover:text-white dark:hover:bg-primary1 dark:hover:text-primary2 dark:hover:border-primary1 dark:border-[#333] dark:text-[#333] "
                             onClick={handleShowModal}
                         >
                             <AiFillEdit />
@@ -92,7 +92,7 @@ function Profile(props) {
                                             }
                                         >
                                             <div className="inline-flex pt-[12px]">
-                                                <BsFillCheckCircleFill className="text-[18px] inline text-[#5890ff] ml-[-6px] mt-[4px] cursor-pointer"></BsFillCheckCircleFill>
+                                                <BsFillCheckCircleFill className="text-[18px] inline text-[#5890ff] dark:text-primary1 ml-[-6px] mt-[4px] cursor-pointer"></BsFillCheckCircleFill>
                                             </div>
                                         </Tippy>
                                     </div>
@@ -104,7 +104,7 @@ function Profile(props) {
                         </div>
                     </div>
                 </div>
-                {!isCurrent && <Action />}
+                {!isCurrent && <Action t={t} />}
             </div>
             <div className="lg:grid grid-cols-3 mt-[160px] gap-4">
                 <About userRender={userRender} isCurrent={isCurrent} handleShowModal={handleShowModal} />
@@ -120,7 +120,7 @@ function Profile(props) {
                                             : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
                                     }
                                 >
-                                    Post
+                                    {t("profile.posts")}
                                 </NavLink>
                             </li>
                             <li className="text-primary2 dark:text-primary5 ">
@@ -148,7 +148,7 @@ function Profile(props) {
                                             : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
                                     }
                                 >
-                                    Friend
+                                    {t("profile.friend")}
                                 </NavLink>
                             </li>
                             <li className="text-primary2 dark:text-primary5 ">
@@ -176,7 +176,7 @@ function Profile(props) {
                                             : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
                                     }
                                 >
-                                    Followers
+                                    {t("profile.followers")}
                                 </NavLink>
                             </li>
                             <li className="text-primary2 dark:text-primary5 ">
@@ -204,7 +204,7 @@ function Profile(props) {
                                             : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
                                     }
                                 >
-                                    Following
+                                    {t("profile.following")}
                                 </NavLink>
                             </li>
                             <li className="text-primary2 dark:text-primary5 ">
@@ -232,7 +232,7 @@ function Profile(props) {
                                             : " font-semibold dark:text-primary5 text-primary2 text-lg hover:text-blue-600 dark:hover:text-primary1 "
                                     }
                                 >
-                                    Saved
+                                    {t("profile.saved")}
                                 </NavLink>
                             </li>
                         </ul>

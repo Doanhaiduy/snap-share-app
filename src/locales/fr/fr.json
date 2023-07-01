@@ -1,23 +1,49 @@
 {
     "loading": "Chargement",
     "gif": "Choisissez votre gif",
-    "more": "Afficher plus",
-    "less": "Afficher moins",
+    "more": "Voir plus",
+    "less": "Voir moins",
+    "loadFile": "Importer un fichier",
+    "limit": "PNG, JPG, GIF jusqu'à 10 Mo",
+    "create": "Créer",
+    "noOnePost": "L'utilisateur n'a pas encore publié de publication",
+    "noOneSaved": "L'utilisateur n'a enregistré aucune publication pour le moment",
+    "copyRight": "Tous droits réservés.",
+    "nav": {
+        "home": "Accueil",
+        "createPost": "Créer une publication",
+        "admin": "Admin",
+        "logout": "Déconnexion",
+        "profile": "Profil",
+        "friend": "Ami",
+        "mess": "Messagerie",
+        "language": "Langue"
+    },
+    "about": {
+        "aboutMe": "À propos de moi",
+        "livesIn": "Vit à",
+        "joined": "Inscrit le",
+        "followedBy": "Suivi par",
+        "editDetails": "Modifier les détails",
+        "coding": "codage"
+    },
     "home": {
         "home": "Accueil",
         "createPost": "Créer une publication",
-        "admin": "Administrateur",
+        "admin": "Admin",
         "logout": "Déconnexion",
-        "profile": "Profil"
+        "profile": "Profil",
+        "new": "Quoi de neuf",
+        "post": "Publier !"
     },
     "auth": {
-        "slogan": "Préservez les souvenirs, partagez des histoires",
+        "slogan": "Préservez les souvenirs, Partagez les histoires",
         "signIn": "Se connecter",
         "signUp": "S'inscrire",
         "google": "Se connecter avec Google",
         "github": "Se connecter avec Github",
-        "other": "Se connecter avec adresse e-mail et mot de passe",
-        "otherSignUp": "S'inscrire avec adresse e-mail et mot de passe",
+        "other": "Se connecter avec un e-mail et un mot de passe",
+        "otherSignUp": "S'inscrire avec un e-mail et un mot de passe",
         "password": "Mot de passe",
         "noAccount": "Vous n'avez pas de compte ?",
         "hasAccount": "Vous avez déjà un compte ?",
@@ -26,30 +52,30 @@
         "TOF": "Conditions d'utilisation de SnapShare",
         "toast-1": "Adresse e-mail invalide ! Veuillez saisir une adresse e-mail valide.",
         "toast-2": "Mot de passe invalide ! Le mot de passe doit comporter au moins 8 caractères et inclure à la fois des lettres et des chiffres.",
-        "toast-3": "Nom invalide, veuillez saisir un nom valide.",
+        "toast-3": "Nom invalide. Veuillez saisir un nom valide.",
         "toast-4": "L'adresse e-mail fournie est déjà utilisée !",
-        "toast-5": "E-mail ou mot de passe invalide !",
+        "toast-5": "Adresse e-mail ou mot de passe invalide !",
         "toast-6": "Échec de la connexion !"
     },
     "post": {
         "pinned": "Publications épinglées",
         "other": "Autres publications",
         "like": "J'aime",
-        "comment": "Commentaire",
+        "comment": "Commenter",
         "share": "Partager",
         "pin": "Épingler la publication",
-        "unpin": "Désépingler la publication",
+        "unpin": "Détacher la publication",
         "remove": "Supprimer la publication",
         "random": "J'aime aléatoire",
         "save": "Enregistrer la publication",
         "report": "Signaler la publication",
         "you": "Vous",
         "and": "et",
-        "otherPeople": "autres",
-        "liked": "ont aimé cette publication",
+        "otherPeople": "autre personne",
+        "liked": "aime cette publication",
         "toast-1": "Votre publication a été supprimée avec succès !",
         "toast-2": "Enregistrement réussi",
-        "toast-3": "j'aime ont contribué avec succès à votre publication",
+        "toast-3": "likes contribués avec succès à votre publication",
         "diaLog": {
             "title": "Voulez-vous supprimer cette publication ?",
             "content": "Lorsque vous cliquez sur le bouton OK, la boîte de dialogue se fermera après 1 seconde."
@@ -63,40 +89,49 @@
     },
     "search": {
         "all": "Rechercher tous les résultats pour",
-        "placeholder": "Entrer le nom de profil..."
+        "placeholder": "Entrer le nom du profil..."
     },
     "profile": {
+        "follow": "Suivre",
         "update": "Mettre à jour le profil",
         "add": "Ajouter un ami",
         "confirmed": "SnapShare a confirmé que ce profil est authentique.",
-        "posts": "Publications :",
+        "posts": "Publications",
+        "friend": "Ami",
+        "followers": "Abonnés",
+        "following": "Abonnements",
+        "saved": "Enregistrés",
         "setting": {
-            "toast": "Nom invalide, veuillez saisir un nom valide.",
-            "title": "Mettre à jour le profil",
+            "toast": "Nom invalide. Veuillez saisir un nom valide.",
+            "toast-2": "Succès ! Vos modifications ont été enregistrées.",
+            "title": "Paramètres du compte",
             "name": "Nom complet",
             "bio": "Bio",
-            "email": "E-mail",
+            "email": "Adresse e-mail",
+            "website": "Site web",
+            "address": "Adresse",
+            "userId": "Identifiant utilisateur",
             "avatar": "Avatar",
             "cover": "Image de couverture",
-            "submit": "Mettre à jour le profil"
+            "submit": "Enregistrer"
         }
     },
     "createPost": {
         "toast-1": "Image téléchargée avec succès !",
-        "toast-2": "Échec de l'envoi de la publication. Veuillez vous assurer que votre publication respecte les exigences.",
+        "toast-2": "Échec de la soumission de la publication. Veuillez vous assurer que votre publication respecte les exigences.",
         "submit": "Publier",
         "title": "Créer une publication",
         "public": "Public",
         "private": "Privé",
-        "placeholder": "Écrivez quelque chose pour accompagner l'image..."
+        "placeholder": "Qu'avez-vous en tête"
     },
     "admin": {
         "title": "Liste des utilisateurs",
-        "more": "Charger plus...",
+        "more": "Afficher plus...",
         "registered": "Inscrit le",
         "view": "Voir",
-        "unverify": "Décertifier",
-        "verify": "Certifier"
+        "unverify": "Désapprouver",
+        "verify": "Approuver"
     },
     "pageError": {
         "button": "Retour à l'accueil",
@@ -105,8 +140,344 @@
             "desc": "La page demandée n'existe pas. Vous n'êtes pas autorisé à accéder à la zone d'administration."
         },
         "404": {
-            "title": "Page introuvable",
-            "desc": "Page introuvable. Veuillez vérifier l'URL ou revenir à la page d'accueil."
+            "title": "Page non trouvée",
+            "desc": "Page non trouvée. Veuillez vérifier l'URL ou retourner à la page d'accueil."
+        }
+    },
+    "Language": {
+        "title": "Choisissez la langue"
+    },
+    "suggestion": {
+        "request": {
+            "title": "Demande",
+            "desc": "veut vous ajouter en tant qu'ami",
+            "accept": "Accepter",
+            "decline": "Refuser"
+        },
+        "friendActive": {
+            "title": "Contacts"
+        }
+    },
+    "theme": {
+        "dark": "Sombre",
+        "light": "Clair",
+        "theme": "Thème"
+    },
+    "privacyPolicy": "Politique de confidentialité",
+    "termsConditions": "Conditions générales",
+    "cookiesPolicy": "Politique de cookies",
+    "privacyPolicyPage": {
+        "title": "Politique de confidentialité",
+        "lastUpdated": "Dernière mise à jour : 25 juin 2023",
+        "description1": "Cette politique de confidentialité décrit nos politiques et procédures concernant la collecte, l'utilisation et la divulgation de vos informations lorsque vous utilisez le service, et vous informe de vos droits en matière de confidentialité et de la protection légale qui vous est accordée.",
+        "description2": "Nous utilisons vos données personnelles pour fournir et améliorer le service. En utilisant le service, vous acceptez la collecte et l'utilisation des informations conformément à cette politique de confidentialité.",
+        "interpretation": {
+            "title": "Interprétation et Définitions",
+            "interpretationHeading": "Interprétation",
+            "interpretationDescription": "Les mots dont la première lettre est en majuscule ont des significations définies dans les conditions suivantes. Les définitions suivantes auront la même signification, qu'elles apparaissent au singulier ou au pluriel.",
+            "definitionsHeading": "Définitions",
+            "definitions": {
+                "overView": "Aux fins de cette politique de confidentialité :",
+                "arrayMap": [
+                    {
+                        "title": "Compte",
+                        "description": "désigne un compte unique créé pour vous permettre d'accéder à notre Service ou à certaines parties de notre Service."
+                    },
+                    {
+                        "title": "Affilié",
+                        "description": "désigne une entité qui contrôle, est contrôlée par ou est sous le contrôle commun d'une partie, où \"contrôle\" signifie la propriété de 50 % ou plus des actions, intérêts ou autres titres donnant droit de vote pour l'élection des administrateurs ou autre autorité de gestion."
+                    },
+                    {
+                        "title": "Société",
+                        "description": "(désignée par \"la Société\", \"Nous\", \"Notre\" ou \"Nos\" dans cet accord) fait référence à Snap Share."
+                    },
+                    {
+                        "title": "Cookies",
+                        "description": "sont de petits fichiers placés sur votre ordinateur, appareil mobile ou tout autre appareil par un site web, contenant les détails de votre historique de navigation sur ce site web parmi ses nombreuses utilisations."
+                    },
+                    {
+                        "title": "Pays",
+                        "description": "fait référence à : Vietnam"
+                    },
+                    {
+                        "title": "Appareil",
+                        "description": "désigne tout appareil pouvant accéder au Service, tel qu'un ordinateur, un téléphone portable ou une tablette numérique."
+                    },
+                    {
+                        "title": "Données personnelles",
+                        "description": "désigne toute information se rapportant à une personne physique identifiée ou identifiable."
+                    },
+                    {
+                        "title": "Service",
+                        "description": "fait référence au Site web."
+                    },
+                    {
+                        "title": "Prestataire de services",
+                        "description": "désigne toute personne physique ou morale qui traite les données pour le compte de la Société. Il s'agit de sociétés ou de particuliers tiers employés par la Société pour faciliter le Service, fournir le Service pour le compte de la Société, effectuer des services liés au Service ou aider la Société à analyser l'utilisation du Service."
+                    },
+                    {
+                        "title": "Service de médias sociaux tiers",
+                        "description": "fait référence à tout site web ou réseau social via lequel un utilisateur peut se connecter ou créer un compte pour utiliser le Service."
+                    },
+                    {
+                        "title": "Données d'utilisation",
+                        "description": "fait référence aux données collectées automatiquement, générées par l'utilisation du Service ou de l'infrastructure du Service elle-même (par exemple, la durée d'une visite de page)."
+                    }
+                ],
+                "website": {
+                    "title": "Site web",
+                    "description": "fait référence à Snap Share, accessible depuis ",
+                    "URL": "https://snap-share-78f51.web.app/"
+                },
+                "you": {
+                    "title": "Vous",
+                    "description": "désigne la personne physique accédant ou utilisant le Service, ou la société ou autre entité juridique pour le compte de laquelle cette personne accède ou utilise le Service, le cas échéant."
+                }
+            }
+        },
+        "collectingAndUsingData": {
+            "title": "Collecte et utilisation de vos données personnelles",
+            "dataCollected": {
+                "title": "Types de données collectées",
+                "personalData": {
+                    "title": "Données personnelles",
+                    "description": "Lorsque vous utilisez notre Service, nous pouvons vous demander de nous fournir certaines informations personnelles identifiables qui peuvent être utilisées pour vous contacter ou vous identifier. Les informations personnelles identifiables peuvent inclure, sans s'y limiter :"
+                },
+                "personalDataPoints": ["Adresse e-mail", "Prénom et nom de famille", "Données d'utilisation"]
+            },
+            "usageData": {
+                "title": "Données d'utilisation",
+                "description": "Les données d'utilisation sont collectées automatiquement lors de l'utilisation du Service."
+            },
+            "usageDataPoints": [
+                "Les données d'utilisation peuvent inclure des informations telles que l'adresse de protocole Internet (adresse IP) de votre appareil, le type de navigateur, la version du navigateur, les pages de notre Service que vous visitez, l'heure et la date de votre visite, le temps passé sur ces pages, des identifiants d'appareil uniques et d'autres données de diagnostic.",
+                "Lorsque vous accédez au Service via un appareil mobile, nous pouvons collecter automatiquement certaines informations, notamment le type d'appareil mobile que vous utilisez, l'identifiant unique de votre appareil mobile, l'adresse IP de votre appareil mobile, le système d'exploitation mobile que vous utilisez, le type de navigateur Internet mobile que vous utilisez, des identifiants d'appareil uniques et d'autres données de diagnostic.",
+                "Nous pouvons également collecter des informations que votre navigateur envoie chaque fois que vous visitez notre Service ou lorsque vous accédez au Service via un appareil mobile."
+            ],
+            "mobileDeviceData": {
+                "title": "Informations provenant de services de médias sociaux tiers",
+                "description": "La Société vous permet de créer un compte et de vous connecter pour utiliser le Service via les services de médias sociaux tiers suivants :"
+            },
+            "mobileDeviceDataPoints": ["Google", "Facebook", "Instagram", "Twitter", "LinkedIn"],
+            "mobileDeviceDataAdditionalInfo": {
+                "title": "Informations provenant de services de médias sociaux tiers (suite)",
+                "description_1": "Si vous décidez de vous inscrire ou de nous accorder l'accès à un service de médias sociaux tiers, nous pouvons collecter des données personnelles qui sont déjà associées à votre compte de service de médias sociaux tiers, telles que votre nom, votre adresse e-mail, vos activités ou votre liste de contacts associée à ce compte.",
+                "description_2": "Vous pouvez également avoir la possibilité de partager des informations supplémentaires avec la Société via votre compte de service de médias sociaux tiers. Si vous choisissez de fournir de telles informations et des données personnelles, lors de l'inscription ou autrement, vous donnez à la Société la permission de les utiliser, de les partager et de les stocker conformément à cette politique de confidentialité."
+            },
+            "trackingTechnologies": {
+                "title": "Technologies de suivi et cookies",
+                "description": "Nous utilisons des cookies et des technologies de suivi similaires pour suivre l'activité sur notre Service et stocker certaines informations. Les technologies de suivi utilisées sont les balises, les tags et les scripts pour collecter et suivre des informations et améliorer et analyser notre Service. Les technologies que nous utilisons peuvent inclure :"
+            },
+            "trackingTechnologiesPoints": [
+                {
+                    "title": "Cookies ou cookies de navigateur :",
+                    "desc": "Un cookie est un petit fichier placé sur votre appareil. Vous pouvez demander à votre navigateur de refuser tous les cookies ou de vous indiquer quand un cookie est envoyé. Cependant, si vous n'acceptez pas les cookies, il se peut que vous ne puissiez pas utiliser certaines parties de notre Service. À moins que vous n'ayez ajusté les paramètres de votre navigateur pour refuser les cookies, notre Service peut utiliser des cookies."
+                },
+                {
+                    "title": "Balises Web :",
+                    "desc": "Certaines sections de notre Service et de nos e-mails peuvent contenir de petits fichiers électroniques appelés balises web (également appelés gifs transparents, tags pixel et gifs pixel unique) qui permettent à la Société, par exemple, de compter les utilisateurs qui ont visité ces pages ou ouvert un e-mail et d'autres statistiques relatives au site web (par exemple, enregistrer la popularité d'une certaine section et vérifier l'intégrité du système et du serveur)."
+                }
+            ],
+            "trackingTechnologiesPointsOverview": "Les cookies peuvent être des cookies « persistants » ou des cookies « de session ». Les cookies persistants restent sur votre ordinateur personnel ou votre appareil mobile lorsque vous êtes hors ligne, tandis que les cookies de session sont supprimés dès que vous fermez votre navigateur web. Pour en savoir plus sur les cookies, consultez l'article du site web Free Privacy Policy.",
+            "cookiesPolicy": {
+                "title": "Politique de cookies :",
+                "description": "Nous utilisons à la fois des cookies de session et des cookies persistants pour les objectifs décrits ci-dessous :"
+            },
+            "cookiesPolicyPoints": [
+                {
+                    "typeName": "Type",
+                    "type": "Cookies nécessaires / essentiels",
+                    "cookieType": "Cookies de session",
+                    "administeredByName": "Administrés par",
+                    "administeredBy": "Nous",
+                    "purposeName": "Objectif",
+                    "purpose": "Ces cookies sont essentiels pour vous fournir les services disponibles sur le site Web et vous permettre d'utiliser certaines de ses fonctionnalités. Ils aident à authentifier les utilisateurs et à prévenir une utilisation frauduleuse des comptes d'utilisateur. Sans ces cookies, les services que vous avez demandés ne peuvent pas être fournis, et nous utilisons uniquement ces cookies pour vous fournir ces services."
+                },
+                {
+                    "typeName": "Type",
+                    "administeredByName": "Administrés par",
+                    "purposeName": "Objectif",
+                    "type": "Cookies de politique / d'acceptation des avis",
+                    "cookieType": "Cookies persistants",
+                    "administeredBy": "Nous",
+                    "purpose": "Ces cookies permettent de savoir si les utilisateurs ont accepté l'utilisation de cookies sur le site Web."
+                },
+                {
+                    "typeName": "Type",
+                    "administeredByName": "Administrés par",
+                    "purposeName": "Objectif",
+                    "type": "Cookies de fonctionnalité",
+                    "cookieType": "Cookies persistants",
+                    "administeredBy": "Nous",
+                    "purpose": "Ces cookies nous permettent de mémoriser les choix que vous faites lorsque vous utilisez le site Web, tels que vos informations de connexion ou vos préférences linguistiques. L'objectif de ces cookies est de vous fournir une expérience plus personnalisée et d'éviter que vous n'ayez à saisir à nouveau vos préférences à chaque fois que vous utilisez le site Web."
+                }
+            ],
+            "additionalInfo": "Pour plus d'informations sur les cookies que nous utilisons et vos choix concernant les cookies, veuillez consulter notre politique de cookies ou la section Cookies de notre politique de confidentialité."
+        },
+        "useOfPersonalData": {
+            "title": "Utilisation de vos données personnelles",
+            "overView_1": "La société peut utiliser des données personnelles à des fins suivantes :",
+            "purposes": [
+                {
+                    "purpose_highlight": "Fournir et maintenir notre service,",
+                    "purpose": "y compris surveiller l'utilisation de notre service."
+                },
+                {
+                    "purpose_highlight": "Gérer votre compte :",
+                    "purpose": "gérer votre inscription en tant qu'utilisateur du service. Les données personnelles que vous fournissez peuvent vous donner accès à différentes fonctionnalités du service qui sont disponibles pour vous en tant qu'utilisateur enregistré."
+                },
+                {
+                    "purpose_highlight": "Pour l'exécution d'un contrat :",
+                    "purpose": "le développement, le respect et la réalisation du contrat d'achat des produits, articles ou services que vous avez achetés ou de tout autre contrat avec nous par le biais du service."
+                },
+                {
+                    "purpose_highlight": "Vous contacter :",
+                    "purpose": "vous contacter par e-mail, appels téléphoniques, SMS ou d'autres formes de communication électronique équivalentes, telles que les notifications push d'une application mobile, concernant les mises à jour ou les communications informatives liées aux fonctionnalités, produits ou services contractés, y compris les mises à jour de sécurité, lorsque cela est nécessaire ou raisonnable pour leur mise en œuvre."
+                },
+                {
+                    "purpose_highlight": "Vous fournir des actualités, des offres spéciales et des informations générales sur d'autres biens, services et événements",
+                    "purpose": "que nous proposons et qui sont similaires à ceux que vous avez déjà achetés ou sur lesquels vous avez déjà demandé des informations, sauf si vous avez choisi de ne pas recevoir de telles informations."
+                },
+                {
+                    "purpose_highlight": "Gérer vos demandes :",
+                    "purpose": "répondre à vos demandes et les gérer."
+                },
+                {
+                    "purpose_highlight": "Pour les transferts d'entreprise :",
+                    "purpose": "nous pouvons utiliser vos informations pour évaluer ou réaliser une fusion, une cession, une restructuration, une réorganisation, une dissolution ou une autre vente ou transfert de tout ou partie de nos actifs, que ce soit dans le cadre d'une entreprise en cours ou d'une procédure de faillite, de liquidation ou similaire, dans laquelle les données personnelles détenues par nous concernant les utilisateurs de notre service font partie des actifs transférés."
+                },
+                {
+                    "purpose_highlight": "À d'autres fins :",
+                    "purpose": "nous pouvons utiliser vos informations à d'autres fins, telles que l'analyse des données, l'identification des tendances d'utilisation, la détermination de l'efficacité de nos campagnes promotionnelles et l'évaluation et l'amélioration de notre service, de nos produits, de nos services, de notre marketing et de votre expérience."
+                }
+            ],
+            "overView_2": "Nous pouvons partager vos informations personnelles dans les situations suivantes :",
+            "sharingSituations": [
+                {
+                    "situation_highlight": "Avec les prestataires de services :",
+                    "situation": "Nous pouvons partager vos informations personnelles avec des prestataires de services pour surveiller et analyser l'utilisation de notre service et vous contacter."
+                },
+                {
+                    "situation_highlight": "Pour les transferts d'entreprise :",
+                    "situation": "Nous pouvons partager ou transférer vos informations personnelles dans le cadre de toute fusion, vente d'actifs de l'entreprise, financement ou acquisition de la totalité ou d'une partie de notre activité par une autre société, ou lors de négociations en vue de telles opérations."
+                },
+                {
+                    "situation_highlight": "Avec les sociétés affiliées :",
+                    "situation": "Nous pouvons partager vos informations avec nos sociétés affiliées, auquel cas nous demanderons à ces sociétés d'honorer cette politique de confidentialité. Les sociétés affiliées comprennent notre société mère et toutes les filiales, partenaires de coentreprise ou autres sociétés que nous contrôlons ou qui sont sous notre contrôle commun."
+                },
+                {
+                    "situation_highlight": "Avec les partenaires commerciaux :",
+                    "situation": "Nous pouvons partager vos informations avec nos partenaires commerciaux pour vous proposer certains produits, services ou promotions."
+                },
+                {
+                    "situation_highlight": "Avec d'autres utilisateurs :",
+                    "situation": "Lorsque vous partagez des informations personnelles ou interagissez dans les zones publiques avec d'autres utilisateurs, ces informations peuvent être consultées par tous les utilisateurs et diffusées publiquement. Si vous interagissez avec d'autres utilisateurs ou vous inscrivez via un service de médias sociaux tiers, les contacts de votre compte de médias sociaux tiers peuvent voir votre nom, votre profil, vos photos et la description de votre activité. De même, les autres utilisateurs pourront consulter les descriptions de votre activité, communiquer avec vous et consulter votre profil."
+                },
+                {
+                    "situation_highlight": "Avec votre consentement :",
+                    "situation": "Nous pouvons divulguer vos informations personnelles à d'autres fins avec votre consentement."
+                }
+            ]
+        },
+        "retentionOfData": {
+            "title": "Conservation de vos données personnelles",
+            "paragraphs": [
+                {
+                    "text": "La société ne conservera vos données personnelles que pendant la durée nécessaire aux fins énoncées dans cette politique de confidentialité. Nous conserverons et utiliserons vos données personnelles dans la mesure nécessaire pour respecter nos obligations légales (par exemple, si nous sommes tenus de conserver vos données pour nous conformer aux lois applicables), régler les litiges et faire respecter nos accords et politiques juridiques."
+                },
+                {
+                    "text": "La société conservera également les données d'utilisation à des fins d'analyse interne. Les données d'utilisation sont généralement conservées pendant une période plus courte, sauf lorsque ces données sont utilisées pour renforcer la sécurité ou améliorer la fonctionnalité de notre service, ou lorsque nous sommes légalement obligés de conserver ces données pendant des périodes plus longues."
+                }
+            ]
+        },
+        "transferOfData": {
+            "title": "Transfert de vos données personnelles",
+            "paragraphs": [
+                {
+                    "text": "Vos informations, y compris vos données personnelles, sont traitées dans les bureaux d'exploitation de la société et dans tout autre lieu où les parties impliquées dans le traitement sont situées. Cela signifie que ces informations peuvent être transférées vers des ordinateurs situés en dehors de votre état, province, pays ou autre juridiction gouvernementale où les lois sur la protection des données peuvent différer de celles de votre juridiction."
+                },
+                {
+                    "text": "Votre consentement à cette politique de confidentialité, suivi de la soumission de ces informations, constitue votre accord à ce transfert."
+                },
+                {
+                    "text": "La société prendra toutes les mesures raisonnablement nécessaires pour garantir que vos données sont traitées de manière sécurisée et conformément à cette politique de confidentialité, et aucun transfert de vos données personnelles ne sera effectué vers une organisation ou un pays sans garanties adéquates, y compris la sécurité de vos données et autres informations personnelles."
+                }
+            ]
+        },
+        "deletePersonalData": {
+            "title": "Supprimer vos données personnelles",
+            "paragraphs": [
+                {
+                    "text": "Vous avez le droit de supprimer ou de demander notre assistance pour supprimer les données personnelles que nous avons collectées à votre sujet."
+                },
+                {
+                    "text": "Notre service peut vous permettre de supprimer certaines informations vous concernant à partir de celui-ci."
+                },
+                {
+                    "text": "Vous pouvez mettre à jour, modifier ou supprimer vos informations à tout moment en vous connectant à votre compte, le cas échéant, et en visitant la section des paramètres du compte qui vous permet de gérer vos informations personnelles. Vous pouvez également nous contacter pour demander l'accès, la correction ou la suppression de toute information personnelle que vous nous avez fournie."
+                },
+                {
+                    "text": "Veuillez noter, cependant, que nous pouvons être tenus de conserver certaines informations lorsque nous avons une obligation légale ou une base juridique pour le faire."
+                }
+            ]
+        },
+        "disclosureOfPersonalData": {
+            "title": "Divulgation de vos données personnelles",
+            "businessTransactions": {
+                "title": "Transactions commerciales",
+                "content": "Si la société est impliquée dans une fusion, une acquisition ou une vente d'actifs, vos données personnelles peuvent être transférées. Nous vous informerons avant que vos données personnelles ne soient transférées et ne deviennent soumises à une politique de confidentialité différente."
+            },
+            "lawEnforcement": {
+                "title": "Application de la loi",
+                "content": "Dans certaines circonstances, la société peut être tenue de divulguer vos données personnelles si elle est légalement tenue de le faire ou en réponse à des demandes valides des autorités publiques (par exemple, un tribunal ou une agence gouvernementale)."
+            },
+            "otherLegalRequirements": {
+                "title": "Autres obligations légales",
+                "content": "La société peut divulguer vos données personnelles de bonne foi si une telle action est nécessaire pour :",
+                "listItems": [
+                    "Se conformer à une obligation légale",
+                    "Protéger et défendre les droits ou les biens de la société",
+                    "Prévenir ou enquêter sur d'éventuels actes répréhensibles liés au service",
+                    "Protéger la sécurité personnelle des utilisateurs du service ou du public",
+                    "Se protéger contre une responsabilité légale"
+                ]
+            }
+        },
+        "securityOfPersonalData": {
+            "title": "Sécurité de vos données personnelles",
+            "content": "La sécurité de vos données personnelles est importante pour nous, mais rappelez-vous qu'aucune méthode de transmission sur Internet ou de stockage électronique n'est sûre à 100 %. Bien que nous nous efforcions d'utiliser des moyens commercialement acceptables pour protéger vos données personnelles, nous ne pouvons garantir leur sécurité absolue."
+        },
+        "childrensPrivacy": {
+            "title": "Confidentialité des enfants",
+            "content_1": "Notre service ne s'adresse pas aux personnes de moins de 13 ans. Nous ne collectons sciemment aucune information permettant d'identifier personnellement des personnes de moins de 13 ans. Si vous êtes parent ou tuteur et que vous savez que votre enfant nous a fourni des données personnelles, veuillez nous contacter. Si nous apprenons que nous avons collecté des données personnelles auprès de personnes de moins de 13 ans sans vérification du consentement parental, nous prendrons des mesures pour supprimer ces informations de nos serveurs.",
+            "content_2": "Si nous devons nous appuyer sur le consentement en tant que base légale pour traiter vos informations et que votre pays exige le consentement d'un parent, nous pouvons exiger le consentement de votre parent avant de collecter et d'utiliser ces informations."
+        },
+        "linksToOtherWebsites": {
+            "title": "Liens vers d'autres sites web",
+            "content_1": "Notre service peut contenir des liens vers d'autres sites web qui ne sont pas exploités par nous. Si vous cliquez sur un lien tiers, vous serez dirigé vers le site de ce tiers. Nous vous recommandons vivement de consulter la politique de confidentialité de chaque site que vous visitez.",
+            "content_2": "Nous n'avons aucun contrôle sur le contenu, les politiques de confidentialité ou les pratiques des sites ou services tiers et n'assumons aucune responsabilité à leur égard."
+        },
+        "changesToPrivacyPolicy": {
+            "title": "Modification de cette politique de confidentialité",
+            "content_1": "Nous pouvons mettre à jour notre politique de confidentialité de temps à autre. Nous vous informerons de toute modification en publiant la nouvelle politique de confidentialité sur cette page.",
+            "content_2": "Nous vous informerons par e-mail et/ou par un avis important sur notre service avant que le changement ne prenne effet et nous mettrons à jour la date de \"Dernière mise à jour\" en haut de cette politique de confidentialité.",
+            "content_3": "Nous vous recommandons de consulter périodiquement cette politique de confidentialité pour prendre connaissance des éventuelles modifications. Les modifications apportées à cette politique de confidentialité entrent en vigueur lorsqu'elles sont publiées sur cette page."
+        },
+        "contactUs": {
+            "title": "Contactez-nous",
+            "overView": "Si vous avez des questions concernant cette politique de confidentialité, vous pouvez nous contacter :",
+            "content": [
+                {
+                    "href": "mailto: ",
+                    "title": "Par e-mail : ",
+                    "content": "support@snap-share-78f51.firebaseapp.com"
+                },
+                {
+                    "href": "tel: ",
+                    "title": "Numéro de téléphone : ",
+                    "content": "+84 399998943"
+                }
+            ]
         }
     }
 }

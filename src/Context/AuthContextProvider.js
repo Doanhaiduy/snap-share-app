@@ -103,6 +103,28 @@ function AuthContextProvider({ children }) {
         dispatch({ type: actionTypes.SET_USER_POSTS, payload: listPostTemp });
     };
 
+    const setPinPost = async (uid) => {
+        if (uid) {
+            const docRef = doc(db, "posts", uid);
+            await setDoc(docRef, { isPinPost: true }, { merge: true });
+        }
+        const q = query(collection(db, "posts"), where("isPinPost", "==", true));
+        const querySnapshot = await getDocs(q);
+        const listPinPosts = querySnapshot.docs.map((doc) => doc.data());
+        dispatch({ type: actionTypes.SET_PIN_POSTS, payload: listPinPosts });
+    };
+
+    const unPinPost = async (uid) => {
+        if (uid) {
+            const docRef = doc(db, "posts", uid);
+            await setDoc(docRef, { isPinPost: false }, { merge: true });
+        }
+        const q = query(collection(db, "posts"), where("isPinPost", "==", true));
+        const querySnapshot = await getDocs(q);
+        const listPinPosts = querySnapshot.docs.map((doc) => doc.data());
+        dispatch({ type: actionTypes.SET_PIN_POSTS, payload: listPinPosts });
+    };
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
@@ -132,26 +154,6 @@ function AuthContextProvider({ children }) {
         };
     }, []);
 
-    const setPinPost = async (uid) => {
-        if (uid) {
-            const docRef = doc(db, "posts", uid);
-            await setDoc(docRef, { isPinPost: true }, { merge: true });
-        }
-        const q = query(collection(db, "posts"), where("isPinPost", "==", true));
-        const querySnapshot = await getDocs(q);
-        const listPinPosts = querySnapshot.docs.map((doc) => doc.data());
-        dispatch({ type: actionTypes.SET_PIN_POSTS, payload: listPinPosts });
-    };
-    const unPinPost = async (uid) => {
-        if (uid) {
-            const docRef = doc(db, "posts", uid);
-            await setDoc(docRef, { isPinPost: false }, { merge: true });
-        }
-        const q = query(collection(db, "posts"), where("isPinPost", "==", true));
-        const querySnapshot = await getDocs(q);
-        const listPinPosts = querySnapshot.docs.map((doc) => doc.data());
-        dispatch({ type: actionTypes.SET_PIN_POSTS, payload: listPinPosts });
-    };
     const authProviderValue = useMemo(
         () => ({
             currentUser,

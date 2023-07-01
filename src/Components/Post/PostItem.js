@@ -148,7 +148,7 @@ function PostItem({ post, limit, isProfile = false }) {
     return (
         <div className="relative bg-white dark:bg-[#282828] dark:text-primary5  rounded-[12px] " ref={optionRef}>
             {showModal ? <ModalPost handleToggleModal={handleToggleModal} data={post} authorPost={authorPost} /> : null}
-            <div className="p-4 shadow-2xl rounded-[12px] transition relative" key={post.uid}>
+            <div className="p-4 shadow-2xl rounded-[12px]  relative" key={post.uid}>
                 <Link
                     to={`/profile/${authorPost?.nameId || authorPost?.uid}`}
                     className="inline-flex items-center gap-3"
@@ -188,14 +188,14 @@ function PostItem({ post, limit, isProfile = false }) {
                             {currentUser?.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" ? (
                                 !post.isPinPost ? (
                                     <p
-                                        className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
+                                        className="py-1 px-4 hover:bg-slate-500 hover:text-white  cursor-pointer "
                                         onClick={() => setPinPost(post?.uid)}
                                     >
                                         {t("post.pin")}
                                     </p>
                                 ) : (
                                     <p
-                                        className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
+                                        className="py-1 px-4 hover:bg-slate-500 hover:text-white  cursor-pointer "
                                         onClick={() => unPinPost(post?.uid)}
                                     >
                                         {t("post.unpin")}
@@ -206,7 +206,7 @@ function PostItem({ post, limit, isProfile = false }) {
                             {post.uidUser === currentUser?.uid ||
                             currentUser?.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" ? (
                                 <p
-                                    className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
+                                    className="py-1 px-4 hover:bg-slate-500 hover:text-white  cursor-pointer "
                                     onClick={handleRemovePost}
                                 >
                                     {t("post.remove")}
@@ -214,19 +214,19 @@ function PostItem({ post, limit, isProfile = false }) {
                             ) : null}
                             {currentUser?.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" && (
                                 <p
-                                    className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
+                                    className="py-1 px-4 hover:bg-slate-500 hover:text-white  cursor-pointer "
                                     onClick={handleHackLike}
                                 >
                                     + {t("post.random")}
                                 </p>
                             )}
                             <p
-                                className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer "
+                                className="py-1 px-4 hover:bg-slate-500 hover:text-white  cursor-pointer "
                                 onClick={handleSaveImage}
                             >
                                 {t("post.save")}
                             </p>
-                            <p className="py-1 px-4 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer ">
+                            <p className="py-1 px-4 hover:bg-slate-500 hover:text-white  cursor-pointer ">
                                 {t("post.report")}
                             </p>
                         </div>

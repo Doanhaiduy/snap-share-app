@@ -6,7 +6,7 @@ function Language(props) {
     const lang = JSON.parse(localStorage.getItem("language"));
     return (
         <div className="lg:col-span-4 col-span-5 pt-[80px] min-h-[100vh] dark:text-primary5">
-            <h2 className="font-semibold text-[2rem] mb-5">Choose Language</h2>
+            <h2 className="font-semibold text-[2rem] mb-5">{t("Language.title")}</h2>
             <nav className=" grid lg:grid-cols-5 sm:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5 p-4">
                 <div className="px-5 py-2 bg-blue-600 line-clamp-1 dark:bg-primary1 dark:hover:bg-yellow-500 rounded-[4px]  hover:bg-blue-700 ">
                     <p

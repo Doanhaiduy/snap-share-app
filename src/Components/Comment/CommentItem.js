@@ -85,17 +85,17 @@ const CommentItem = React.memo(({ data }) => {
                                 currentUser.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2") && (
                                 <>
                                     <p
-                                        className="text-[1.1rem] py-1 px-2 hover:bg-slate-500 hover:text-white transition-colors"
+                                        className="text-[1.1rem] py-1 px-2 hover:bg-slate-500 hover:text-white "
                                         onClick={handleDeleteComment}
                                     >
                                         {t("comment.delete")}
                                     </p>
-                                    <p className="text-[1.1rem] py-1 px-2 hover:bg-slate-500 hover:text-white transition-colors">
+                                    <p className="text-[1.1rem] py-1 px-2 hover:bg-slate-500 hover:text-white ">
                                         {t("comment.edit")}
                                     </p>
                                 </>
                             )}
-                            <p className="text-[1.1rem] py-1 px-2 hover:bg-slate-500 hover:text-white transition-colors">
+                            <p className="text-[1.1rem] py-1 px-2 hover:bg-slate-500 hover:text-white ">
                                 {t("comment.report")}
                             </p>
                         </div>

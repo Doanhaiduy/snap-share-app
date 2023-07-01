@@ -13,11 +13,11 @@ import NotFound from "./pages/NotFound/NotFound";
 import { Spin } from "antd";
 import { MultiLanguageContext } from "./Context/MultiLanguageContextProvider";
 import Footer from "./Components/Footer/Footer";
-import Theme from "./Components/Theme/Theme";
 import Navbar from "./Components/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
 import Language from "./pages/Language/Language";
 import Suggestions from "./Components/Suggestions/Suggestions ";
+import MoreAction from "./Components/MoreAction/MoreAction";
 
 function App() {
     const { currentUser, isCurrentUser } = useContext(AuthContext);
@@ -30,7 +30,6 @@ function App() {
     ) : (
         <BrowserRouter>
             <ToastContainer />
-            <Theme />
             {!isCurrentUser && <Navigate to="/login" />}
             {isCurrentUser && <Header setLoading={setLoading} />}
             <div
@@ -52,13 +51,13 @@ function App() {
                     />
                     <Route element={<Profile />} path="/profile/:uid/*" />
                     <Route element={<Admin />} path="/admin" />
-
-                    <Route element={<NotFound />} path="*" />
                     <Route element={<Language />} path="/language" />
+                    <Route element={<NotFound />} path="*" />
                 </Routes>
                 {isCurrentUser && window.location.pathname === "/" && <Suggestions />}
             </div>
             {!isCurrentUser && <Footer />}
+            <MoreAction />
         </BrowserRouter>
     );
 }

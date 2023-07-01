@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineEllipsis } from "react-icons/ai";
 
-function FriendActiveItem(props) {
+function FriendActiveItem() {
     return (
         <div className="flex items-center gap-4">
             <img className="w-[35px] h-[35px] rounded-[12px]" src="https://source.unsplash.com/random" alt="" />

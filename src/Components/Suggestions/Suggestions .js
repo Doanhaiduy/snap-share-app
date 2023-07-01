@@ -3,8 +3,9 @@ import Request from "../Request/Request";
 import FriendActive from "../FriendActive/FriendActive";
 import { AiOutlineAlignRight, AiOutlineClose, AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 
-function Suggestions(props) {
+function Suggestions() {
     const [showOption, setShowOption] = useState(false);
+
     useEffect(() => {
         function handleResize() {
             if (window.outerWidth >= 1024) {
@@ -31,7 +32,7 @@ function Suggestions(props) {
                         onClick={() => {
                             setShowOption(!showOption);
                         }}
-                        className="text-[2.5rem] absolute right-0  cursor-pointer p-2 rounded-[12px]"
+                        className="text-[2.5rem] absolute right-[16px] cursor-pointer p-2 rounded-[12px]"
                     />
                 ) : (
                     <AiOutlineAlignRight

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { BsPlus } from "react-icons/bs";
 import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { Link } from "react-router-dom";
 
 function Footer() {
     const { t, handleChangeLanguage } = useContext(MultiLanguageContext);
@@ -70,6 +71,7 @@ function Footer() {
                         </p>
                     </div>
                 </nav>
+
                 <div className="flex justify-center mt-8 space-x-6">
                     <p className="text-gray-400 hover:text-gray-500">
                         <span className="sr-only">Facebook</span>
@@ -118,8 +120,9 @@ function Footer() {
                         </svg>
                     </p>
                 </div>
+
                 <p className="mt-8 text-base leading-6 text-center text-gray-400 dark:text-primary5 ">
-                    © 2021 DuyDH, Inc. All rights reserved.
+                    © 2021 DuyDH, Inc. {t("copyRight")}
                 </p>
             </div>
         </section>

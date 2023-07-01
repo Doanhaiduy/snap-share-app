@@ -71,8 +71,8 @@ function Search(props) {
                 )}
                 onClickOutside={handleHideResult}
             >
-                <div className="flex items-center gap-2 bg-slate-200 transition-all duration-300 ease-in-out dark:bg-primary2 rounded-[12px]">
-                    <span className="flex-shrink-0 transition-all duration-300 ease-in-out text-gray-500 ml-1 dark:text-primary5 ">
+                <div className="flex items-center gap-2 bg-slate-200  dark:bg-primary2 rounded-[12px]">
+                    <span className="flex-shrink-0  text-gray-500 ml-1 dark:text-primary5 ">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="w-5 h-5"
@@ -91,7 +91,7 @@ function Search(props) {
                     <input
                         onChange={(e) => setSearchInput(e.target.value)}
                         type="text"
-                        className="text-[1.1rem] transition-all duration-300 ease-in-out max-w-[300px] dark:placeholder:text-white lg:w-[320px] sm:w-[200px] w-[150px]  h-[40px] outline-none bg-slate-200 dark:bg-primary2 dark:text-primary5  rounded-[12px] pr-2  placeholder:text-[12px] sm:placeholder:text-[16px]"
+                        className="text-[1.1rem]  max-w-[300px] dark:placeholder:text-white lg:w-[320px] sm:w-[200px] w-[150px]  h-[40px] outline-none bg-slate-200 dark:bg-primary2 dark:text-primary5  rounded-[12px] pr-2  placeholder:text-[12px] sm:placeholder:text-[16px]"
                         placeholder={t("search.placeholder")}
                         onFocus={handleShowResult}
                     />

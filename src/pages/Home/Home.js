@@ -3,9 +3,12 @@ import NewsFeed from "../../Components/NewsFeed/NewsFeed";
 import { useContext, useRef } from "react";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import { Link } from "react-router-dom";
+import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
 
 function Home() {
     const { userInfo } = useContext(AuthContext);
+    const { t } = useContext(MultiLanguageContext);
+
     const scrollRef = useRef();
     return (
         <div
@@ -18,14 +21,14 @@ function Home() {
                         <img src={userInfo?.photoURL} alt="" className="w-[40px] h-[40px] rounded-[12px]" />
                     </div>
                     <Link className="font-semibold text-[#aaa] cursor-text" to="/createPost">
-                        What's new, {userInfo.name}
+                        {t("home.new")}, {userInfo.name}
                     </Link>
                 </div>
                 <Link
                     to="/createPost"
-                    className="text-[14px] transition-all duration-300 ease-in-out flex gap-1 items-center cursor-pointer hover:opacity-90 h-[40px] px-3 text-white font-medium rounded-[12px] bg-blue-600  dark:text-primary2 dark:bg-primary1"
+                    className="text-[14px]  flex gap-1 items-center cursor-pointer hover:opacity-90 h-[40px] px-3 text-white font-medium rounded-[12px] bg-blue-600  dark:text-primary2 dark:bg-primary1"
                 >
-                    <BiLinkAlt className="text-[20px]" /> Post It!
+                    <BiLinkAlt className="text-[20px]" /> {t("home.post")}
                 </Link>
             </div>
             <NewsFeed scrollRef={scrollRef} />
