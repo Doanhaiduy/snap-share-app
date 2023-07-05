@@ -1,9 +1,9 @@
 import React, { useContext, useState, useCallback } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import ShowEmoji from "../ShowEmoji/ShowEmoji";
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db, storage } from "../../firebase/firebase-config";
+import { db, storage } from "~/firebase/firebase-config";
 import { format } from "date-fns";
 import ListComment from "./ListComment";
 import { v4 } from "uuid";

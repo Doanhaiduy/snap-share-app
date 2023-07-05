@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { AiFillClockCircle, AiFillEnvironment, AiFillSignal, AiOutlineGlobal } from "react-icons/ai";
-import Hobby from "../../Components/Hooby/Hobby";
+import Hobby from "~/Components/Hooby/Hobby";
 import { format } from "date-fns";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import { enUS, fr, vi, th, ko, zhTW } from "date-fns/esm/locale";
 
 function About({ userRender, isCurrent, handleShowModal }) {

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function NotFound(props) {
     const { t } = useContext(MultiLanguageContext);

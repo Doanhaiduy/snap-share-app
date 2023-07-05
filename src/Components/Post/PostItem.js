@@ -1,10 +1,10 @@
 import React, { memo, useContext, useEffect, useState, useRef, useCallback } from "react";
 import { AiFillHeart, AiOutlineComment, AiOutlineHeart, AiOutlineShareAlt } from "react-icons/ai";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "../../firebase/firebase-config";
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { db } from "~/firebase/firebase-config";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import ModalPost from "../ModalPost/ModalPost";
-import { ProfileContext } from "../../Context/ProfileContextProvider";
+import { ProfileContext } from "~/Context/ProfileContextProvider";
 import { Link } from "react-router-dom";
 import Comment from "../Comment/Comment";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ import moment from "moment";
 import ShowText from "../ShowText/ShowText";
 import { Modal, Button } from "antd";
 import "antd/dist/antd";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 const { confirm } = Modal;
 

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Request from "../Request/Request";
-import FriendActive from "../FriendActive/FriendActive";
-import { AiOutlineAlignRight, AiOutlineClose, AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
+import Request from "./Request/Request";
+import { AiOutlineAlignRight, AiOutlineClose } from "react-icons/ai";
+import FriendActiveItem from "./FriendActive/FriendActiveItem";
+import FriendActive from "./FriendActive/FriendActive";
 
 function Suggestions() {
     const [showOption, setShowOption] = useState(false);

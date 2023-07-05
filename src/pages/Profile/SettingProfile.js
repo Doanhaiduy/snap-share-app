@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import { updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db } from "../../firebase/firebase-config";
+import { storage, db } from "~/firebase/firebase-config";
 import { v4 as id, v4 } from "uuid";
 import { setDoc, doc } from "firebase/firestore";
 import { Spin } from "antd";

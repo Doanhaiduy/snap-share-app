@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
 import { signOut } from "firebase/auth";
-import { auth } from "../../firebase/firebase-config";
 import { NavLink, Link } from "react-router-dom";
-import { AuthContext } from "../../Context/AuthContextProvider";
-import { ProfileContext } from "../../Context/ProfileContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
+import { ProfileContext } from "~/Context/ProfileContextProvider";
 import { FaArrowRight, FaLanguage } from "react-icons/fa";
-import Search from "../../Components/Search/Search";
-import logo from "../../assets/imgs/Logo.png";
-import { BsFilePlusFill, BsImages, BsList, BsPlus } from "react-icons/bs";
+import Search from "~/Components/Search/Search";
+import logo from "~/assets/imgs/Logo.png";
+import { BsFilePlusFill, BsImages, BsList } from "react-icons/bs";
 import { AiFillHome, AiOutlineLogout, AiOutlinePlusSquare, AiOutlineUserDelete } from "react-icons/ai";
 import { IoClose, IoLogOut } from "react-icons/io5";
 import { ImUserTie } from "react-icons/im";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
+import { auth } from "~/firebase/firebase-config";
 
 function Header() {
     const { currentUser, userInfo } = useContext(AuthContext);

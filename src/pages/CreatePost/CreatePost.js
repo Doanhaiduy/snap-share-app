@@ -1,15 +1,15 @@
 import { Spin } from "antd";
 import React, { useContext, useState } from "react";
 
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { v4 as id } from "uuid";
-import { db, storage } from "../../firebase/firebase-config";
+import { db, storage } from "~/firebase/firebase-config";
 import { doc, setDoc } from "firebase/firestore";
 import { format } from "date-fns";
-import ShowEmoji from "../../Components/ShowEmoji/ShowEmoji";
+import ShowEmoji from "~/Components/ShowEmoji/ShowEmoji";
 import { toast } from "react-toastify";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function CreatePost() {
     const { userInfo, currentUser } = useContext(AuthContext);

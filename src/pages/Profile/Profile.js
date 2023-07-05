@@ -1,18 +1,18 @@
 import React, { useContext, useState } from "react";
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import SettingProfile from "./SettingProfile";
-import ListPost from "../../Components/ListPost/ListPost";
+import ListPost from "~/Components/ListPost/ListPost";
 import { toast } from "react-toastify";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
-import { ProfileContext } from "../../Context/ProfileContextProvider";
+import { ProfileContext } from "~/Context/ProfileContextProvider";
 import Tippy from "@tippyjs/react";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import { NavLink, Route, Routes, useResolvedPath } from "react-router-dom";
-import Friends from "../../Components/Friends/Friends";
-import Followers from "../../Components/Followers/Followers";
-import Following from "../../Components/Following/Following";
-import Saved from "../../Components/Saved/Saved";
+import Friends from "~/Components/Friends/Friends";
+import Followers from "~/Components/Followers/Followers";
+import Following from "~/Components/Following/Following";
+import Saved from "~/Components/Saved/Saved";
 import About from "./About";
 import Action from "./Action";
 

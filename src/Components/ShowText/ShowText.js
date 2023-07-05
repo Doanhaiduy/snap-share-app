@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ShowMoreText from "react-show-more-text";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function ShowText({ text }) {
     const { t } = useContext(MultiLanguageContext);

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function Language(props) {
     const { t, handleChangeLanguage } = useContext(MultiLanguageContext);

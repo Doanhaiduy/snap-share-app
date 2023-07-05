@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ProfileContext } from "../../Context/ProfileContextProvider";
+import { ProfileContext } from "~/Context/ProfileContextProvider";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../../firebase/firebase-config";
+import { db } from "~/firebase/firebase-config";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Spin } from "antd";
 import moment from "moment";

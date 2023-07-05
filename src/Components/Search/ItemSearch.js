@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProfileContext } from "../../Context/ProfileContextProvider";
+import { ProfileContext } from "~/Context/ProfileContextProvider";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
 function ItemSearch({ user, handleHideResult }) {

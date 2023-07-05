@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import CommentItem from "./CommentItem";
 import { collection, doc, getDoc, getDocs, onSnapshot, orderBy, query, where } from "firebase/firestore";
-import { db } from "../../firebase/firebase-config";
+import { db } from "~/firebase/firebase-config";
 
 function ListComment({ post }) {
     const [listComment, setListComment] = useState([]);

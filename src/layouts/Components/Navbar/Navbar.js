@@ -5,12 +5,12 @@ import { AiFillHome } from "react-icons/ai";
 import { IoLanguageSharp, IoLogOut } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
 import "tippy.js/dist/tippy.css"; // optional
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import { useContext } from "react";
 import { signOut } from "firebase/auth";
-import { auth } from "../../firebase/firebase-config";
-import { AuthContext } from "../../Context/AuthContextProvider";
-import { ProfileContext } from "../../Context/ProfileContextProvider";
+import { auth } from "~/firebase/firebase-config";
+import { AuthContext } from "~/Context/AuthContextProvider";
+import { ProfileContext } from "~/Context/ProfileContextProvider";
 import { RiAdminFill } from "react-icons/ri";
 import Tippy from "@tippyjs/react";
 

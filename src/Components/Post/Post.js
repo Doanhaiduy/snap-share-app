@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import PostItem from "./PostItem";
 import { AiFillPushpin } from "react-icons/ai";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function Post({ scrollRef }) {
     const { getUserPost, userPosts, pinnedPosts, setPinPost } = useContext(AuthContext);

@@ -74,7 +74,7 @@ function AuthContextProvider({ children }) {
         }
     };
 
-    const getUserPost = async (uid, limitCount = 5) => {
+    const getUserPost = async (uid, limitCount = 30) => {
         let q;
         if (uid !== null) {
             if (uid === undefined) {

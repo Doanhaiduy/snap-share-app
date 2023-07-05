@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-import { BsPlus } from "react-icons/bs";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
-import { Link } from "react-router-dom";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function Footer() {
     const { t, handleChangeLanguage } = useContext(MultiLanguageContext);

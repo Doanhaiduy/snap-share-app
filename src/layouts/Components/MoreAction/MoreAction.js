@@ -1,15 +1,15 @@
 import { SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
 import React, { useContext, useState } from "react";
-import Theme from "../Theme/Theme";
-import { ThemeContext } from "../../Context/ThemeContextProvider";
+import Theme from "../../../Components/Theme/Theme";
 
-import PrivacyPolicy from "./../../pages/PrivacyPolicy/PrivacyPolicy";
-import CookiesPolicy from "../../pages/CookiesPolicy/CookiesPolicy";
-import TermsConditions from "../../pages/TermsConditions/TermsConditions";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import PrivacyPolicy from "./../../../pages/PrivacyPolicy/PrivacyPolicy";
+import CookiesPolicy from "../../../pages/CookiesPolicy/CookiesPolicy";
+import TermsConditions from "../../../pages/TermsConditions/TermsConditions";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import CookieIcon from "@mui/icons-material/Cookie";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import DescriptionIcon from "@mui/icons-material/Description";
+import { ThemeContext } from "~/Context/ThemeContextProvider";
 function MoreAction() {
     const { darkToggle } = useContext(ThemeContext);
     const { t } = useContext(MultiLanguageContext);

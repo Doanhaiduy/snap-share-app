@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { RiFileGifFill } from "react-icons/ri";
 import HeadLess from "@tippyjs/react/headless";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function importAll(r) {
     return r.keys().map(r);

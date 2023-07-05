@@ -1,13 +1,13 @@
 import React, { memo, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase/firebase-config";
-import { ProfileContext } from "../../Context/ProfileContextProvider";
+import { db } from "~/firebase/firebase-config";
+import { ProfileContext } from "~/Context/ProfileContextProvider";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import { toast } from "react-toastify";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import moment from "moment";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 const CommentItem = React.memo(({ data }) => {
     const [authorComment, setAuthorComment] = useState({});

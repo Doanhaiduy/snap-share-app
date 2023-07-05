@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import { Link } from "react-router-dom";
 import { collection, getDocs, limit, orderBy, query, startAfter } from "firebase/firestore";
-import { db } from "../../firebase/firebase-config";
-import ItemUserManager from "../../Components/ItemUserManger/ItemUserManager";
+import { db } from "~/firebase/firebase-config";
+import ItemUserManager from "~/Components/ItemUserManger/ItemUserManager";
 import { Spin } from "antd";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function Admin() {
     const [users, setUsers] = useState([]);

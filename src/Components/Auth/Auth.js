@@ -5,17 +5,18 @@ import {
     signInWithPopup,
     updateProfile,
     getAdditionalUserInfo,
+    signOut,
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-import { auth, db, googleProvider, githubProvider, facebookProvider } from "../../firebase/firebase-config";
+import { auth, db, googleProvider, githubProvider, facebookProvider } from "~/firebase/firebase-config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { format } from "date-fns";
 import { Spin } from "antd";
-import logo from "../../assets/imgs/Logo.png";
-import defaultAvatar from "../../assets/imgs/defaultAvatar.png";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
-import { ThemeContext } from "../../Context/ThemeContextProvider";
+import logo from "~/assets/imgs/Logo.png";
+import defaultAvatar from "~/assets/imgs/defaultAvatar.png";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
+import { ThemeContext } from "~/Context/ThemeContextProvider";
 
 const Login = () => {
     const [name, setName] = useState("");

@@ -2,9 +2,13 @@ import React from "react";
 
 function RequestItem({ t }) {
     return (
-        <div className=" bg-white dark:bg-[#282828] dark:text-primary5 h-auto p-5 flex flex-col items-center gap-4 rounded-[12px] ">
+        <div className=" bg-white dark:bg-[#282828] dark:text-primary5 h-auto p-4 flex flex-col items-center gap-4 rounded-[12px] ">
             <div className="flex items-center gap-4">
-                <img className="w-[45px] h-[45px] rounded-[12px]" src="https://source.unsplash.com/random" alt="" />
+                <img
+                    className=" h-[45px] min-w-[45px] rounded-[12px] flex-1"
+                    src="https://source.unsplash.com/random"
+                    alt=""
+                />
                 <p className="line-clamp-2">
                     <strong>Doan Hai Duy</strong> {t("suggestion.request.desc")}
                 </p>

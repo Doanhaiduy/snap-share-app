@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import FriendActiveItem from "./FriendActiveItem";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function FriendActive({ isMobile }) {
     const { t } = useContext(MultiLanguageContext);

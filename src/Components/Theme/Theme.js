@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../../Context/ThemeContextProvider";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { ThemeContext } from "~/Context/ThemeContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 export default function Theme() {
@@ -17,7 +17,6 @@ export default function Theme() {
                     onChange={() => {
                         setDarkToggle(!darkToggle);
                         localStorage.setItem("dark", JSON.stringify(!darkToggle));
-                        
                     }}
                 />
 

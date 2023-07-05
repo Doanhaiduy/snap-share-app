@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import RequestItem from "./RequestItem";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function Request({ isMobile }) {
     const { t } = useContext(MultiLanguageContext);

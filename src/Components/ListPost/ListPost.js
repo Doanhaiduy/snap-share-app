@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import PostItemModal from "./PostItemModal";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function ListPost({ userRender }) {
     const { userPosts, getUserPost } = useContext(AuthContext);

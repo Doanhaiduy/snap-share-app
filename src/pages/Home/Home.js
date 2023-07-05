@@ -1,9 +1,9 @@
 import { BiLinkAlt } from "react-icons/bi";
-import NewsFeed from "../../Components/NewsFeed/NewsFeed";
+import NewsFeed from "~/Components/NewsFeed/NewsFeed";
 import { useContext, useRef } from "react";
-import { AuthContext } from "../../Context/AuthContextProvider";
+import { AuthContext } from "~/Context/AuthContextProvider";
 import { Link } from "react-router-dom";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function Home() {
     const { userInfo } = useContext(AuthContext);
@@ -13,7 +13,7 @@ function Home() {
     return (
         <div
             ref={scrollRef}
-            className=" pt-[80px] lg:col-span-3 col-span-5 px-6 bg-slate-200 dark:bg-primary2 h-[100vh] overflow-y-scroll no-scrollbar "
+            className=" mt-[60px]  pt-[20px] lg:col-span-3 col-span-5 px-6 bg-slate-200 dark:bg-primary2 h-[100vh] overflow-y-scroll  "
         >
             <div className="flex justify-between items-center sm:w-[80%] mx-auto px-4 py-3 bg-white dark:bg-[#282828] rounded-[12px]">
                 <div className="flex items-center gap-3">

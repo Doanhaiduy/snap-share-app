@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function PrivacyPolicy({ handleCloseModal }) {
     const { t } = useContext(MultiLanguageContext);

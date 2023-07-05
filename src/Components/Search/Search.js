@@ -1,10 +1,10 @@
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
-import { db } from "../../firebase/firebase-config";
+import { db } from "~/firebase/firebase-config";
 import useDebounce from "../../hooks/useDebounce";
 import ItemSearch from "./ItemSearch";
 import HeadlessTippy from "@tippyjs/react/headless";
-import { MultiLanguageContext } from "../../Context/MultiLanguageContextProvider";
+import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function Search(props) {
     const [users, setUsers] = useState([]);
