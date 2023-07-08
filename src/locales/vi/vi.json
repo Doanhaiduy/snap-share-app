@@ -6,8 +6,11 @@
     "loadFile": "Tải lên một tệp",
     "limit": "PNG, JPG, GIF lên đến 10MB",
     "create": "Tạo",
-    "noOnePost": "Người dùng chưa đăng bất kỳ bài viết nào",
-    "noOneSaved": "Người dùng chưa lưu bất kỳ bài viết nào",
+    "noOnePost": "Người dùng này chưa  đăng bất kỳ bài viết nào",
+    "noOneSaved": "Người dùng này chưa lưu bất kỳ bài viết nào",
+    "noOneFollower": "Người dùng này không có người theo dõi",
+    "noOneFollowing": "Người dùng này hiện không theo dõi bất kì ai",
+    "noOneFriend": "Người dùng này hiện không có bạn bè",
     "copyRight": "Đã đăng ký Bản quyền.",
 
     "nav": {
@@ -26,7 +29,8 @@
         "joined": "Tham gia",
         "followedBy": "Được theo dõi bởi",
         "editDetails": "Chỉnh sửa thông tin",
-        "coding": "lập trình"
+        "coding": "lập trình",
+        "people": "người"
     },
     "home": {
         "home": "Trang chủ",
@@ -56,7 +60,9 @@
         "toast-3": "Tên không hợp lệ, Vui lòng nhập tên hợp lệ.",
         "toast-4": "Email đã được sử dụng!",
         "toast-5": "Email hoặc mật khẩu không hợp lệ!",
-        "toast-6": "Đăng nhập thất bại!"
+        "toast-6": "Đăng nhập thất bại!",
+        "toast-7": "Xin chúc mừng! Bạn đã sẵn sàng. Vui lòng đăng nhập để bắt đầu.",
+        "toast-8": "Đăng nhập thành công!"
     },
     "post": {
         "pinned": "Bài viết đã ghim",
@@ -96,7 +102,10 @@
         "follow": "Theo dõi",
         "update": "Cập nhật hồ sơ",
         "add": "Thêm bạn",
-        "confirmed": "SnapShare xác nhận hồ sơ này là chính xác.",
+        "unFollow": "Bỏ theo dõi",
+        "unFriend": "Hủy kết bạn",
+        "cancelRequest": "Hủy yêu cầu",
+        "confirmed": "SnapShare xác nhận hồ sơ này là thật.",
         "posts": "Bài viết",
         "friend": "Bạn bè",
         "followers": "Người theo dõi",

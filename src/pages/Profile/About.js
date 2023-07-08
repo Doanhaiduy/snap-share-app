@@ -58,7 +58,12 @@ function About({ userRender, isCurrent, handleShowModal }) {
                         )}
                     </li>
                     <li className="flex items-center gap-2">
-                        <AiFillSignal /> {t("about.followedBy")} 509,266
+                        {userRender?.followers?.length > 0 && (
+                            <>
+                                <AiFillSignal /> {t("about.followedBy")} {userRender.followers.length}{" "}
+                                {t("about.people")}
+                            </>
+                        )}
                     </li>
                     {userRender?.website && (
                         <li className="flex items-center gap-2 break-words">

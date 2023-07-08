@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "snap-share-78f51"
-  }
+  },
+  "targets": {
+    "snap-share-78f51": {
+      "hosting": {
+        "snap-share-78f51": [
+          "SnapShare"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

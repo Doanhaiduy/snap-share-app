@@ -14,7 +14,7 @@ function ListPost({ userRender }) {
     }, [userRender.uid]);
 
     return (
-        <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 pb-12 mt-5">
+        <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 pb-12 mt-5 h-[620px] overflow-y-scroll">
             {userPosts.length === 0 && <p className="text-[20px] font-semibold col-span-2">{t("noOnePost")}</p>}
             {userPosts.map((post) => (
                 <PostItemModal key={post.uid} post={post} />

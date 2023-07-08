@@ -104,7 +104,7 @@ function Profile(props) {
                         </div>
                     </div>
                 </div>
-                {!isCurrent && <Action t={t} />}
+                {!isCurrent && <Action t={t} uidCurrent={userRender?.uid} uid={currentUser?.uid} />}
             </div>
             <div className="lg:grid grid-cols-3 mt-[160px] gap-4">
                 <About userRender={userRender} isCurrent={isCurrent} handleShowModal={handleShowModal} />
@@ -239,10 +239,10 @@ function Profile(props) {
                     </nav>
                     <Routes>
                         <Route path={`/`} element={<ListPost userRender={userRender} />} />
-                        <Route path={`/friend`} element={<Friends />} />
-                        <Route path={`/followers`} element={<Followers />} />
-                        <Route path={`/following`} element={<Following />} />
-                        <Route path={`/saved`} element={<Saved />} />
+                        <Route path={`/friend`} element={<Friends uid={userRender?.uid} />} />
+                        <Route path={`/followers`} element={<Followers uid={userRender?.uid} />} />
+                        <Route path={`/following`} element={<Following uid={userRender?.uid} />} />
+                        <Route path={`/saved`} element={<Saved uid={userRender?.uid} />} />
                     </Routes>
                 </div>
             </div>

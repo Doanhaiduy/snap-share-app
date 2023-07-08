@@ -1,7 +1,10 @@
 const routes = {
     home: "/",
-    postImage: "/postImage",
-    profile: "/profile/:nickname",
+    auth: "/login",
+    profile: "/profile/:uid/*",
+    admin: "/admin",
+    language: "/language",
+    notFound: "*",
 };
 
 export default routes;

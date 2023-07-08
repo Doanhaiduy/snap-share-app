@@ -35,13 +35,13 @@ function Navbar() {
                     <div className="">
                         <img
                             className="min-w-[40px] min-h-[40px] h-[40px] w-[40px] object-cover rounded-[8px]"
-                            src={userInfo.photoURL}
+                            src={userInfo?.photoURL}
                             alt=""
                         />
                     </div>
                     <div className="max-w-[160px] lg:block hidden">
                         <h3 className="font-bold leading-4">{currentUser?.displayName}</h3>
-                        <span className="text-[14px] text-gray-400 line-clamp-1">{userInfo.nameId}</span>
+                        <span className="text-[14px] text-gray-400 line-clamp-1">{userInfo?.nameId}</span>
                     </div>
                 </div>
             </Link>
@@ -52,7 +52,7 @@ function Navbar() {
                     className={({ isActive }) =>
                         isActive
                             ? "border-l-[3px] border-l-blue-600  dark:border-l-primary1 dark:text-primary1 flex gap-4 items-center border-b-[1px] border-[#fafafa] text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 bg-slate-300 dark:border-gray-600/20  dark:bg-[#555]"
-                            : "hover:border-l-[3px]  hover:border-l-blue-600 dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-[#fafafa] border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
+                            : "border-l-[3px]  hover:border-l-blue-600 dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-[#fafafa] border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
                     }
                 >
                     <Tippy content={t("nav.home")} placement="right">
@@ -72,7 +72,7 @@ function Navbar() {
                     className={({ isActive }) =>
                         isActive
                             ? "border-l-[3px] border-l-blue-600 border-[#fafafa] dark:border-l-primary1 dark:text-primary1 flex gap-4 items-center border-b-[1px] text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 bg-slate-300 dark:border-gray-600/20  dark:bg-[#555]"
-                            : "hover:border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
+                            : "border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
                     }
                 >
                     <Tippy content={t("nav.profile")} placement="right">
@@ -83,13 +83,13 @@ function Navbar() {
                     <span className="lg:hidden sm:inline-block"></span>
                     <h3 className="font-bold hidden lg:block">{t("nav.profile")}</h3>
                 </NavLink>
-                <NavLink
+                {/* <NavLink
                     to="/createPost"
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className={({ isActive }) =>
                         isActive
                             ? "border-l-[3px] border-l-blue-600 border-[#fafafa] dark:border-l-primary1 dark:text-primary1 flex gap-4 items-center border-b-[1px] text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 bg-slate-300 dark:border-gray-600/20  dark:bg-[#555]"
-                            : "hover:border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
+                            : "border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
                     }
                 >
                     <Tippy content={t("nav.createPost")} placement="right">
@@ -99,7 +99,7 @@ function Navbar() {
                     </Tippy>
                     <span className="lg:hidden sm:inline-block"></span>
                     <h3 className="font-bold hidden lg:block">{t("nav.createPost")}</h3>
-                </NavLink>
+                </NavLink> */}
                 {currentUser?.uid === "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2" || window.location.hostname === "localhost" ? (
                     <NavLink
                         to="/admin"
@@ -107,7 +107,7 @@ function Navbar() {
                         className={({ isActive }) =>
                             isActive
                                 ? "border-l-[3px] border-l-blue-600 border-[#fafafa] dark:border-l-primary1 dark:text-primary1 flex gap-4 items-center border-b-[1px] text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 bg-slate-300 dark:border-gray-600/20  dark:bg-[#555]"
-                                : "hover:border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
+                                : "border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
                         }
                     >
                         <Tippy content={t("nav.admin")} placement="right">
@@ -126,7 +126,7 @@ function Navbar() {
                     className={({ isActive }) =>
                         isActive
                             ? "border-l-[3px] border-l-blue-600 border-[#fafafa] dark:border-l-primary1 dark:text-primary1 flex gap-4 items-center border-b-[1px] text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 bg-slate-300 dark:border-gray-600/20  dark:bg-[#555]"
-                            : "hover:border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
+                            : "border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
                     }
                 >
                     <Tippy content={t("nav.friend")} placement="right">
@@ -143,7 +143,7 @@ function Navbar() {
                     className={({ isActive }) =>
                         isActive
                             ? "border-l-[3px] border-l-blue-600 border-[#fafafa] dark:border-l-primary1 dark:text-primary1 flex gap-4 items-center border-b-[1px] text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 bg-slate-300 dark:border-gray-600/20  dark:bg-[#555]"
-                            : "hover:border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
+                            : "border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
                     }
                 >
                     <Tippy content={t("nav.mess")} placement="right">
@@ -160,7 +160,7 @@ function Navbar() {
                     className={({ isActive }) =>
                         isActive
                             ? "border-l-[3px] border-l-blue-600 border-[#fafafa] dark:border-l-primary1 dark:text-primary1 flex gap-4 items-center border-b-[1px] text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 bg-slate-300 dark:border-gray-600/20  dark:bg-[#555]"
-                            : "hover:border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
+                            : "border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
                     }
                 >
                     <Tippy content={t("nav.language")} placement="right">
@@ -173,7 +173,7 @@ function Navbar() {
                 </NavLink>
                 <NavLink
                     onClick={handleLogout}
-                    className="hover:border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
+                    className="border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
                 >
                     <Tippy content={t("nav.logout")} placement="right">
                         <div className="">

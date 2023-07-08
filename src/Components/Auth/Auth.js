@@ -27,6 +27,16 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const { t } = useContext(MultiLanguageContext);
     const { darkToggle } = useContext(ThemeContext);
+    const handleSubmitLogin = (e) => {
+        if (e.key === "Enter") {
+            handleRLogin(e);
+        }
+    };
+    const handleSubmitRegister = (e) => {
+        if (e.key === "Enter") {
+            handleRegister(e);
+        }
+    };
     const handleRegex = (type, value, confirmPassword) => {
         switch (type) {
             case "email": {
@@ -116,6 +126,16 @@ const Login = () => {
                                 photoURL: defaultAvatar,
                             });
                             setLoading(false);
+                            toast.success(t("auth.toast-7"), {
+                                position: "top-right",
+                                autoClose: 4000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: darkToggle ? "dark" : "light",
+                            });
+                            signOut(auth);
                         })
                         .catch((err) => {
                             toast.error(t("auth.toast-4"), {
@@ -152,6 +172,15 @@ const Login = () => {
                         });
                     });
                     setLoading(false);
+                    toast.success(t("auth.toast-8"), {
+                        position: "top-right",
+                        autoClose: 4000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: darkToggle ? "dark" : "light",
+                    });
                 }, 1000);
             }
         } catch (err) {}
@@ -218,6 +247,7 @@ const Login = () => {
             });
         }
     };
+
     // const handleRLoginFacebook = async (e) => {
     //     e.preventDefault();
     //     try {
@@ -330,6 +360,7 @@ const Login = () => {
                                     placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    onKeyDown={(e) => handleSubmitLogin(e)}
                                 />
                                 <input
                                     className="  w-full px-8 py-4 rounded-lg font-medium bg-gray-100 dark:bg-[#282828]  border border-gray-200 dark:border-gray-400 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-200 focus:bg-white mt-5"
@@ -337,6 +368,7 @@ const Login = () => {
                                     placeholder={t("auth.password")}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
+                                    onKeyDown={(e) => handleSubmitLogin(e)}
                                 />
                                 <button
                                     className=" mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 dark:bg-primary1 dark:text-primary2 w-full py-4 rounded-lg hover:bg-indigo-700 dark:hover:bg-yellow-500  flex items-center justify-center focus:shadow-outline focus:outline-none"
@@ -417,6 +449,7 @@ const Login = () => {
                                     placeholder={t("auth.fullName")}
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
+                                    onKeyDown={(e) => handleSubmitRegister(e)}
                                 />
 
                                 <input
@@ -425,6 +458,7 @@ const Login = () => {
                                     placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    onKeyDown={(e) => handleSubmitRegister(e)}
                                 />
                                 <input
                                     className="  w-full px-8 py-4 dark:border-gray-400 dark:focus:border-gray-200 rounded-lg font-medium bg-gray-100 dark:bg-[#282828] border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
@@ -432,6 +466,7 @@ const Login = () => {
                                     placeholder={t("auth.password")}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
+                                    onKeyDown={(e) => handleSubmitRegister(e)}
                                 />
 
                                 <button

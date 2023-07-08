@@ -1,25 +1,24 @@
-import React from "react";
+import AcceptFriend from "~/Components/Button/AcceptFriend/AcceptFriend";
+import DeclineFriend from "~/Components/Button/DeclineFriend/DeclineFriend";
+import useUser from "~/hooks/useUser";
 
-function RequestItem({ t }) {
+function RequestItem({ t, uid }) {
+    const { user } = useUser(uid);
     return (
         <div className=" bg-white dark:bg-[#282828] dark:text-primary5 h-auto p-4 flex flex-col items-center gap-4 rounded-[12px] ">
             <div className="flex items-center gap-4">
                 <img
-                    className=" h-[45px] min-w-[45px] rounded-[12px] flex-1"
-                    src="https://source.unsplash.com/random"
+                    className=" h-[45px] min-w-[45px] object-cover rounded-[12px] flex-1"
+                    src={user?.photoURL}
                     alt=""
                 />
                 <p className="line-clamp-2">
-                    <strong>Doan Hai Duy</strong> {t("suggestion.request.desc")}
+                    <strong>{user?.name}</strong> {t("suggestion.request.desc")}
                 </p>
             </div>
             <div className="flex items-center gap-x-5" aria-label="button-combination">
-                <button className="inline-flex items-center justify-center px-4 text-[0.8rem] xl:text-[1rem] xl:px-4 py-4 font-sans font-semibold tracking-wide text-white bg-blue-500 dark:bg-primary1 dark:text-primary2 rounded-lg h-[40px]">
-                    {t("suggestion.request.accept")}
-                </button>
-                <button className="inline-flex items-center justify-center px-4 text-[0.8rem] xl:text-[1rem] xl:px-4 py-4 font-sans font-semibold tracking-wide text-blue-500 dark:text-primary1 dark:border-primary1 border border-blue-500 rounded-lg h-[40px]">
-                    {t("suggestion.request.decline")}
-                </button>
+                <AcceptFriend targetUser={user} />
+                <DeclineFriend targetUser={user} />
             </div>
         </div>
     );

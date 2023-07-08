@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "~/Context/AuthContextProvider";
-import { Navigate, Routes } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import Suggestions from "../Components/Suggestions/Suggestions ";
@@ -28,7 +28,7 @@ const DefaultLayout = ({ children }) => {
                 {isCurrentUser && window.location.pathname === "/" && <Suggestions />}
             </div>
             {!isCurrentUser && <Footer />}
-            <MoreAction />;
+            <MoreAction />
         </div>
     );
 };

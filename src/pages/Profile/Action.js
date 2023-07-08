@@ -1,8 +1,13 @@
 import React from "react";
-import { AiOutlineEllipsis, AiOutlineUserAdd } from "react-icons/ai";
-import { BiChat, BiPlus } from "react-icons/bi";
+import { AiOutlineEllipsis } from "react-icons/ai";
+import AddFriend from "~/Components/Button/AddFriend/AddFriend";
+import Follow from "~/Components/Button/Follow/Follow";
+import UnFriend from "~/Components/Button/UnFriend/UnFriend";
+import useUser from "~/hooks/useUser";
 
-function Action({ t }) {
+function Action({ t, uid, uidCurrent }) {
+    const { user } = useUser(uid);
+    const isFriend = !!user?.friend?.includes(uidCurrent);
     return (
         <div className="">
             <div className="gap-4 flex-col lg:flex-row lg:p-4 p-0  absolute right-0 lg:bottom-[-80px] bottom-[-120px] hidden sm:flex">
@@ -10,14 +15,12 @@ function Action({ t }) {
                 <BiChat />
                 Message
             </button> */}
-                <button className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 dark:bg-primary1 dark:hover:bg-yellow-500 dark:text-primary2 hover:bg-blue-600 text-white text-sm font-medium rounded-md">
-                    <BiPlus />
-                    {t("profile.follow")}
-                </button>
-                <button className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 dark:bg-primary1 dark:hover:bg-yellow-500 dark:text-primary2 hover:bg-blue-600 text-white text-sm font-medium rounded-md">
-                    <AiOutlineUserAdd />
-                    {t("profile.add")}
-                </button>
+                <Follow uid={uid} uidCurrent={uidCurrent} />
+                {isFriend ? (
+                    <UnFriend uid={uid} uidCurrent={uidCurrent} />
+                ) : (
+                    <AddFriend uid={uid} uidCurrent={uidCurrent} />
+                )}
             </div>
             <div className="gap-4 flex-col absolute right-0 bottom-[-60px] z-10 shadow-lg  sm:hidden flex px-2 py-1 text-[25px] bg-white dark:bg-[#282828] dark:text-white text-primary2 rounded-[8px] group">
                 <AiOutlineEllipsis />

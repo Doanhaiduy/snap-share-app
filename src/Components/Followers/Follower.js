@@ -1,20 +1,19 @@
 import React from "react";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
+import useUser from "~/hooks/useUser";
 
-function Follower(props) {
+function Follower({ uid }) {
+    const { user } = useUser(uid);
+
     return (
         <div className="flex items-center cursor-pointer gap-2 dark:bg-[#333] bg-white p-2 relative rounded-[12px]">
             <div className="flex items-center gap-2 ">
                 <div className=" ">
-                    <img
-                        className="h-[50px]  w-[50px] rounded-[12px]"
-                        src="https://source.unsplash.com/random"
-                        alt=""
-                    />
+                    <img className="h-[50px]  w-[50px] rounded-[12px] object-cover" src={user?.photoURL} alt="" />
                 </div>
                 <div className="">
-                    <h2 className="font-semibold ">Doan Hai Duy</h2>
-                    <h2 className="font-normal text-[12px] ">@doanhaiduy</h2>
+                    <h2 className="font-semibold ">{user?.name}</h2>
+                    <h2 className="font-normal text-[12px] ">{user?.nameId}</h2>
                 </div>
             </div>
             <div className="absolute top-[6px] text-[20px] right-[6px] group">

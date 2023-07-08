@@ -57,7 +57,7 @@ function Search(props) {
                 render={(attrs) => (
                     <div
                         {...attrs}
-                        className="z-30 bg-slate-100 dark:bg-[#282828] dark:text-primary5 shadow-xl py-2 rounded-[12px] w-[90vw] sm:w-full max-h-[500px] overflow-y-auto"
+                        className="z-30 bg-slate-100 dark:bg-[#282828] dark:text-primary5 shadow-xl py-2 rounded-[12px] w-[90vw] sm:w-full max-h-[500px] overflow-y-auto "
                     >
                         {users.map((user) => (
                             <ItemSearch user={user} key={user.uid} handleHideResult={handleHideResult} />

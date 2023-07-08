@@ -8,6 +8,9 @@
     "create": "만들기",
     "noOnePost": "사용자가 아직 게시물을 작성하지 않았습니다",
     "noOneSaved": "사용자가 아직 게시물을 저장하지 않았습니다",
+    "noOneFollower": "이 사용자는 팔로워가 없습니다",
+    "noOneFollowing": "이 사용자는 현재 아무도 팔로우하지 않습니다",
+    "noOneFriend": "이 사용자는 현재 친구가 없습니다",
     "copyRight": "저작권 소유.",
 
     "nav": {
@@ -26,7 +29,8 @@
         "joined": "가입일",
         "followedBy": "팔로워",
         "editDetails": "상세 정보 편집",
-        "coding": "코딩"
+        "coding": "코딩",
+        "people": "사람들"
     },
     "home": {
         "home": "홈",
@@ -56,7 +60,9 @@
         "toast-3": "유효하지 않은 이름입니다. 유효한 이름을 입력해주세요.",
         "toast-4": "제공된 이메일은 이미 사용 중입니다!",
         "toast-5": "유효하지 않은 이메일 또는 비밀번호입니다!",
-        "toast-6": "로그인에 실패했습니다!"
+        "toast-6": "로그인에 실패했습니다!",
+        "toast-7": "만세! 모든 준비가 완료되었습니다. 시작하려면 로그인해주세요.",
+        "toast-8": "로그인 성공!"
     },
     "post": {
         "pinned": "고정된 게시물",
@@ -96,6 +102,9 @@
         "follow": "팔로우",
         "update": "프로필 업데이트",
         "add": "친구 추가",
+        "unFollow": "팔로우 취소",
+        "unFriend": "친구 삭제",
+        "cancelRequest": "요청 취소",
         "confirmed": "SnapShare가 이 프로필이 신원이 확인되었습니다.",
         "posts": "게시물",
         "friend": "친구",

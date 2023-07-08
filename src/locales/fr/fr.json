@@ -8,6 +8,9 @@
     "create": "Créer",
     "noOnePost": "L'utilisateur n'a pas encore publié de publication",
     "noOneSaved": "L'utilisateur n'a enregistré aucune publication pour le moment",
+    "noOneFollower": "Cet utilisateur n'a pas de followers",
+    "noOneFollowing": "Cet utilisateur ne suit personne pour le moment",
+    "noOneFriend": "Cet utilisateur n'a actuellement pas d'amis",
     "copyRight": "Tous droits réservés.",
     "nav": {
         "home": "Accueil",
@@ -25,7 +28,8 @@
         "joined": "Inscrit le",
         "followedBy": "Suivi par",
         "editDetails": "Modifier les détails",
-        "coding": "codage"
+        "coding": "codage",
+        "people": "personnes"
     },
     "home": {
         "home": "Accueil",
@@ -55,7 +59,9 @@
         "toast-3": "Nom invalide. Veuillez saisir un nom valide.",
         "toast-4": "L'adresse e-mail fournie est déjà utilisée !",
         "toast-5": "Adresse e-mail ou mot de passe invalide !",
-        "toast-6": "Échec de la connexion !"
+        "toast-6": "Échec de la connexion !",
+        "toast-7": "Hourra ! Vous êtes prêt. Veuillez vous connecter pour commencer.",
+        "toast-8": "Connexion réussie !"
     },
     "post": {
         "pinned": "Publications épinglées",
@@ -95,6 +101,9 @@
         "follow": "Suivre",
         "update": "Mettre à jour le profil",
         "add": "Ajouter un ami",
+        "unFollow": "Ne plus suivre",
+        "unFriend": "Ne plus être ami",
+        "cancelRequest": "Annuler la demande",
         "confirmed": "SnapShare a confirmé que ce profil est authentique.",
         "posts": "Publications",
         "friend": "Ami",

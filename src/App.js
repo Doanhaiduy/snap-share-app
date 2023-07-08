@@ -1,19 +1,12 @@
 import { useContext } from "react";
 import "~/App.css";
-import Auth from "~/Components/Auth/Auth";
-import Home from "~/pages/Home/Home";
-import Profile from "~/pages/Profile/Profile";
 import { AuthContext } from "~/Context/AuthContextProvider";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Protected from "~/routes/Protected";
-import Admin from "~/pages/Admin/Admin";
-import CreatePost from "~/pages/CreatePost/CreatePost";
-import NotFound from "~/pages/NotFound/NotFound";
 import { Spin } from "antd";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
-import Language from "~/pages/Language/Language";
 import DefaultLayout from "~/layouts/DefaultLayout/DefaultLayout";
-
+import { publicRoutes, privateRoutes } from "~/routes";
 function App() {
     const { currentUser } = useContext(AuthContext);
     const { loading, t } = useContext(MultiLanguageContext);
@@ -25,20 +18,24 @@ function App() {
         <BrowserRouter>
             <DefaultLayout>
                 <Routes>
-                    <Route element={<Home />} path="/" />
-                    <Route element={<CreatePost />} path="/createPost" />
-                    <Route
-                        element={
-                            <Protected currentUser={currentUser}>
-                                <Auth />
-                            </Protected>
-                        }
-                        path="/login"
-                    />
-                    <Route element={<Profile />} path="/profile/:uid/*" />
-                    <Route element={<Admin />} path="/admin" />
-                    <Route element={<Language />} path="/language" />
-                    <Route element={<NotFound />} path="*" />
+                    {publicRoutes.map((route, index) => {
+                        const Page = route.component;
+                        return <Route key={index} path={route.path} element={<Page />} />;
+                    })}
+                    {privateRoutes.map((route, index) => {
+                        const Page = route.component;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Protected currentUser={currentUser}>
+                                        <Page />
+                                    </Protected>
+                                }
+                            />
+                        );
+                    })}
                 </Routes>
             </DefaultLayout>
         </BrowserRouter>

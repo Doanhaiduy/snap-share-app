@@ -8,6 +8,10 @@
     "create": "创建",
     "noOnePost": "用户尚未发布任何帖子",
     "noOneSaved": "用户尚未保存任何帖子",
+    "noOneFollower": "该用户没有粉丝",
+    "noOneFollowing": "该用户目前没有关注任何人",
+    "noOneFriend": "该用户目前没有好友",
+
     "copyRight": "版权所有。",
     "nav": {
         "home": "首页",
@@ -25,7 +29,8 @@
         "joined": "加入日期",
         "followedBy": "关注者",
         "editDetails": "编辑资料",
-        "coding": "编程"
+        "coding": "编程",
+        "people": "人"
     },
     "home": {
         "home": "首页",
@@ -55,7 +60,9 @@
         "toast-3": "无效的姓名，请输入一个有效的姓名。",
         "toast-4": "提供的电子邮件已经被使用！",
         "toast-5": "无效的电子邮件或密码！",
-        "toast-6": "登录失败！"
+        "toast-6": "登录失败！",
+        "toast-7": "太好了！您已准备就绪。请登录开始使用。",
+        "toast-8": "登录成功！"
     },
     "post": {
         "pinned": "置顶帖子",
@@ -95,6 +102,9 @@
         "follow": "关注",
         "update": "更新个人资料",
         "add": "添加好友",
+        "unFollow": "取消关注",
+        "unFriend": "解除好友关系",
+        "cancelRequest": "取消请求",
         "confirmed": "SnapShare确认该个人资料是真实的。",
         "posts": "帖子",
         "friend": "好友",

@@ -6,9 +6,12 @@
     "loadFile": "Upload a file",
     "limit": "PNG, JPG, GIF up to 10MB",
     "create": "Create",
-    "noOnePost": "The user has not posted any posts yet",
-    "noOneSaved": "The user has not saved any posts yet",
-    "copyRight": "All rights reserved.",    
+    "noOnePost": "This user has not posted any posts yet",
+    "noOneSaved": "This user has not saved any posts yet",
+    "noOneFollower": "This user has no followers",
+    "noOneFollowing": "This user is not following anyone at the moment",
+    "noOneFriend": "This user currently has no friends",
+    "copyRight": "All rights reserved.",
     "nav": {
         "home": "Home",
         "createPost": "Create post",
@@ -25,7 +28,8 @@
         "joined": "Joined",
         "followedBy": "Followed by",
         "editDetails": "Edit details",
-        "coding": "coding"
+        "coding": "coding",
+        "people": "people"
     },
     "home": {
         "home": "Home",
@@ -55,7 +59,9 @@
         "toast-3": "Invalid name, Please enter a valid name.",
         "toast-4": "The email provided is already in use!",
         "toast-5": "Invalid email or password !",
-        "toast-6": "Login fail !"
+        "toast-6": "Login fail !",
+        "toast-7": "Hooray! You're all set. Please log in to get started.",
+        "toast-8": "login successfully !"
     },
     "post": {
         "pinned": "Pinned Posts",
@@ -95,6 +101,9 @@
         "follow": "Follow",
         "update": "Update Profile",
         "add": "Add Friend",
+        "unFollow": "Unfollow",
+        "unFriend": "Unfriend",
+        "cancelRequest": "Cancel request",
         "confirmed": "SnapShare confirmed this profile is authentic.",
         "posts": "Posts",
         "friend": "Friend",

@@ -1,14 +1,17 @@
 import { BiLinkAlt } from "react-icons/bi";
 import NewsFeed from "~/Components/NewsFeed/NewsFeed";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "~/Context/AuthContextProvider";
-import { Link } from "react-router-dom";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
+import CreatePost from "../../Components/CreatePost/CreatePost";
 
 function Home() {
     const { userInfo } = useContext(AuthContext);
     const { t } = useContext(MultiLanguageContext);
-
+    const [showModal, setShowModal] = useState(false);
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
     const scrollRef = useRef();
     return (
         <div
@@ -20,18 +23,20 @@ function Home() {
                     <div className="w-[40px] ">
                         <img src={userInfo?.photoURL} alt="" className="w-[40px] h-[40px] rounded-[12px]" />
                     </div>
-                    <Link className="font-semibold text-[#aaa] cursor-text" to="/createPost">
-                        {t("home.new")}, {userInfo.name}
-                    </Link>
+                    <div className="font-semibold text-[#aaa] cursor-text" onClick={() => setShowModal(true)}>
+                        {t("home.new")}, {userInfo?.name}
+                    </div>
                 </div>
-                <Link
-                    to="/createPost"
+                <div
+                    onClick={() => setShowModal(true)}
+                    // to="/createPost"
                     className="text-[14px]  flex gap-1 items-center cursor-pointer hover:opacity-90 h-[40px] px-3 text-white font-medium rounded-[12px] bg-blue-600  dark:text-primary2 dark:bg-primary1"
                 >
                     <BiLinkAlt className="text-[20px]" /> {t("home.post")}
-                </Link>
+                </div>
             </div>
             <NewsFeed scrollRef={scrollRef} />
+            {showModal && <CreatePost handleCloseModal={handleCloseModal} />}
         </div>
     );
 }

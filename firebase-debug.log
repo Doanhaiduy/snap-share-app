@@ -1,79 +1,77 @@
-[debug] [2023-07-05T04:22:43.841Z] ----------------------------------------------------------------------
-[debug] [2023-07-05T04:22:43.845Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\DUY PC\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
-[debug] [2023-07-05T04:22:43.847Z] CLI Version:   12.0.0
-[debug] [2023-07-05T04:22:43.847Z] Platform:      win32
-[debug] [2023-07-05T04:22:43.848Z] Node Version:  v18.14.0
-[debug] [2023-07-05T04:22:43.850Z] Time:          Wed Jul 05 2023 11:22:43 GMT+0700 (Indochina Time)
-[debug] [2023-07-05T04:22:43.850Z] ----------------------------------------------------------------------
+[debug] [2023-07-07T14:36:37.335Z] ----------------------------------------------------------------------
+[debug] [2023-07-07T14:36:37.337Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\DUY PC\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-07-07T14:36:37.337Z] CLI Version:   12.0.0
+[debug] [2023-07-07T14:36:37.337Z] Platform:      win32
+[debug] [2023-07-07T14:36:37.338Z] Node Version:  v18.14.0
+[debug] [2023-07-07T14:36:37.338Z] Time:          Fri Jul 07 2023 21:36:37 GMT+0700 (Indochina Time)
+[debug] [2023-07-07T14:36:37.338Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-07-05T04:22:43.860Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
-[debug] [2023-07-05T04:22:44.190Z] Object ".emulators.hosting" in "firebase.json" has unknown property: {"additionalProperty":"rewrites"}
-[debug] [2023-07-05T04:22:44.204Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-07-05T04:22:44.205Z] > authorizing via signed-in user (duychayspin0@gmail.com)
-[debug] [2023-07-05T04:22:44.836Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
-[debug] [2023-07-05T04:22:44.837Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
-[debug] [2023-07-05T04:22:46.320Z] java version "20.0.1" 2023-04-18
+[debug] [2023-07-07T14:36:37.441Z] Object ".emulators.hosting" in "firebase.json" has unknown property: {"additionalProperty":"rewrites"}
+[debug] [2023-07-07T14:36:37.446Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-07T14:36:37.447Z] > authorizing via signed-in user (duychayspin0@gmail.com)
+[debug] [2023-07-07T14:36:37.546Z] java version "20.0.1" 2023-04-18
 
-[debug] [2023-07-05T04:22:46.321Z] Java(TM) SE Runtime Environment (build 20.0.1+9-29)
+[debug] [2023-07-07T14:36:37.548Z] Java(TM) SE Runtime Environment (build 20.0.1+9-29)
 Java HotSpot(TM) 64-Bit Server VM (build 20.0.1+9-29, mixed mode, sharing)
 
-[debug] [2023-07-05T04:22:46.341Z] Parsed Java major version: 20
+[debug] [2023-07-07T14:36:37.566Z] Parsed Java major version: 20
 [info] i  emulators: Starting emulators: auth, firestore, hosting, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, firestore, hosting, storage"}}
-[debug] [2023-07-05T04:22:46.368Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T04:22:46.368Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T04:22:46.368Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T04:22:46.369Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T04:22:46.369Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T04:22:46.369Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T04:22:46.369Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2023-07-05T04:22:46.406Z] [hub] writing locator at C:\Users\DUYPC~1\AppData\Local\Temp\hub-snap-share-78f51.json
-[debug] [2023-07-05T04:22:46.444Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2023-07-05T04:22:46.444Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
-[debug] [2023-07-05T04:22:46.445Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\DUY PC\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.17.4.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","snap-share-78f51","--rules","D:\\THCode\\Full-stack\\Front-end\\Project-ReactJS\\snap-share-app\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\DUY PC\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.17.4.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"snap-share-78f51\",\"--rules\",\"D:\\\\THCode\\\\Full-stack\\\\Front-end\\\\Project-ReactJS\\\\snap-share-app\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[debug] [2023-07-07T14:36:37.582Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-07T14:36:37.583Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-07T14:36:37.583Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-07T14:36:37.583Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-07T14:36:37.583Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-07T14:36:37.583Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[warn] !  ui: Emulator UI unable to start on port 4000, starting on 4001 instead. {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI unable to start on port 4000, starting on 4001 instead."}}
+[debug] [2023-07-07T14:36:37.584Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4001},{"address":"::1","family":"IPv6","port":4001}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-07-07T14:36:37.612Z] [hub] writing locator at C:\Users\DUYPC~1\AppData\Local\Temp\hub-snap-share-78f51.json
+[debug] [2023-07-07T14:36:37.625Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-07-07T14:36:37.625Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-07-07T14:36:37.626Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\DUY PC\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.17.4.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","snap-share-78f51","--rules","D:\\THCode\\Full-stack\\Front-end\\Project-ReactJS\\snap-share-app\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\DUY PC\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.17.4.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"snap-share-78f51\",\"--rules\",\"D:\\\\THCode\\\\Full-stack\\\\Front-end\\\\Project-ReactJS\\\\snap-share-app\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
 [info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
 [info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
-[debug] [2023-07-05T04:23:06.689Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2023-07-05T04:23:08.597Z] Temp file directory for storage emulator: C:\Users\DUYPC~1\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\DUYPC~1\\AppData\\Local\\Temp/firebase/storage/blobs"}}
-[debug] [2023-07-05T04:23:08.620Z] > refreshing access token with scopes: []
-[debug] [2023-07-05T04:23:08.622Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2023-07-05T04:23:08.623Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-07-05T04:23:09.228Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2023-07-05T04:23:09.228Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-07-05T04:23:09.239Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/snap-share-78f51/sites 
-[debug] [2023-07-05T04:23:10.488Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/snap-share-78f51/sites 200
-[debug] [2023-07-05T04:23:10.488Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/snap-share-78f51/sites {"sites":[{"name":"projects/snap-share-78f51/sites/snap-share-78f51","defaultUrl":"https://snap-share-78f51.web.app","appId":"1:1068745865508:web:450ef440574fbc003a5bb1","type":"DEFAULT_SITE"}]}
-[debug] [2023-07-05T04:23:10.489Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51/webApps/1:1068745865508:web:450ef440574fbc003a5bb1/config [none]
-[debug] [2023-07-05T04:23:11.899Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51/webApps/1:1068745865508:web:450ef440574fbc003a5bb1/config 200
-[debug] [2023-07-05T04:23:11.899Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51/webApps/1:1068745865508:web:450ef440574fbc003a5bb1/config {"projectId":"snap-share-78f51","appId":"1:1068745865508:web:450ef440574fbc003a5bb1","databaseURL":"https://snap-share-78f51-default-rtdb.firebaseio.com","storageBucket":"snap-share-78f51.appspot.com","locationId":"asia-southeast2","apiKey":"AIzaSyCs2GujRrlTqhK7anNsFbwm_GccRFjSsI4","authDomain":"snap-share-78f51.firebaseapp.com","messagingSenderId":"1068745865508","measurementId":"G-3H378KKC9E"}
-[debug] [2023-07-05T04:23:11.915Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51 [none]
-[debug] [2023-07-05T04:23:12.950Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51 200
-[debug] [2023-07-05T04:23:12.951Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51 {"projectId":"snap-share-78f51","projectNumber":"1068745865508","displayName":"snap-share-app","name":"projects/snap-share-78f51","resources":{"hostingSite":"snap-share-78f51","realtimeDatabaseInstance":"snap-share-78f51-default-rtdb","storageBucket":"snap-share-78f51.appspot.com","locationId":"asia-southeast2"},"state":"ACTIVE","etag":"1_e4348220-fa52-453b-a67e-800974f17b19"}
+[debug] [2023-07-07T14:36:45.488Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-07-07T14:36:46.520Z] Temp file directory for storage emulator: C:\Users\DUYPC~1\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\DUYPC~1\\AppData\\Local\\Temp/firebase/storage/blobs"}}
+[debug] [2023-07-07T14:36:46.539Z] > refreshing access token with scopes: []
+[debug] [2023-07-07T14:36:46.541Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-07-07T14:36:46.541Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-07T14:36:46.940Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-07-07T14:36:46.940Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-07T14:36:46.949Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/snap-share-78f51/sites 
+[debug] [2023-07-07T14:36:47.700Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/snap-share-78f51/sites 200
+[debug] [2023-07-07T14:36:47.701Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/snap-share-78f51/sites {"sites":[{"name":"projects/snap-share-78f51/sites/snap-share-78f51","defaultUrl":"https://snap-share-78f51.web.app","appId":"1:1068745865508:web:450ef440574fbc003a5bb1","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-07T14:36:47.701Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51/webApps/1:1068745865508:web:450ef440574fbc003a5bb1/config [none]
+[debug] [2023-07-07T14:36:49.086Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51/webApps/1:1068745865508:web:450ef440574fbc003a5bb1/config 200
+[debug] [2023-07-07T14:36:49.086Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51/webApps/1:1068745865508:web:450ef440574fbc003a5bb1/config {"projectId":"snap-share-78f51","appId":"1:1068745865508:web:450ef440574fbc003a5bb1","databaseURL":"https://snap-share-78f51-default-rtdb.firebaseio.com","storageBucket":"snap-share-78f51.appspot.com","locationId":"asia-southeast2","apiKey":"AIzaSyCs2GujRrlTqhK7anNsFbwm_GccRFjSsI4","authDomain":"snap-share-78f51.firebaseapp.com","messagingSenderId":"1068745865508","measurementId":"G-3H378KKC9E"}
+[debug] [2023-07-07T14:36:49.091Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51 [none]
+[debug] [2023-07-07T14:36:49.721Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51 200
+[debug] [2023-07-07T14:36:49.721Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51 {"projectId":"snap-share-78f51","projectNumber":"1068745865508","displayName":"snap-share-app","name":"projects/snap-share-78f51","resources":{"hostingSite":"snap-share-78f51","realtimeDatabaseInstance":"snap-share-78f51-default-rtdb","storageBucket":"snap-share-78f51.appspot.com","locationId":"asia-southeast2"},"state":"ACTIVE","etag":"1_d4dea821-3c75-4ec4-a92f-3fefb9feedc4"}
 [info] i  hosting[snap-share-78f51]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
 [info] +  hosting[snap-share-78f51]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
-[debug] [2023-07-05T04:23:13.042Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2023-07-05T04:23:13.043Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2023-07-05T04:23:13.043Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\DUY PC\\.cache\\firebase\\emulators\\ui-v1.11.6\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\DUY PC\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.6\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[debug] [2023-07-07T14:36:49.772Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-07-07T14:36:49.772Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-07-07T14:36:49.772Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\DUY PC\\.cache\\firebase\\emulators\\ui-v1.11.6\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\DUY PC\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.6\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
 [info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
-[debug] [2023-07-05T04:23:13.406Z] Web / API server started at 127.0.0.1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
-[debug] [2023-07-05T04:23:13.407Z] Web / API server started at ::1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[debug] [2023-07-07T14:36:49.891Z] Web / API server started at 127.0.0.1:4001
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4001\n"}}
+[debug] [2023-07-07T14:36:49.891Z] Web / API server started at ::1:4001
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4001\n"}}
 [info] 
 ┌─────────────────────────────────────────────────────────────┐
 │ ✔  All emulators ready! It is now safe to connect your app. │
-│ i  View Emulator UI at http://127.0.0.1:4000/               │
+│ i  View Emulator UI at http://127.0.0.1:4001/               │
 └─────────────────────────────────────────────────────────────┘
 
 ┌────────────────┬────────────────┬─────────────────────────────────┐
 │ Emulator       │ Host:Port      │ View in Emulator UI             │
 ├────────────────┼────────────────┼─────────────────────────────────┤
-│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4001/auth      │
 ├────────────────┼────────────────┼─────────────────────────────────┤
-│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4001/firestore │
 ├────────────────┼────────────────┼─────────────────────────────────┤
 │ Hosting        │ 127.0.0.1:5000 │ n/a                             │
 ├────────────────┼────────────────┼─────────────────────────────────┤
-│ Storage        │ 127.0.0.1:9199 │ http://127.0.0.1:4000/storage   │
+│ Storage        │ 127.0.0.1:9199 │ http://127.0.0.1:4001/storage   │
 └────────────────┴────────────────┴─────────────────────────────────┘
   Emulator Hub running at 127.0.0.1:4400
   Other reserved ports: 4500, 9150
@@ -87,83 +85,36 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [warn] !  Emulator UI has exited upon receiving signal: SIGINT 
 [info] i  hosting: Stopping Hosting Emulator {"metadata":{"emulator":{"name":"hosting"},"message":"Stopping Hosting Emulator"}}
 [info] i  firestore: Stopping Firestore Emulator {"metadata":{"emulator":{"name":"firestore"},"message":"Stopping Firestore Emulator"}}
-[debug] [2023-07-05T13:51:06.282Z] ----------------------------------------------------------------------
-[debug] [2023-07-05T13:51:06.286Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\DUY PC\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
-[debug] [2023-07-05T13:51:06.286Z] CLI Version:   12.0.0
-[debug] [2023-07-05T13:51:06.287Z] Platform:      win32
-[debug] [2023-07-05T13:51:06.287Z] Node Version:  v18.14.0
-[debug] [2023-07-05T13:51:06.288Z] Time:          Wed Jul 05 2023 20:51:06 GMT+0700 (Indochina Time)
-[debug] [2023-07-05T13:51:06.288Z] ----------------------------------------------------------------------
+[debug] [2023-07-08T01:38:47.669Z] ----------------------------------------------------------------------
+[debug] [2023-07-08T01:38:47.673Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\DUY PC\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-07-08T01:38:47.673Z] CLI Version:   12.0.0
+[debug] [2023-07-08T01:38:47.674Z] Platform:      win32
+[debug] [2023-07-08T01:38:47.674Z] Node Version:  v18.14.0
+[debug] [2023-07-08T01:38:47.676Z] Time:          Sat Jul 08 2023 08:38:47 GMT+0700 (Indochina Time)
+[debug] [2023-07-08T01:38:47.676Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-07-05T13:51:06.517Z] Object ".emulators.hosting" in "firebase.json" has unknown property: {"additionalProperty":"rewrites"}
-[debug] [2023-07-05T13:51:06.526Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-07-05T13:51:06.527Z] > authorizing via signed-in user (duychayspin0@gmail.com)
-[debug] [2023-07-05T13:51:07.613Z] java version "20.0.1" 2023-04-18
+[debug] [2023-07-08T01:38:48.150Z] Object ".emulators.hosting" in "firebase.json" has unknown property: {"additionalProperty":"rewrites"}
+[debug] [2023-07-08T01:38:48.170Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-08T01:38:48.171Z] > authorizing via signed-in user (duychayspin0@gmail.com)
+[debug] [2023-07-08T01:38:49.989Z] java version "20.0.1" 2023-04-18
 
-[debug] [2023-07-05T13:51:07.614Z] Java(TM) SE Runtime Environment (build 20.0.1+9-29)
-Java HotSpot(TM) 64-Bit Server VM (build 20.0.1+9-29, mixed mode, sharing)
+[debug] [2023-07-08T01:38:49.991Z] Java(TM) SE Runtime Environment (build 20.0.1+9-29)
 
-[debug] [2023-07-05T13:51:07.629Z] Parsed Java major version: 20
+[debug] [2023-07-08T01:38:49.992Z] Java HotSpot(TM) 64-Bit Server VM (build 20.0.1+9-29, mixed mode, sharing)
+
+[debug] [2023-07-08T01:38:50.197Z] Parsed Java major version: 20
 [info] i  emulators: Starting emulators: auth, firestore, hosting, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, firestore, hosting, storage"}}
-[debug] [2023-07-05T13:51:07.653Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T13:51:07.654Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T13:51:07.654Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T13:51:07.654Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T13:51:07.654Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T13:51:07.654Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-07-05T13:51:07.654Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-07-08T01:38:50.332Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-08T01:38:50.333Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-08T01:38:50.333Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-08T01:38:50.333Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-08T01:38:50.333Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-08T01:38:50.334Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-08T01:38:50.335Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
 [warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project snap-share-78f51. This may result in unexpected behavior. 
-[debug] [2023-07-05T13:51:07.682Z] [hub] writing locator at C:\Users\DUYPC~1\AppData\Local\Temp\hub-snap-share-78f51.json
-[debug] [2023-07-05T13:51:07.701Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2023-07-05T13:51:07.702Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
-[debug] [2023-07-05T13:51:07.702Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\DUY PC\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.17.4.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","snap-share-78f51","--rules","D:\\THCode\\Full-stack\\Front-end\\Project-ReactJS\\snap-share-app\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\DUY PC\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.17.4.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"snap-share-78f51\",\"--rules\",\"D:\\\\THCode\\\\Full-stack\\\\Front-end\\\\Project-ReactJS\\\\snap-share-app\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[debug] [2023-07-08T01:38:50.433Z] [hub] writing locator at C:\Users\DUYPC~1\AppData\Local\Temp\hub-snap-share-78f51.json
+[debug] [2023-07-08T01:38:50.461Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-07-08T01:38:50.462Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-07-08T01:38:50.462Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\DUY PC\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.17.4.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","snap-share-78f51","--rules","D:\\THCode\\Full-stack\\Front-end\\Project-ReactJS\\snap-share-app\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\DUY PC\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.17.4.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"snap-share-78f51\",\"--rules\",\"D:\\\\THCode\\\\Full-stack\\\\Front-end\\\\Project-ReactJS\\\\snap-share-app\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
 [info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
 [info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
-[debug] [2023-07-05T13:51:19.664Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2023-07-05T13:51:20.454Z] Temp file directory for storage emulator: C:\Users\DUYPC~1\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\DUYPC~1\\AppData\\Local\\Temp/firebase/storage/blobs"}}
-[debug] [2023-07-05T13:51:20.466Z] > refreshing access token with scopes: []
-[debug] [2023-07-05T13:51:20.468Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2023-07-05T13:51:20.468Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-07-05T13:51:20.764Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2023-07-05T13:51:20.765Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-07-05T13:51:20.785Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/snap-share-78f51/sites 
-[debug] [2023-07-05T13:51:21.611Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/snap-share-78f51/sites 200
-[debug] [2023-07-05T13:51:21.611Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/snap-share-78f51/sites {"sites":[{"name":"projects/snap-share-78f51/sites/snap-share-78f51","defaultUrl":"https://snap-share-78f51.web.app","appId":"1:1068745865508:web:450ef440574fbc003a5bb1","type":"DEFAULT_SITE"}]}
-[debug] [2023-07-05T13:51:21.612Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51/webApps/1:1068745865508:web:450ef440574fbc003a5bb1/config [none]
-[debug] [2023-07-05T13:51:23.042Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51/webApps/1:1068745865508:web:450ef440574fbc003a5bb1/config 200
-[debug] [2023-07-05T13:51:23.042Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51/webApps/1:1068745865508:web:450ef440574fbc003a5bb1/config {"projectId":"snap-share-78f51","appId":"1:1068745865508:web:450ef440574fbc003a5bb1","databaseURL":"https://snap-share-78f51-default-rtdb.firebaseio.com","storageBucket":"snap-share-78f51.appspot.com","locationId":"asia-southeast2","apiKey":"AIzaSyCs2GujRrlTqhK7anNsFbwm_GccRFjSsI4","authDomain":"snap-share-78f51.firebaseapp.com","messagingSenderId":"1068745865508","measurementId":"G-3H378KKC9E"}
-[debug] [2023-07-05T13:51:23.057Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51 [none]
-[debug] [2023-07-05T13:51:23.724Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51 200
-[debug] [2023-07-05T13:51:23.724Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/snap-share-78f51 {"projectId":"snap-share-78f51","projectNumber":"1068745865508","displayName":"snap-share-app","name":"projects/snap-share-78f51","resources":{"hostingSite":"snap-share-78f51","realtimeDatabaseInstance":"snap-share-78f51-default-rtdb","storageBucket":"snap-share-78f51.appspot.com","locationId":"asia-southeast2"},"state":"ACTIVE","etag":"1_e4348220-fa52-453b-a67e-800974f17b19"}
-[info] i  hosting[snap-share-78f51]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
-[info] +  hosting[snap-share-78f51]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
-[debug] [2023-07-05T13:51:23.768Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2023-07-05T13:51:23.768Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2023-07-05T13:51:23.769Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\DUY PC\\.cache\\firebase\\emulators\\ui-v1.11.6\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\DUY PC\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.6\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
-[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
-[debug] [2023-07-05T13:51:23.904Z] Web / API server started at 127.0.0.1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
-[debug] [2023-07-05T13:51:23.905Z] Web / API server started at ::1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
-[info] 
-┌─────────────────────────────────────────────────────────────┐
-│ ✔  All emulators ready! It is now safe to connect your app. │
-│ i  View Emulator UI at http://127.0.0.1:4000/               │
-└─────────────────────────────────────────────────────────────┘
-
-┌────────────────┬────────────────┬─────────────────────────────────┐
-│ Emulator       │ Host:Port      │ View in Emulator UI             │
-├────────────────┼────────────────┼─────────────────────────────────┤
-│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
-├────────────────┼────────────────┼─────────────────────────────────┤
-│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
-├────────────────┼────────────────┼─────────────────────────────────┤
-│ Hosting        │ 127.0.0.1:5000 │ n/a                             │
-├────────────────┼────────────────┼─────────────────────────────────┤
-│ Storage        │ 127.0.0.1:9199 │ http://127.0.0.1:4000/storage   │
-└────────────────┴────────────────┴─────────────────────────────────┘
-  Emulator Hub running at 127.0.0.1:4400
-  Other reserved ports: 4500, 9150
-
-Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
- 
