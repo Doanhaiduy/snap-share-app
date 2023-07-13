@@ -30,7 +30,7 @@ function MoreAction() {
         <div>
             <SpeedDial
                 ariaLabel="SpeedDial basic example"
-                sx={{ position: "fixed", bottom: 30, right: 16 }}
+                sx={{ position: "fixed", bottom: window.location.pathname === "/chats" ? 80 : 40, right: 16 }}
                 icon={<SpeedDialIcon />}
                 FabProps={{
                     sx: {

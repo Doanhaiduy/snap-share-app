@@ -8,11 +8,13 @@ import { toast } from "react-toastify";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import moment from "moment";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
+import { ThemeContext } from "~/Context/ThemeContextProvider";
 
 const CommentItem = React.memo(({ data }) => {
     const [authorComment, setAuthorComment] = useState({});
     const { setCurrentProfile } = useContext(ProfileContext);
     const { t } = useContext(MultiLanguageContext);
+    const { darkToggle } = useContext(ThemeContext);
 
     const { currentUser } = useContext(AuthContext);
     const [showOption, setShowOption] = useState(false);
@@ -42,7 +44,7 @@ const CommentItem = React.memo(({ data }) => {
                 closeOnClick: true,
                 draggable: true,
                 progress: undefined,
-                theme: "light",
+                theme: darkToggle ? "dark" : "light",
             });
         } catch (error) {
             console.log("Lỗi khi xóa comment:", error);
@@ -68,7 +70,7 @@ const CommentItem = React.memo(({ data }) => {
             </Link>
             <div className="flex flex-col  rounded-[12px] px-3 bg-gray-300 dark:bg-primary2 py-2 w-[90%]">
                 <div className="text-[12px] font-medium relative">
-                    {moment().diff(data.releaseDate, "days") > 3
+                    {moment().diff(data.releaseDate, "days") > 30
                         ? data.releaseDate
                         : moment(data.releaseDate).fromNow()}
                     <span

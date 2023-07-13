@@ -3,7 +3,6 @@ import {
     connectAuthEmulator,
     getAuth,
     GoogleAuthProvider,
-    useAuthEmulator,
     GithubAuthProvider,
     FacebookAuthProvider,
 } from "firebase/auth";

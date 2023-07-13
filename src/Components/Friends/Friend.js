@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import { ProfileContext } from "~/Context/ProfileContextProvider";
 import useUser from "~/hooks/useUser";
 
 function Friend({ uid }) {
     const { user } = useUser(uid);
+    const { setCurrentProfile } = useContext(ProfileContext);
 
     return (
-        <div className="flex items-center cursor-pointer gap-2 dark:bg-[#333] bg-white p-2 relative rounded-[12px]">
+        <Link
+            to={`/profile/${user?.nameId || user?.uid}`}
+            className="flex items-center cursor-pointer gap-2 dark:bg-[#333] bg-white p-2 relative rounded-[12px]"
+            onClick={() => {
+                localStorage.setItem("currentProfile", JSON.stringify(user));
+                setCurrentProfile(user);
+            }}
+        >
             <div className="flex items-center gap-2 ">
                 <div className=" ">
                     <img className="h-[50px]  w-[50px] rounded-[12px] object-cover" src={user?.photoURL} alt="" />
@@ -23,7 +33,7 @@ function Friend({ uid }) {
                     <li className="hover:bg-slate-500 px-2 py-1 hover:text-white">Chat</li>
                 </ul>
             </div>
-        </div>
+        </Link>
     );
 }
 

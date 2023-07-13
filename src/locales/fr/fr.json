@@ -103,6 +103,7 @@
         "add": "Ajouter un ami",
         "unFollow": "Ne plus suivre",
         "unFriend": "Ne plus être ami",
+        "message": "Message",
         "cancelRequest": "Annuler la demande",
         "confirmed": "SnapShare a confirmé que ce profil est authentique.",
         "posts": "Publications",
@@ -171,6 +172,27 @@
         "dark": "Sombre",
         "light": "Clair",
         "theme": "Thème"
+    },
+    "chats": {
+        "title": "Discussions",
+        "online": "En ligne",
+        "sidebar": {
+            "placeholder": "Rechercher dans le messager..."
+        },
+        "windowChat": {
+            "placeholder": "Écrire quelque chose",
+            "sentImage": "Envoyé une image"
+        },
+        "detail": {
+            "profile": "Profil",
+            "mute": "Mettre en sourdine",
+            "search": "Rechercher",
+            "other": "Médias, Fichiers et Liens",
+            "media": "Médias",
+            "file": "Fichier",
+            "links": "Liens",
+            "sent": "Envoyé"
+        }
     },
     "privacyPolicy": "Politique de confidentialité",
     "termsConditions": "Conditions générales",

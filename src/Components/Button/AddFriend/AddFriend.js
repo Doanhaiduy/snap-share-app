@@ -9,7 +9,7 @@ import { BiUserPlus, BiUserX } from "react-icons/bi";
 
 const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />;
 
-function AddFriend({ uid, uidCurrent }) {
+function AddFriend({ uid, uidCurrent, isMobile }) {
     const { t } = useContext(MultiLanguageContext);
     const [madeFriends, setMadeFriends] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -58,19 +58,24 @@ function AddFriend({ uid, uidCurrent }) {
 
     return (
         <button
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 dark:bg-primary1 dark:hover:bg-yellow-500 dark:text-primary2 hover:bg-blue-600 justify-center text-white text-sm font-medium rounded-md min-w-[130px] min-h-[40px]"
+            className={`${
+                !isMobile
+                    ? "min-w-[130px] min-h-[40px]  gap-2 px-4 py-2 justify-center bg-blue-500 dark:bg-primary1 dark:hover:bg-yellow-500 dark:text-primary2 hover:bg-blue-600 text-white text-sm flex items-center font-medium rounded-md"
+                    : "px-2 block rounded-b-[4px] py-1 w-full text-left font-semibold dark:bg-[#282828] bg-white hover:bg-slate-100 dark:hover:bg-gray-500 cursor-pointer "
+            }`}
             onClick={handleAddFriend}
         >
             {loading ? (
                 <Spin size="small" indicator={antIcon} className="text-white dark:text-primary2" />
             ) : madeFriends ? (
                 <>
-                    <BiUserX />
+                    {!isMobile && <BiUserX />}
                     {t("profile.cancelRequest")}
                 </>
             ) : (
                 <>
-                    <BiUserPlus />
+                    {!isMobile && <BiUserPlus />}
+
                     {t("profile.add")}
                 </>
             )}

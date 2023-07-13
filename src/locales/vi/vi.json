@@ -104,6 +104,7 @@
         "add": "Thêm bạn",
         "unFollow": "Bỏ theo dõi",
         "unFriend": "Hủy kết bạn",
+        "message": "Tin nhắn",
         "cancelRequest": "Hủy yêu cầu",
         "confirmed": "SnapShare xác nhận hồ sơ này là thật.",
         "posts": "Bài viết",
@@ -172,6 +173,27 @@
         "theme": "Giao diện",
         "dark": "Dark",
         "light": "Light"
+    },
+    "chats": {
+        "title": "Trò chuyện",
+        "online": "Trực tuyến",
+        "sidebar": {
+            "placeholder": "Tìm kiếm messenger..."
+        },
+        "windowChat": {
+            "placeholder": "Viết gì đó",
+            "sentImage": "Đã gửi một ảnh"
+        },
+        "detail": {
+            "profile": "Hồ sơ",
+            "mute": "Tắt tiếng",
+            "search": "Tìm kiếm",
+            "other": "Phương tiện, Tập tin và Liên kết",
+            "media": "Phương tiện",
+            "file": "Tập tin",
+            "links": "Liên kết",
+            "sent": "Đã gửi"
+        }
     },
     "privacyPolicy": "Chính sách bảo mật",
     "termsConditions": "Điều khoản và Điều kiện",

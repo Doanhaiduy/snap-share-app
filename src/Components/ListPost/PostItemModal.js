@@ -36,7 +36,7 @@ function PostItemProfile({ post }) {
                 <div className="h-[130px]">
                     <p className=" text-[2rem] cursor-pointer flex justify-between">
                         <span className="text-[0.8rem] font-semibold ">
-                            {moment().diff(post.releaseDate, "days") > 3
+                            {moment().diff(post.releaseDate, "days") > 30
                                 ? post.releaseDate
                                 : moment(post.releaseDate).fromNow()}
                         </span>

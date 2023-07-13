@@ -103,6 +103,7 @@
         "add": "เพิ่มเพื่อน",
         "unFollow": "ยกเลิกติดตาม",
         "unFriend": "ยกเลิกเป็นเพื่อน",
+        "message": "ข้อความ",
         "cancelRequest": "ยกเลิกคำขอ",
         "confirmed": "SnapShare ยืนยันว่าโปรไฟล์นี้ถูกต้อง",
         "posts": "โพสต์",
@@ -172,6 +173,27 @@
         "dark": "สีเข้ม",
         "light": "สีอ่อน",
         "theme": "ธีม"
+    },
+    "chats": {
+        "title": "แชท",
+        "online": "ออนไลน์",
+        "sidebar": {
+            "placeholder": "ค้นหา messenger..."
+        },
+        "windowChat": {
+            "placeholder": "พิมพ์อะไรบางอย่าง",
+            "sentImage": "ส่งรูปภาพแล้ว"
+        },
+        "detail": {
+            "profile": "โปรไฟล์",
+            "mute": "ปิดเสียง",
+            "search": "ค้นหา",
+            "other": "สื่อ, ไฟล์ และลิงก์",
+            "media": "สื่อ",
+            "file": "ไฟล์",
+            "links": "ลิงก์",
+            "sent": "ส่งแล้ว"
+        }
     },
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
     "termsConditions": "ข้อกำหนดและเงื่อนไข",

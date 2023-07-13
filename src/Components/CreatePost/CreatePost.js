@@ -10,41 +10,46 @@ import { format } from "date-fns";
 import ShowEmoji from "~/Components/ShowEmoji/ShowEmoji";
 import { toast } from "react-toastify";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
+import { ThemeContext } from "~/Context/ThemeContextProvider";
+import useCreateImage from "~/hooks/useCreateImage";
 
 function CreatePost({ handleCloseModal }) {
     const { userInfo, currentUser } = useContext(AuthContext);
     const { t } = useContext(MultiLanguageContext);
-    const [imagePost, setImagePost] = useState(null);
+    // const [imagePost, setImagePost] = useState(null);
     const [text, setText] = useState("");
     const [isPublic, setIsPublic] = useState(true);
     const [loadingImage, setLoadingImage] = useState(false);
     const [loadingHandlePost, setLoadingHandlePost] = useState(false);
+    const { darkToggle } = useContext(ThemeContext);
+    const [image, handleCreateImage, setImage] = useCreateImage();
+
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
 
-    const HandleShowImagePost = (e) => {
-        setLoadingImage(true);
-        if (e.target.files[0]) {
-            const storageRef = ref(storage, `/Post/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
-            const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {},
-                (err) => console.log(err),
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                        console.log(url);
-                        setImagePost(url);
-                        setLoadingImage(false);
-                    });
-                }
-            );
-        } else {
-        }
-    };
+    // const HandleShowImagePost = (e) => {
+    //     setLoadingImage(true);
+    //     if (e.target.files[0]) {
+    //         const storageRef = ref(storage, `/Post/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
+    //         const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
+    //         uploadTask.on(
+    //             "state_changed",
+    //             (snapshot) => {},
+    //             (err) => console.log(err),
+    //             () => {
+    //                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+    //                     console.log(url);
+    //                     setImagePost(url);
+    //                     setLoadingImage(false);
+    //                 });
+    //             }
+    //         );
+    //     } else {
+    //     }
+    // };
 
     const handleSubmitPost = async (e) => {
         e.preventDefault();
-        if (text.trim() !== "" || imagePost !== null) {
+        if (text.trim() !== "" || image !== null) {
             setLoadingHandlePost(true);
             const idInit = id();
             const userRef = doc(db, "posts", currentUser.uid + "post" + idInit);
@@ -52,7 +57,7 @@ function CreatePost({ handleCloseModal }) {
                 uid: currentUser.uid + "post" + idInit,
                 releaseDate: currentDate,
                 uidUser: currentUser.uid,
-                imagePost,
+                imagePost: image,
                 public: isPublic,
                 text: text.replace(/\n/g, "<br>"),
                 like: [],
@@ -65,10 +70,10 @@ function CreatePost({ handleCloseModal }) {
                 closeOnClick: true,
                 draggable: true,
                 progress: undefined,
-                theme: "light",
+                theme: darkToggle ? "dark" : "light",
             });
             setText("");
-            setImagePost(null);
+            setImage(null);
             setIsPublic(true);
             setLoadingHandlePost(false);
             handleCloseModal();
@@ -80,7 +85,7 @@ function CreatePost({ handleCloseModal }) {
                 closeOnClick: true,
                 draggable: true,
                 progress: undefined,
-                theme: "light",
+                theme: darkToggle ? "dark" : "light",
             });
         }
     };
@@ -149,9 +154,9 @@ function CreatePost({ handleCloseModal }) {
                         <div className="lg:w-[40%] w-full p-4 lg:mt-[100px]">
                             <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md ">
                                 <div className="space-y-1 text-center ">
-                                    {imagePost ? (
+                                    {image ? (
                                         <img
-                                            src={imagePost}
+                                            src={image}
                                             alt=""
                                             className="mx-auto rounded-[12px] w-[100px] h-[100px] lg:w-[200px] lg:h-[200px] object-cover "
                                         />
@@ -182,7 +187,9 @@ function CreatePost({ handleCloseModal }) {
                                                 name="file-avatar"
                                                 type="file"
                                                 className="sr-only"
-                                                onChange={HandleShowImagePost}
+                                                onChange={async (e) => {
+                                                    await handleCreateImage(e, "post", setLoadingImage);
+                                                }}
                                             />
                                         </label>
                                     </div>

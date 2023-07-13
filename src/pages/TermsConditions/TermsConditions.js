@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 function TermsConditions({ handleCloseModal }) {
+    useEffect(() => {
+        document.title = `Terms Conditions | SnapShare`;
+    }, []);
     return (
         <div className="relative z-[51]">
             <div

@@ -7,7 +7,7 @@ import { AuthContext } from "~/Context/AuthContextProvider";
 function FriendActive({ isMobile }) {
     const { currentUser } = useContext(AuthContext);
     const { t } = useContext(MultiLanguageContext);
-    const { user } = useUser(currentUser.uid);
+    const { user } = useUser(currentUser?.uid);
 
     return (
         <div className={`${!isMobile && "lg:block hidden"}`}>

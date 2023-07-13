@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
-function NotFound(props) {
+function NotFound({ title }) {
     const { t } = useContext(MultiLanguageContext);
-
+    useEffect(() => {
+        document.title = `${title} | SnapShare`;
+    }, [title]);
     return (
         <section className=" bg-slate-200 dark:bg-[#333] py-[80px] h-[100vh] lg:col-span-4 col-span-5">
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">

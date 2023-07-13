@@ -7,7 +7,7 @@ import ItemUserManager from "~/Components/ItemUserManger/ItemUserManager";
 import { Spin } from "antd";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
-function Admin() {
+function Admin({ title }) {
     const [users, setUsers] = useState([]);
     const [lastVisible, setLastVisible] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -20,7 +20,9 @@ function Admin() {
         }
         getUser();
     }, [currentUser?.uid]);
-
+    useEffect(() => {
+        document.title = `${title} | SnapShare`;
+    }, [title]);
     const getUser = async () => {
         setLoading(true);
         try {

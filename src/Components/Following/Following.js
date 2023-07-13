@@ -8,7 +8,7 @@ function Following({ uid }) {
     const { t } = useContext(MultiLanguageContext);
     const { user, loading } = useUser(uid);
     return (
-        <div className="grid grid-cols-1 gap-4  mt-5">
+        <div className="grid grid-cols-1 gap-4 mt-5">
             {loading ? (
                 <Spin />
             ) : (

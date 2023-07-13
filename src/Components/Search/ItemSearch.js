@@ -19,7 +19,7 @@ function ItemSearch({ user, handleHideResult }) {
             <div className="">
                 <h2 className="text-[1.1rem] font-bold">
                     {user.name}
-                    {user.verified && (
+                    {user?.verified && (
                         <BsFillCheckCircleFill className="text-[16px] inline text-[#5890ff] dark:text-primary1 mb-[5px] ml-[6px]" />
                     )}
                 </h2>

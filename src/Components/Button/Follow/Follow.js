@@ -9,7 +9,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import useUser from "~/hooks/useUser";
 const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />;
 
-function Follow({ uid, uidCurrent }) {
+function Follow({ uid, uidCurrent, isMobile }) {
     const { t } = useContext(MultiLanguageContext);
     const [madeFollow, setMadeFollow] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -72,19 +72,23 @@ function Follow({ uid, uidCurrent }) {
 
     return (
         <button
-            className="min-w-[130px] min-h-[40px] inline-flex items-center gap-2 px-4 py-2 justify-center bg-blue-500 dark:bg-primary1 dark:hover:bg-yellow-500 dark:text-primary2 hover:bg-blue-600 text-white text-sm font-medium rounded-md"
+            className={`${
+                !isMobile
+                    ? "min-w-[130px] min-h-[40px]  gap-2 px-4 py-2 justify-center bg-blue-500 dark:bg-primary1 dark:hover:bg-yellow-500 dark:text-primary2 hover:bg-blue-600 text-white text-sm flex items-center font-medium rounded-md"
+                    : "px-2 block py-1 w-full text-left font-semibold dark:bg-[#282828] bg-white hover:bg-slate-100 dark:hover:bg-gray-500 cursor-pointer "
+            }`}
             onClick={handleFollow}
         >
             {loading ? (
                 <Spin size="small" indicator={antIcon} className="text-white dark:text-primary2" />
             ) : madeFollow ? (
                 <>
-                    <AiOutlineUsergroupDelete />
+                    {!isMobile && <AiOutlineUsergroupDelete />}
                     {t("profile.unFollow")}
                 </>
             ) : (
                 <>
-                    <BiPlus />
+                    {!isMobile && <BiPlus />}
                     {t("profile.follow")}
                 </>
             )}

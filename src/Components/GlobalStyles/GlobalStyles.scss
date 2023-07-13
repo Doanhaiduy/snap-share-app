@@ -25,3 +25,24 @@
     background: #4096ff;
     outline: none;
 }
+
+.firebase-emulator-warning {
+    display: none;
+}
+.search-wrapper {
+    width: 100%; /* Chiều rộng của phần tử cha */
+}
+
+.search-wrapper > div {
+    width: 100%; /* Kế thừa chiều rộng từ phần tử cha */
+}
+
+.pseudo-action::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    top: -30px;
+    right: 0;
+}

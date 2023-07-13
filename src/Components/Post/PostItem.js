@@ -15,6 +15,7 @@ import ShowText from "../ShowText/ShowText";
 import { Modal, Button } from "antd";
 import "antd/dist/antd";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
+import { ThemeContext } from "~/Context/ThemeContextProvider";
 
 const { confirm } = Modal;
 
@@ -23,6 +24,8 @@ function PostItem({ post, limit, isProfile = false }) {
     const { currentUser, getUserPost, setPinPost, unPinPost } = useContext(AuthContext);
     const [showModal, setShowModal] = useState(false);
     const { setCurrentProfile } = useContext(ProfileContext);
+    const { darkToggle } = useContext(ThemeContext);
+
     const { t } = useContext(MultiLanguageContext);
     const CommentMemoized = memo(Comment);
     const [shouldGetUserPosts, setShouldGetUserPosts] = useState(false);
@@ -82,7 +85,7 @@ function PostItem({ post, limit, isProfile = false }) {
                     closeOnClick: true,
                     draggable: true,
                     progress: undefined,
-                    theme: "light",
+                    theme: darkToggle ? "dark" : "light",
                 });
                 getUserPost(null, limit);
             } catch (error) {
@@ -106,7 +109,7 @@ function PostItem({ post, limit, isProfile = false }) {
             closeOnClick: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: darkToggle ? "dark" : "light",
         });
     };
     const handleHackLike = async () => {
@@ -124,7 +127,7 @@ function PostItem({ post, limit, isProfile = false }) {
             closeOnClick: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: darkToggle ? "dark" : "light",
         });
     };
 
@@ -168,7 +171,7 @@ function PostItem({ post, limit, isProfile = false }) {
                             )}
                         </h2>
                         <p className="dark:text-primary1">
-                            {moment().diff(post.releaseDate, "days") > 3
+                            {moment().diff(post.releaseDate, "days") > 30
                                 ? post.releaseDate
                                 : moment(post.releaseDate).fromNow()}
                         </p>

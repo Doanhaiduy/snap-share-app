@@ -4,6 +4,7 @@ const routes = {
     profile: "/profile/:uid/*",
     admin: "/admin",
     language: "/language",
+    chats: "/chats",
     notFound: "*",
 };
 

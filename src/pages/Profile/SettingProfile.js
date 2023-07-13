@@ -8,6 +8,8 @@ import { setDoc, doc } from "firebase/firestore";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { provinces } from "./constans";
+import { ThemeContext } from "~/Context/ThemeContextProvider";
+import useCreateImage from "~/hooks/useCreateImage";
 
 function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handleUpdateSuccess, t }) {
     const { currentUser } = useContext(AuthContext);
@@ -20,6 +22,9 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
     const [imgCover, setImgCover] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [loadingImage, setLoadingImage] = useState(false);
+    const { darkToggle } = useContext(ThemeContext);
+    const [imageAvatar, handleCreateImageAvatar, setImageAvatar] = useCreateImage();
+    const [imageCover, handleCreateImageCover, setImageCover] = useCreateImage();
 
     const colorIcon = <LoadingOutlined style={{ fontSize: 24, color: "blue" }} spin />;
     function convertToId(name) {
@@ -62,7 +67,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
                         closeOnClick: true,
                         draggable: true,
                         progress: undefined,
-                        theme: "light",
+                        theme: darkToggle ? "dark" : "light",
                     });
                     return false;
                 }
@@ -81,8 +86,8 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
             setIsLoading(true);
             await updateProfile(currentUser, {
                 displayName: name,
-                photoURL: !imgAvatar ? userInfo.photoURL : imgAvatar,
-                coverImg: !imgCover ? userInfo.coverImg : imgCover,
+                photoURL: !imageAvatar ? userInfo.photoURL : imageAvatar,
+                coverImg: !imageCover ? userInfo.coverImg : imageCover,
                 email,
             });
             await setDoc(
@@ -91,9 +96,9 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
                     bio: bio.replace(/\n/g, "<br>"),
                     name,
                     address: address || "",
-                    photoURL: !imgAvatar ? userInfo.photoURL : imgAvatar,
+                    photoURL: !imageAvatar ? userInfo.photoURL : imageAvatar,
                     email,
-                    coverImg: !imgCover ? userInfo.coverImg : imgCover,
+                    coverImg: !imageCover ? userInfo.coverImg : imageCover,
                     website: website || "",
                     nameId: convertToId(nameID) || convertToId(name),
                 },
@@ -105,47 +110,47 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
             await handleCloseModal();
         }
     };
-    const handleShowAvatarImg = async (e) => {
-        setLoadingImage(true);
-        if (e.target.files[0]) {
-            const storageRef = ref(storage, `/Avatar/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
-            const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {},
-                (err) => console.log(err),
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                        console.log(url);
-                        setImgAvatar(url);
-                        setLoadingImage(false);
-                    });
-                }
-            );
-        } else {
-        }
-    };
+    // const handleShowAvatarImg = async (e) => {
+    //     setLoadingImage(true);
+    //     if (e.target.files[0]) {
+    //         const storageRef = ref(storage, `/Avatar/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
+    //         const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
+    //         uploadTask.on(
+    //             "state_changed",
+    //             (snapshot) => {},
+    //             (err) => console.log(err),
+    //             () => {
+    //                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+    //                     console.log(url);
+    //                     setImgAvatar(url);
+    //                     setLoadingImage(false);
+    //                 });
+    //             }
+    //         );
+    //     } else {
+    //     }
+    // };
 
-    const handleShowCoverImg = async (e) => {
-        setLoadingImage(true);
-        if (e.target.files[0]) {
-            const storageRef = ref(storage, `/Cover/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
-            const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {},
-                (err) => console.log(err),
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                        console.log(url);
-                        setImgCover(url);
-                        setLoadingImage(false);
-                    });
-                }
-            );
-        } else {
-        }
-    };
+    // const handleShowCoverImg = async (e) => {
+    //     setLoadingImage(true);
+    //     if (e.target.files[0]) {
+    //         const storageRef = ref(storage, `/Cover/${currentUser.displayName}/${e.target.files[0].name}${id()}`);
+    //         const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
+    //         uploadTask.on(
+    //             "state_changed",
+    //             (snapshot) => {},
+    //             (err) => console.log(err),
+    //             () => {
+    //                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+    //                     console.log(url);
+    //                     setImgCover(url);
+    //                     setLoadingImage(false);
+    //                 });
+    //             }
+    //         );
+    //     } else {
+    //     }
+    // };
 
     return (
         <div className="relative z-[51] ">
@@ -268,7 +273,9 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
                                         >
                                             <span> {t("loadFile")}</span>
                                             <input
-                                                onChange={handleShowAvatarImg}
+                                                onChange={async (e) =>
+                                                    handleCreateImageAvatar(e, "Avatar", setLoadingImage)
+                                                }
                                                 id="file-avatar"
                                                 name="file-avatar"
                                                 type="file"
@@ -278,9 +285,9 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
                                         {loadingImage ? (
                                             <Spin size="large" />
                                         ) : (
-                                            imgAvatar && (
+                                            imageAvatar && (
                                                 <img
-                                                    src={imgAvatar}
+                                                    src={imageAvatar}
                                                     alt=""
                                                     className=" xl:h-[250px] xl:w-[250px] rounded-full h-[200px] w-[200px] border mb-[12px] object-cover"
                                                 />
@@ -316,7 +323,9 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
                                         >
                                             <span>{t("loadFile")}</span>
                                             <input
-                                                onChange={handleShowCoverImg}
+                                                onChange={async (e) =>
+                                                    handleCreateImageCover(e, "Cover", setLoadingImage)
+                                                }
                                                 id="file-cover"
                                                 name="file-cover"
                                                 type="file"
@@ -326,9 +335,9 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
                                         {loadingImage ? (
                                             <Spin size="large" />
                                         ) : (
-                                            imgCover && (
+                                            imageCover && (
                                                 <img
-                                                    src={imgCover}
+                                                    src={imageCover}
                                                     alt=""
                                                     className=" xl:h-[250px] w-full h-[200px] mb-[12px] object-cover rounded-[12px]"
                                                 />

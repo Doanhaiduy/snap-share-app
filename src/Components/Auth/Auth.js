@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -27,6 +27,11 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const { t } = useContext(MultiLanguageContext);
     const { darkToggle } = useContext(ThemeContext);
+
+    useEffect(() => {
+        document.title = isLogin ? "Login | SnapShare" : "Signup | SnapShare";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [isLogin]);
     const handleSubmitLogin = (e) => {
         if (e.key === "Enter") {
             handleRLogin(e);

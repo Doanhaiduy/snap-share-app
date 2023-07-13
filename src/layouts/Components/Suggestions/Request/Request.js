@@ -7,7 +7,7 @@ import useUser from "~/hooks/useUser";
 function Request({ isMobile }) {
     const { currentUser } = useContext(AuthContext);
     const { t } = useContext(MultiLanguageContext);
-    const { user } = useUser(currentUser.uid);
+    const { user } = useUser(currentUser?.uid);
     useEffect(() => {});
     return (
         <div className={`${!isMobile && "lg:block hidden"}`}>
@@ -17,7 +17,7 @@ function Request({ isMobile }) {
                     <span className="text-sm">{user?.friendRequest?.length || "0"}</span>
                 </span>
             </div>
-            <div className=" flex flex-col gap-3 ">
+            <div className="flex flex-col gap-3">
                 {user?.friendRequest?.map((item) => (
                     <RequestItem t={t} key={item} uid={item} />
                 ))}

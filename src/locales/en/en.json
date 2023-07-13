@@ -19,7 +19,7 @@
         "logout": "Logout",
         "profile": "Profile",
         "friend": "Friend",
-        "mess": "Mess",
+        "mess": "Chats",
         "language": "Language"
     },
     "about": {
@@ -43,7 +43,7 @@
     "auth": {
         "slogan": "Preserve Memories, Share Stories",
         "signIn": "Sign in",
-        "signUp": "sign up",
+        "signUp": "Sign up",
         "google": "Sign in with Google",
         "github": "Sign in with Github",
         "other": "Sign in with e-mail and password",
@@ -103,6 +103,7 @@
         "add": "Add Friend",
         "unFollow": "Unfollow",
         "unFriend": "Unfriend",
+        "message": "Message",
         "cancelRequest": "Cancel request",
         "confirmed": "SnapShare confirmed this profile is authentic.",
         "posts": "Posts",
@@ -171,6 +172,27 @@
         "dark": "Dark",
         "light": "Light",
         "theme": "Theme"
+    },
+    "chats": {
+        "title": "Chats",
+        "online": "Online",
+        "sidebar": {
+            "placeholder": "Search messenger..."
+        },
+        "windowChat": {
+            "placeholder": "Write something",
+            "sentImage": "Sent an image"
+        },
+        "detail": {
+            "profile": "Profile",
+            "mute": "Mute",
+            "search": "Search",
+            "other": "Media, File and Links",
+            "media": "Media",
+            "file": "File",
+            "links": "Links",
+            "sent": "Sent"
+        }
     },
     "privacyPolicy": "Privacy Policy",
     "termsConditions": "Terms Conditions",

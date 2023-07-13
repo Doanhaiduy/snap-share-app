@@ -10,10 +10,10 @@ import moment from "moment";
 function ItemUserManager({ user, t }) {
     const { setCurrentProfile } = useContext(ProfileContext);
     const [isVerify, setIsVerify] = useState(() => {
-        if (user.verified === undefined) {
+        if (user?.verified === undefined) {
             return false;
         } else {
-            return user.verified;
+            return user?.verified;
         }
     });
     const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +51,7 @@ function ItemUserManager({ user, t }) {
                 <img src={user.photoURL} alt="Avatar" className="w-[50px] h-[50px] rounded-full mr-2" />
                 <span className="font-bold text-[20px]">
                     {user.name}
-                    {user.verified && (
+                    {user?.verified && (
                         <BsFillCheckCircleFill className="text-[16px] inline text-[#5890ff] dark:text-primary1  ml-[6px] mb-[4px]" />
                     )}
                 </span>
@@ -59,7 +59,7 @@ function ItemUserManager({ user, t }) {
             <p className="text-sm text-gray-500 mb-2 h-[40px] line-clamp-2">{user.bio || "No bio"}</p>
             <p className="text-xs text-gray-400 ">
                 {t("admin.registered")}:{" "}
-                {moment().diff(user.joinDate, "days") > 3 ? user.joinDate : moment(user.joinDate).fromNow()}
+                {moment().diff(user.joinDate, "days") > 30 ? user.joinDate : moment(user.joinDate).fromNow()}
             </p>
             <div className="mt-4 flex justify-between">
                 <Link

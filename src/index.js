@@ -8,17 +8,20 @@ import AuthContextProvider from "~/Context/AuthContextProvider";
 import ProfileContextProvider from "~/Context/ProfileContextProvider";
 import MultiLanguageContextProvider from "~/Context/MultiLanguageContextProvider";
 import ThemeContextProvider from "~/Context/ThemeContextProvider";
+import ChatsContextProvider from "./Context/ChatsContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <ThemeContextProvider>
         <MultiLanguageContextProvider>
             <AuthContextProvider>
-                <ProfileContextProvider>
-                    <GlobalStyles>
-                        <App />
-                    </GlobalStyles>
-                </ProfileContextProvider>
+                <ChatsContextProvider>
+                    <ProfileContextProvider>
+                        <GlobalStyles>
+                            <App />
+                        </GlobalStyles>
+                    </ProfileContextProvider>
+                </ChatsContextProvider>
             </AuthContextProvider>
         </MultiLanguageContextProvider>
     </ThemeContextProvider>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "~/Context/AuthContextProvider";
 import SettingProfile from "./SettingProfile";
 import ListPost from "~/Components/ListPost/ListPost";
@@ -15,12 +15,14 @@ import Following from "~/Components/Following/Following";
 import Saved from "~/Components/Saved/Saved";
 import About from "./About";
 import Action from "./Action";
+import { ThemeContext } from "~/Context/ThemeContextProvider";
 
-function Profile(props) {
+function Profile({ title }) {
     const { currentUser, userInfo, getUserInfo } = useContext(AuthContext);
     const userRender = JSON.parse(localStorage.getItem("currentProfile")) || userInfo;
     const { currentProfile } = useContext(ProfileContext);
     const { t } = useContext(MultiLanguageContext);
+    const { darkToggle } = useContext(ThemeContext);
 
     const [isShowModal, setIsShowModal] = useState(false);
     const handleShowModal = () => {
@@ -30,6 +32,9 @@ function Profile(props) {
     const handleCloseModal = () => {
         setIsShowModal(false);
     };
+    useEffect(() => {
+        document.title = `${userRender.name} | SnapShare`;
+    }, [userRender.name]);
     const handleUpdateSuccess = async () => {
         await toast.success(t("profile.setting.toast-2"), {
             position: "top-right",
@@ -38,7 +43,7 @@ function Profile(props) {
             closeOnClick: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: darkToggle ? "dark" : "light",
         });
     };
     const url = useResolvedPath("").pathname;

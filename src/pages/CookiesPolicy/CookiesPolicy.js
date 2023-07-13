@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 function CookiesPolicy({ handleCloseModal }) {
+    useEffect(() => {
+        document.title = `Cookies Policy | SnapShare`;
+    }, []);
     return (
         <div className="relative z-[51]">
             <div

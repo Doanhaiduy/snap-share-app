@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 function PrivacyPolicy({ handleCloseModal }) {
     const { t } = useContext(MultiLanguageContext);
-
+    useEffect(() => {
+        document.title = `Privacy Policy | SnapShare`;
+    }, []);
     return (
         <div className="relative z-[51]">
             <div

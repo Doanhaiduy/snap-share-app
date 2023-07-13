@@ -8,6 +8,7 @@ import Language from "~/pages/Language/Language";
 import NotFound from "~/pages/NotFound/NotFound";
 import Profile from "~/pages/Profile/Profile";
 import Auth from "~/Components/Auth/Auth";
+import Messages from "~/pages/Chats/Chats";
 
 //public routes
 const publicRoutes = [
@@ -31,6 +32,11 @@ const publicRoutes = [
         path: config.routes.language,
         component: Language,
         title: "Language",
+    },
+    {
+        path: config.routes.chats,
+        component: Messages,
+        title: "Chats",
     },
     {
         path: config.routes.notFound,

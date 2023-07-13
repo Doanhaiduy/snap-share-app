@@ -9,7 +9,7 @@ import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
 const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />;
 
-const UnFriend = ({ uid, uidCurrent }) => {
+const UnFriend = ({ uid, uidCurrent, isMobile }) => {
     const { t } = useContext(MultiLanguageContext);
 
     const [loading, setLoading] = useState(false);
@@ -31,14 +31,18 @@ const UnFriend = ({ uid, uidCurrent }) => {
     };
     return (
         <button
-            className="min-w-[130px] min-h-[40px] inline-flex items-center gap-2 px-4 py-2 justify-center bg-blue-500 dark:bg-primary1 dark:hover:bg-yellow-500 dark:text-primary2 hover:bg-blue-600 text-white text-sm font-medium rounded-md"
+            className={`${
+                !isMobile
+                    ? "min-w-[130px] min-h-[40px]  gap-2 px-4 py-2 justify-center bg-blue-500 dark:bg-primary1 dark:hover:bg-yellow-500 dark:text-primary2 hover:bg-blue-600 text-white text-sm flex items-center font-medium rounded-md"
+                    : "rounded-b-[4px] px-2 block py-1 w-full text-left font-semibold dark:bg-[#282828] bg-white hover:bg-slate-100 dark:hover:bg-gray-500 cursor-pointer "
+            }`}
             onClick={handleUnFriend}
         >
             {loading ? (
                 <Spin size="small" indicator={antIcon} className="text-white dark:text-primary2" />
             ) : (
                 <>
-                    <BiUserMinus />
+                    {!isMobile && <BiUserMinus />}
                     {t("profile.unFriend")}
                 </>
             )}

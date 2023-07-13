@@ -10,16 +10,18 @@ import { v4 } from "uuid";
 import { FaImage } from "react-icons/fa";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import Gif from "../Gif/Gif";
+import useCreateImage from "~/hooks/useCreateImage";
 
 function Comment({ post }) {
     const [comment, setComment] = useState("");
     const { currentUser, userInfo } = useContext(AuthContext);
-    const [imageComment, setImageComment] = useState(null);
+    // const [imageComment, setImageComment] = useState(null);
     const [gifComment, setGifComment] = useState(null);
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
+    const [image, handleCreateImage, setImage] = useCreateImage();
 
     const handleSendComment = useCallback(async () => {
-        if (comment.trim() === "" && imageComment === null && gifComment === null) {
+        if (comment.trim() === "" && image === null && gifComment === null) {
             return;
         } else {
             const idInit = v4();
@@ -31,32 +33,32 @@ function Comment({ post }) {
                 uidUser: currentUser.uid,
                 text: comment,
                 uidPost: post.uid,
-                img: imageComment,
+                img: image,
                 gif: gifComment,
             });
-            await setImageComment(null);
+            await setImage(null);
             await setGifComment(null);
         }
-    }, [post.uid, currentUser.uid, comment, currentDate, imageComment, gifComment]);
+    }, [post.uid, currentUser.uid, setImage, comment, currentDate, image, gifComment]);
 
-    const handlePostImage = async (e) => {
-        if (e.target.files[0]) {
-            const storageRef = ref(storage, `/Comments/${currentUser.displayName}/${e.target.files[0].name}${v4()}`);
-            const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {},
-                (err) => console.log(err),
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                        console.log(url);
-                        setImageComment(url);
-                    });
-                }
-            );
-        } else {
-        }
-    };
+    // const handlePostImage = async (e) => {
+    //     if (e.target.files[0]) {
+    //         const storageRef = ref(storage, `/Comments/${currentUser.displayName}/${e.target.files[0].name}${v4()}`);
+    //         const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
+    //         uploadTask.on(
+    //             "state_changed",
+    //             (snapshot) => {},
+    //             (err) => console.log(err),
+    //             () => {
+    //                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+    //                     console.log(url);
+    //                     setImageComment(url);
+    //                 });
+    //             }
+    //         );
+    //     } else {
+    //     }
+    // };
 
     const convertUrlToFile = async (url) => {
         try {
@@ -109,13 +111,13 @@ function Comment({ post }) {
                     type="text"
                     className="text-[1.6rem] w-[80%] dark:bg-[#282828] rounded-[20px] outline-none border-[2px] px-3 py-1"
                 />
-                {imageComment && <img src={imageComment} className="w-[120px] object-cover h-[70px]" alt="" />}
+                {image && <img src={image} className="w-[120px] object-cover h-[70px]" alt="" />}
                 {gifComment && <img src={gifComment} className="w-[120px] object-cover h-[70px]" alt="" />}
 
                 <div className="cursor-pointer">
                     <AiOutlineSend className="text-[2.4rem]" onClick={handleSendComment} />
                 </div>
-                <input type="file" className="hidden" id="image" onChange={handlePostImage} />
+                <input type="file" className="hidden" id="image" onChange={(e) => handleCreateImage(e, "comments")} />
                 <label htmlFor="image">
                     <FaImage className="text-[2.4rem] cursor-pointer" />
                 </label>

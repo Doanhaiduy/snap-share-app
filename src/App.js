@@ -20,7 +20,7 @@ function App() {
                 <Routes>
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;
-                        return <Route key={index} path={route.path} element={<Page />} />;
+                        return <Route key={index} path={route.path} element={<Page title={route.title} />} />;
                     })}
                     {privateRoutes.map((route, index) => {
                         const Page = route.component;
@@ -30,7 +30,7 @@ function App() {
                                 path={route.path}
                                 element={
                                     <Protected currentUser={currentUser}>
-                                        <Page />
+                                        <Page title={route.title} />
                                     </Protected>
                                 }
                             />

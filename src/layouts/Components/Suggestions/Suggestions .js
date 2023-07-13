@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Request from "./Request/Request";
 import { AiOutlineAlignRight, AiOutlineClose } from "react-icons/ai";
-import FriendActiveItem from "./FriendActive/FriendActiveItem";
 import FriendActive from "./FriendActive/FriendActive";
 
 function Suggestions() {
     const [showOption, setShowOption] = useState(false);
-
     useEffect(() => {
         function handleResize() {
             if (window.outerWidth >= 1024) {
@@ -25,7 +23,9 @@ function Suggestions() {
         <div
             className={`py-[80px] pr-4 ${
                 showOption && "pr-0"
-            } lg:relative top-[15px] absolute lg:right-0 right-[20px] flex gap-4 flex-col h-[100vh] lg:overflow-y-auto overflow-visible no-scrollbar lg:w-full lg:ml-0 ml-auto`}
+            } lg:relative top-[15px]  absolute lg:right-0 right-[20px] ${
+                window.location.pathname !== "/" && "none"
+            } flex  gap-4 flex-col h-[100vh] lg:overflow-y-auto overflow-visible no-scrollbar lg:w-full lg:ml-0 ml-auto`}
         >
             <div className="lg:hidden block text-black dark:text-white">
                 {showOption ? (

@@ -8,16 +8,56 @@ import "tippy.js/dist/tippy.css"; // optional
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import { useContext } from "react";
 import { signOut } from "firebase/auth";
-import { auth } from "~/firebase/firebase-config";
+import { auth, db } from "~/firebase/firebase-config";
 import { AuthContext } from "~/Context/AuthContextProvider";
 import { ProfileContext } from "~/Context/ProfileContextProvider";
 import { RiAdminFill } from "react-icons/ri";
 import Tippy from "@tippyjs/react";
+import { ChatsContext } from "~/Context/ChatsContext";
+import useUser from "~/hooks/useUser";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { format } from "date-fns";
 
 function Navbar() {
     const { currentUser, userInfo } = useContext(AuthContext);
     const { setCurrentProfile } = useContext(ProfileContext);
+    const { windowChat, getWindowChat, chooseListContact, setWindowChat } = useContext(ChatsContext);
+    // const { user: adminUser } = useUser("8PMSfcs0yf8Dhed7T6zNR6q7zl1s");
+    const { user: adminUser } = useUser("JpVAJcvpx4dxKc7l7ro8zLx6r0Y2");
+
+    const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
+
     const { t } = useContext(MultiLanguageContext);
+    const setMessAdmin = async () => {
+        const combinedId =
+            currentUser?.uid < adminUser?.uid ? currentUser?.uid + adminUser.uid : adminUser?.uid + currentUser?.uid;
+        try {
+            const docRef = doc(db, "chats", combinedId);
+            const docSnap = await getDoc(docRef);
+
+            if (!docSnap.exists()) {
+                // create chat in chats collection
+                await setDoc(docRef, {
+                    id: combinedId,
+                    senderID: currentUser?.uid,
+                    receiverID: adminUser?.uid,
+                    image: [],
+                    file: [],
+                    link: [],
+                    message: [],
+                    timestamp: currentDate,
+                });
+                await getWindowChat(combinedId);
+            }
+            if (docSnap.exists()) {
+                await getWindowChat(combinedId);
+            }
+            chooseListContact(userInfo, adminUser);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const handleLogout = () => {
         signOut(auth);
     };
@@ -138,8 +178,11 @@ function Navbar() {
                     <h3 className="font-bold hidden lg:block">{t("nav.friend")}</h3>
                 </NavLink>
                 <NavLink
-                    to="/mess"
-                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    to="/chats"
+                    onClick={() => {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                        setMessAdmin();
+                    }}
                     className={({ isActive }) =>
                         isActive
                             ? "border-l-[3px] border-l-blue-600 border-[#fafafa] dark:border-l-primary1 dark:text-primary1 flex gap-4 items-center border-b-[1px] text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 bg-slate-300 dark:border-gray-600/20  dark:bg-[#555]"
@@ -172,7 +215,10 @@ function Navbar() {
                     <h3 className="font-bold hidden lg:block">{t("nav.language")}</h3>
                 </NavLink>
                 <NavLink
-                    onClick={handleLogout}
+                    onClick={() => {
+                        setWindowChat({});
+                        handleLogout();
+                    }}
                     className="border-l-[3px] hover:border-l-blue-600 border-[#fafafa] dark:hover:border-l-primary1 dark:hover:text-primary1 flex gap-4 items-center border-b-[1px] hover:text-blue-600 border-t-[1px]  py-3 cursor-pointer   px-3 hover:bg-slate-300 dark:border-gray-600/20 dark:text-primary5 dark:hover:bg-[#555]"
                 >
                     <Tippy content={t("nav.logout")} placement="right">

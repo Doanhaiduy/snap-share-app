@@ -104,6 +104,7 @@
         "add": "添加好友",
         "unFollow": "取消关注",
         "unFriend": "解除好友关系",
+        "message": "消息",
         "cancelRequest": "取消请求",
         "confirmed": "SnapShare确认该个人资料是真实的。",
         "posts": "帖子",
@@ -172,6 +173,27 @@
         "dark": "深色",
         "light": "浅色",
         "theme": "主題"
+    },
+    "chats": {
+        "title": "聊天",
+        "online": "在线",
+        "sidebar": {
+            "placeholder": "搜索消息..."
+        },
+        "windowChat": {
+            "placeholder": "写点什么",
+            "sentImage": "发送了一张图片"
+        },
+        "detail": {
+            "profile": "个人资料",
+            "mute": "静音",
+            "search": "搜索",
+            "other": "媒体、文件和链接",
+            "media": "媒体",
+            "file": "文件",
+            "links": "链接",
+            "sent": "已发送"
+        }
     },
     "privacyPolicy": "隱私政策",
     "termsConditions": "條款與條件",

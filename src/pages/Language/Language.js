@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 
-function Language(props) {
+function Language({ title }) {
     const { t, handleChangeLanguage } = useContext(MultiLanguageContext);
     const lang = JSON.parse(localStorage.getItem("language"));
+    useEffect(() => {
+        document.title = `${title} | SnapShare`;
+    }, [title]);
     return (
         <div className="lg:col-span-4 col-span-5 pt-[80px] min-h-[100vh] dark:text-primary5">
             <h2 className="font-semibold text-[2rem] mb-5">{t("Language.title")}</h2>
