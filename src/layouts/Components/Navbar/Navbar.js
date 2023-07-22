@@ -22,39 +22,42 @@ function Navbar() {
     const { currentUser, userInfo } = useContext(AuthContext);
     const { setCurrentProfile } = useContext(ProfileContext);
     const { windowChat, getWindowChat, chooseListContact, setWindowChat } = useContext(ChatsContext);
-    // const { user: adminUser } = useUser("8PMSfcs0yf8Dhed7T6zNR6q7zl1s");
     const { user: adminUser } = useUser("JpVAJcvpx4dxKc7l7ro8zLx6r0Y2");
 
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
 
     const { t } = useContext(MultiLanguageContext);
     const setMessAdmin = async () => {
-        const combinedId =
-            currentUser?.uid < adminUser?.uid ? currentUser?.uid + adminUser.uid : adminUser?.uid + currentUser?.uid;
-        try {
-            const docRef = doc(db, "chats", combinedId);
-            const docSnap = await getDoc(docRef);
+        if (currentUser.uid !== "JpVAJcvpx4dxKc7l7ro8zLx6r0Y2") {
+            const combinedId =
+                currentUser?.uid < adminUser?.uid
+                    ? currentUser?.uid + adminUser.uid
+                    : adminUser?.uid + currentUser?.uid;
+            try {
+                const docRef = doc(db, "chats", combinedId);
+                const docSnap = await getDoc(docRef);
 
-            if (!docSnap.exists()) {
-                // create chat in chats collection
-                await setDoc(docRef, {
-                    id: combinedId,
-                    senderID: currentUser?.uid,
-                    receiverID: adminUser?.uid,
-                    image: [],
-                    file: [],
-                    link: [],
-                    message: [],
-                    timestamp: currentDate,
-                });
-                await getWindowChat(combinedId);
+                if (!docSnap.exists()) {
+                    // create chat in chats collection
+                    await setDoc(docRef, {
+                        id: combinedId,
+                        senderID: currentUser?.uid,
+                        receiverID: adminUser?.uid,
+                        image: [],
+                        file: [],
+                        link: [],
+                        message: [],
+                        timestamp: currentDate,
+                    });
+                    await getWindowChat(combinedId);
+                }
+                if (docSnap.exists()) {
+                    await getWindowChat(combinedId);
+                }
+                chooseListContact(userInfo, adminUser);
+            } catch (error) {
+                console.log(error);
             }
-            if (docSnap.exists()) {
-                await getWindowChat(combinedId);
-            }
-            chooseListContact(userInfo, adminUser);
-        } catch (error) {
-            console.log(error);
         }
     };
 

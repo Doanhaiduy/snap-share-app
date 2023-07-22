@@ -7,6 +7,8 @@ import { AiOutlineUsergroupDelete } from "react-icons/ai";
 import { db } from "~/firebase/firebase-config";
 import { LoadingOutlined } from "@ant-design/icons";
 import useUser from "~/hooks/useUser";
+import useNotifications from "~/hooks/useNotifications";
+import { v4 } from "uuid";
 const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />;
 
 function Follow({ uid, uidCurrent, isMobile }) {
@@ -15,6 +17,8 @@ function Follow({ uid, uidCurrent, isMobile }) {
     const [loading, setLoading] = useState(false);
     const { user: currentUser, setUser } = useUser(uid);
     const { user: targetUser } = useUser(uidCurrent);
+    const { addNotification } = useNotifications();
+
     useEffect(() => {
         setMadeFollow(!!targetUser?.followers?.includes(uid));
     }, [targetUser, uid]);
@@ -62,6 +66,13 @@ function Follow({ uid, uidCurrent, isMobile }) {
                     // console.log("after: ", newFollowing);
                     // console.log("===========================");
                 }
+                const newNotification = {
+                    id: v4(),
+                    uidTarget: uid,
+                    type: "follow",
+                    timestamp: new Date().getTime(),
+                };
+                await addNotification(uidCurrent, newNotification);
                 setMadeFollow(true);
             }
         } catch (error) {

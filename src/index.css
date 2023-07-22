@@ -7,6 +7,12 @@
         /* Hide scrollbar for Chrome, Safari and Opera */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
+            overflow-y: none;
+        }
+        .show-scrollbar::-webkit-scrollbar {
+            display: block;
+
+            overflow-y: scroll;
         }
 
         /* Hide scrollbar for IE, Edge and Firefox */

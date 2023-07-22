@@ -19,8 +19,15 @@ const Message = ({ owner, mess }) => {
                     content={<span className="text-[12px]">{moment(mess?.timestamp).format("HH:mm DD/MM/YYYY")}</span>}
                 >
                     <div className="relative  group max-w-[80%] ml-3 text-sm bg-slate-100 dark:bg-[#383838] dark:text-white py-2 whitespace-normal px-4 shadow rounded-xl">
-                        <picture className="break-words relative">
-                            {mess.text}
+                        <picture className="break-words relative line-clamp-1">
+                            {mess.text.startsWith("https://") ? (
+                                <a href={mess.text} target="_blank" className="underline" rel="noopener noreferrer">
+                                    {mess.text}
+                                </a>
+                            ) : (
+                                mess.text
+                            )}
+
                             <span className="text-[8px] absolute bottom-[-30px] left-[-10px] w-[100px] ">
                                 {moment().diff(mess.timestamp, "days") > 30
                                     ? mess.timestamp
@@ -42,8 +49,14 @@ const Message = ({ owner, mess }) => {
                     content={<span className="text-[12px]">{moment(mess?.timestamp).format("HH:mm DD/MM/YYYY")}</span>}
                 >
                     <div className="relative max-w-[80%] mr-3 group text-sm bg-blue-600 dark:bg-primary1 dark:text-primary2 text-white py-2 whitespace-normal px-4 shadow rounded-xl">
-                        <p className="break-words relative ">
-                            {mess.text}
+                        <p className="break-words relative line-clamp-1">
+                            {mess.text.startsWith("https://") ? (
+                                <a href={mess.text} target="_blank" className="underline" rel="noopener noreferrer">
+                                    {mess.text}
+                                </a>
+                            ) : (
+                                mess.text
+                            )}
                             <span className="text-[8px] absolute bottom-[-30px] right-[-10px] text-right w-[100px] text-black dark:text-white">
                                 {t("chats.detail.sent")}{" "}
                                 {moment().diff(mess.timestamp, "days") > 30

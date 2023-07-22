@@ -1,24 +1,35 @@
 import { doc, updateDoc } from "firebase/firestore";
 import React, { useContext } from "react";
+import { v4 } from "uuid";
 import { AuthContext } from "~/Context/AuthContextProvider";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import { db } from "~/firebase/firebase-config";
+import useNotifications from "~/hooks/useNotifications";
 import useUser from "~/hooks/useUser";
 
 const AcceptFriend = ({ targetUser }) => {
     const { t } = useContext(MultiLanguageContext);
     const { currentUser } = useContext(AuthContext);
-    const { user } = useUser(currentUser.uid);
+    const { user } = useUser(currentUser?.uid);
+    const { addNotification } = useNotifications();
+
     const handleAccept = async () => {
         const currentUserRef = doc(db, "users", user?.uid);
         const targetUserRef = doc(db, "users", targetUser?.uid);
         try {
-            const newFriendRequestCurrent = user?.friendRequest?.filter((item) => item !== targetUser.uid);
-            const newFriendCurrent = user?.friend ? [...user?.friend, targetUser.uid] : [targetUser.uid];
+            const newFriendRequestCurrent = user?.friendRequest?.filter((item) => item !== targetUser?.uid);
+            const newFriendCurrent = user?.friend ? [...user?.friend, targetUser?.uid] : [targetUser?.uid];
             await updateDoc(currentUserRef, { friendRequest: newFriendRequestCurrent, friend: newFriendCurrent });
-            const newFriendRequestTarget = targetUser?.friendRequest?.filter((item) => item !== user.uid);
-            const newFriendTarget = targetUser?.friend ? [...targetUser?.friend, user.uid] : [user.uid];
+            const newFriendRequestTarget = targetUser?.friendRequest?.filter((item) => item !== user?.uid);
+            const newFriendTarget = targetUser?.friend ? [...targetUser?.friend, user?.uid] : [user?.uid];
             await updateDoc(targetUserRef, { friendRequest: newFriendRequestTarget || [], friend: newFriendTarget });
+            const newNotification = {
+                id: v4(),
+                uidTarget: currentUser?.uid,
+                type: "acceptFriend",
+                timestamp: new Date().getTime(),
+            };
+            await addNotification(targetUser?.uid, newNotification);
         } catch (error) {
             console.error("Error accept friend:", error);
         }

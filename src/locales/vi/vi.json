@@ -121,7 +121,7 @@
             "email": "Địa chỉ email",
             "website": "Website",
             "address": "Địa chỉ",
-            "userId": "User Id",
+            "userId": "Id người dùng",
             "avatar": "Hình đại diện",
             "cover": "Ảnh bìa",
             "submit": "Lưu"
@@ -194,6 +194,18 @@
             "links": "Liên kết",
             "sent": "Đã gửi"
         }
+    },
+    "notifications": {
+        "title": "Thông báo",
+        "new": "Mới",
+        "earlier": "Trước đó",
+        "delete": "Xóa tất cả thông báo",
+        "addFriend": "đã gửi cho bạn lời mời kết bạn",
+        "acceptFriend": "đã chấp nhận lời mời kết bạn",
+        "follow": "đang theo dõi bạn",
+        "mess": "đã gửi tin nhắn cho bạn",
+        "comment": "đã bình luận về bài viết của bạn",
+        "like": "đã thích bài viết của bạn"
     },
     "privacyPolicy": "Chính sách bảo mật",
     "termsConditions": "Điều khoản và Điều kiện",

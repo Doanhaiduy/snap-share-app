@@ -194,6 +194,18 @@
             "sent": "Sent"
         }
     },
+    "notifications": {
+        "title": "Notifications",
+        "new": "New",
+        "earlier": "Earlier",
+        "delete": " Delete all notification",
+        "addFriend": "has sent you a friend request",
+        "acceptFriend": "has accepted your friend request",
+        "follow": "is now following you",
+        "mess": "has sent you a message",
+        "comment": "has commented on your post",
+        "like": "has liked your post"
+    },
     "privacyPolicy": "Privacy Policy",
     "termsConditions": "Terms Conditions",
     "cookiesPolicy": "Cookies Policy",

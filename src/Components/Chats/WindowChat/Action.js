@@ -37,6 +37,9 @@ const Action = () => {
 
     const handleSendMessage = async () => {
         if ((text.trim() !== "" && !loading && windowChat.senderID !== undefined) || image) {
+            // if ( || text.startsWith("http://")) {
+            //     console.log("đây là link: ", text);
+            // }
             setLoading(true);
             const combinedId =
                 windowChat?.senderID < windowChat?.receiverID
@@ -64,6 +67,7 @@ const Action = () => {
                             },
                         ],
                         image: image ? [image, ...windowChat.image] : windowChat.image,
+                        link: text.startsWith("https://") ? [text, ...windowChat.link] : windowChat.link,
                     });
                     await updateLastMessage(
                         currentUser,

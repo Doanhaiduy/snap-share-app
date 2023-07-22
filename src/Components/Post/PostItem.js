@@ -12,10 +12,12 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { FacebookShareButton } from "react-share";
 import moment from "moment";
 import ShowText from "../ShowText/ShowText";
-import { Modal, Button } from "antd";
+import { Modal } from "antd";
 import "antd/dist/antd";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import { ThemeContext } from "~/Context/ThemeContextProvider";
+import { v4 } from "uuid";
+import useNotifications from "~/hooks/useNotifications";
 
 const { confirm } = Modal;
 
@@ -25,6 +27,7 @@ function PostItem({ post, limit, isProfile = false }) {
     const [showModal, setShowModal] = useState(false);
     const { setCurrentProfile } = useContext(ProfileContext);
     const { darkToggle } = useContext(ThemeContext);
+    const { addNotification } = useNotifications();
 
     const { t } = useContext(MultiLanguageContext);
     const CommentMemoized = memo(Comment);
@@ -71,6 +74,15 @@ function PostItem({ post, limit, isProfile = false }) {
             await getUserPost(post.uidUser);
         } else {
             await getUserPost(null, limit);
+        }
+        if (!isLiked && currentUser?.uid !== post.uidUser) {
+            const newNotification = {
+                id: v4(),
+                uidTarget: currentUser?.uid,
+                type: "like",
+                timestamp: new Date().getTime(),
+            };
+            await addNotification(post.uidUser, newNotification);
         }
         setIsLiked(!isLiked);
     }, [isLiked, currentUser?.uid, post.uid, limit]);

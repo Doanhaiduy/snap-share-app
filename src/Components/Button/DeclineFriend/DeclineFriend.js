@@ -7,14 +7,14 @@ import useUser from "~/hooks/useUser";
 const DeclineFriend = ({ targetUser }) => {
     const { t } = useContext(MultiLanguageContext);
     const { currentUser } = useContext(AuthContext);
-    const { user } = useUser(currentUser.uid);
+    const { user } = useUser(currentUser?.uid);
     const handleDecline = async () => {
         const currentUserRef = doc(db, "users", user?.uid);
         const targetUserRef = doc(db, "users", targetUser?.uid);
         try {
-            const newFriendRequestCurrent = user?.friendRequest?.filter((item) => item !== targetUser.uid);
+            const newFriendRequestCurrent = user?.friendRequest?.filter((item) => item !== targetUser?.uid);
             await updateDoc(currentUserRef, { friendRequest: newFriendRequestCurrent });
-            const newFriendRequestTarget = targetUser?.friendRequest?.filter((item) => item !== user.uid);
+            const newFriendRequestTarget = targetUser?.friendRequest?.filter((item) => item !== user?.uid);
             await updateDoc(targetUserRef, { friendRequest: newFriendRequestTarget || [] });
         } catch (error) {
             console.error("Error decline friend:", error);

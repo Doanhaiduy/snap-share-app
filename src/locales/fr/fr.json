@@ -194,6 +194,18 @@
             "sent": "Envoyé"
         }
     },
+    "notifications": {
+        "title": "Notifications",
+        "new": "Nouveau",
+        "earlier": "Plus tôt",
+        "delete": "Supprimer toutes les notifications",
+        "addFriend": "vous a envoyé une demande d'ami",
+        "acceptFriend": "a accepté votre demande d'ami",
+        "follow": "commence à vous suivre",
+        "mess": "vous a envoyé un message",
+        "comment": "a commenté votre publication",
+        "like": "a aimé votre publication"
+    },
     "privacyPolicy": "Politique de confidentialité",
     "termsConditions": "Conditions générales",
     "cookiesPolicy": "Politique de cookies",

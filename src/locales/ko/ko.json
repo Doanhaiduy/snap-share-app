@@ -196,6 +196,18 @@
             "sent": "보냄"
         }
     },
+    "notifications": {
+        "title": "알림",
+        "new": "새로운",
+        "earlier": "이전",
+        "delete": "모든 알림 삭제",
+        "addFriend": "님이 친구 요청을 보냈습니다",
+        "acceptFriend": "님이 친구 요청을 수락했습니다",
+        "follow": "님이 팔로우하고 있습니다",
+        "mess": "님이 메시지를 보냈습니다",
+        "comment": "님이 당신의 게시물에 댓글을 남겼습니다",
+        "like": "님이 당신의 게시물을 좋아합니다"
+    },
     "privacyPolicy": "개인정보 처리방침",
     "termsConditions": "약관 및 조건",
     "cookiesPolicy": "쿠키 정책",

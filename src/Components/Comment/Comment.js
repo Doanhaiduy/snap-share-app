@@ -11,6 +11,7 @@ import { FaImage } from "react-icons/fa";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import Gif from "../Gif/Gif";
 import useCreateImage from "~/hooks/useCreateImage";
+import useNotifications from "~/hooks/useNotifications";
 
 function Comment({ post }) {
     const [comment, setComment] = useState("");
@@ -19,6 +20,7 @@ function Comment({ post }) {
     const [gifComment, setGifComment] = useState(null);
     const currentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
     const [image, handleCreateImage, setImage] = useCreateImage();
+    const { addNotification } = useNotifications();
 
     const handleSendComment = useCallback(async () => {
         if (comment.trim() === "" && image === null && gifComment === null) {
@@ -26,20 +28,30 @@ function Comment({ post }) {
         } else {
             const idInit = v4();
             await setComment("");
-            const userRef = doc(db, "comments", currentUser.uid + "comment" + idInit);
+            const userRef = doc(db, "comments", currentUser?.uid + "comment" + idInit);
             await setDoc(userRef, {
-                uid: currentUser.uid + "comment" + idInit,
+                uid: currentUser?.uid + "comment" + idInit,
                 releaseDate: currentDate,
-                uidUser: currentUser.uid,
+                uidUser: currentUser?.uid,
                 text: comment,
                 uidPost: post.uid,
                 img: image,
                 gif: gifComment,
             });
+            if (currentUser?.uid !== post.uidUser) {
+                const newNotification = {
+                    id: v4(),
+                    uidTarget: currentUser?.uid,
+                    type: "comment",
+                    timestamp: new Date().getTime(),
+                    content: comment,
+                };
+                await addNotification(post.uidUser, newNotification);
+            }
             await setImage(null);
             await setGifComment(null);
         }
-    }, [post.uid, currentUser.uid, setImage, comment, currentDate, image, gifComment]);
+    }, [post.uid, currentUser?.uid, setImage, comment, currentDate, image, gifComment]);
 
     // const handlePostImage = async (e) => {
     //     if (e.target.files[0]) {

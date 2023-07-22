@@ -7,12 +7,14 @@ import { AiOutlinePlusSquare } from "react-icons/ai";
 import "tippy.js/dist/tippy.css"; // optional
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import CreatePost from "~/Components/CreatePost/CreatePost";
+import Notification from "~/Components/Notification/Notification";
 
 function Header() {
     const { userInfo } = useContext(AuthContext);
-
     const { t } = useContext(MultiLanguageContext);
     const [showModal, setShowModal] = useState(false);
+    const [showNotification, setShowNotification] = useState(false);
+
     const handleCloseModal = () => {
         setShowModal(false);
     };
@@ -31,17 +33,11 @@ function Header() {
                         onClick={() => {
                             setShowModal(true);
                         }}
-                        className="text-[14px] sm:flex hidden   gap-1 items-center cursor-pointer hover:opacity-90 h-[40px] px-3 text-white font-medium rounded-[12px] bg-blue-600  dark:text-primary2 dark:bg-primary1"
+                        className="text-[14px] sm:flex hidden gap-1 items-center cursor-pointer hover:opacity-90 h-[40px] px-3 text-white font-medium rounded-[12px] bg-blue-600  dark:text-primary2 dark:bg-primary1"
                     >
                         <AiOutlinePlusSquare className="text-[20px]" /> {t("create")}
                     </div>
-                    <div className="">
-                        <img
-                            className="h-[40px] cursor-pointer w-[40px] rounded-[12px] object-cover"
-                            src={userInfo?.photoURL}
-                            alt=""
-                        />
-                    </div>
+                    <Notification showNotification={showNotification} setShowNotification={setShowNotification} />
                 </div>
             </div>
             {showModal && <CreatePost handleCloseModal={handleCloseModal} />}

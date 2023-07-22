@@ -195,6 +195,18 @@
             "sent": "已发送"
         }
     },
+    "notifications": {
+        "title": "通知",
+        "new": "新",
+        "earlier": "更早",
+        "delete": "删除所有通知",
+        "addFriend": "请求加您为好友",
+        "acceptFriend": "接受了您的好友请求",
+        "follow": "现在关注您",
+        "mess": "向您发送了一条消息",
+        "comment": "评论了您的帖子",
+        "like": "点赞了您的帖子"
+    },
     "privacyPolicy": "隱私政策",
     "termsConditions": "條款與條件",
     "cookiesPolicy": "Cookie 政策",

@@ -6,6 +6,8 @@ import { db } from "~/firebase/firebase-config";
 import { LoadingOutlined } from "@ant-design/icons";
 import useUser from "~/hooks/useUser";
 import { BiUserPlus, BiUserX } from "react-icons/bi";
+import useNotifications from "~/hooks/useNotifications";
+import { v4 } from "uuid";
 
 const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />;
 
@@ -14,6 +16,7 @@ function AddFriend({ uid, uidCurrent, isMobile }) {
     const [madeFriends, setMadeFriends] = useState(true);
     const [loading, setLoading] = useState(false);
     const { user, setUser } = useUser(uidCurrent);
+    const { addNotification } = useNotifications();
 
     useEffect(() => {
         setMadeFriends(!!user?.friendRequest?.includes(uid));
@@ -44,6 +47,13 @@ function AddFriend({ uid, uidCurrent, isMobile }) {
                     const newFriendRequest = user?.friendRequest ? [...user?.friendRequest, uid] : [uid];
                     try {
                         await updateDoc(userRef, { friendRequest: newFriendRequest });
+                        const newNotification = {
+                            id: v4(),
+                            uidTarget: uid,
+                            type: "addFriend",
+                            timestamp: new Date().getTime(),
+                        };
+                        await addNotification(uidCurrent, newNotification);
                         setMadeFriends(true);
                     } catch (error) {
                         console.error("Error sending friend request:", error);
