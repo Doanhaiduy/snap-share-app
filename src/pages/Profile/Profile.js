@@ -17,6 +17,7 @@ import About from "./About";
 import Action from "./Action";
 import { ThemeContext } from "~/Context/ThemeContextProvider";
 
+
 function Profile({ title }) {
     const { currentUser, userInfo, getUserInfo } = useContext(AuthContext);
     const userRender = JSON.parse(localStorage.getItem("currentProfile")) || userInfo;

@@ -19,7 +19,7 @@ const Message = ({ owner, mess }) => {
                     content={<span className="text-[12px]">{moment(mess?.timestamp).format("HH:mm DD/MM/YYYY")}</span>}
                 >
                     <div className="relative  group max-w-[80%] ml-3 text-sm bg-slate-100 dark:bg-[#383838] dark:text-white py-2 whitespace-normal px-4 shadow rounded-xl">
-                        <picture className="break-words relative line-clamp-1">
+                        <picture className="break-words relative">
                             {mess.text.startsWith("https://") ? (
                                 <a href={mess.text} target="_blank" className="underline" rel="noopener noreferrer">
                                     {mess.text}
@@ -49,7 +49,7 @@ const Message = ({ owner, mess }) => {
                     content={<span className="text-[12px]">{moment(mess?.timestamp).format("HH:mm DD/MM/YYYY")}</span>}
                 >
                     <div className="relative max-w-[80%] mr-3 group text-sm bg-blue-600 dark:bg-primary1 dark:text-primary2 text-white py-2 whitespace-normal px-4 shadow rounded-xl">
-                        <p className="break-words relative line-clamp-1">
+                        <p className="break-words relative ">
                             {mess.text.startsWith("https://") ? (
                                 <a href={mess.text} target="_blank" className="underline" rel="noopener noreferrer">
                                     {mess.text}

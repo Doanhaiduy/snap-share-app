@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { AuthContext } from "~/Context/AuthContextProvider";
 import PostItemModal from "./PostItemModal";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
+import PostItem from "../Post/PostItem";
 
 function ListPost({ userRender }) {
     const { userPosts, getUserPost } = useContext(AuthContext);
@@ -14,10 +15,10 @@ function ListPost({ userRender }) {
     }, [userRender.uid]);
 
     return (
-        <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 pb-12 mt-5 h-[620px] overflow-y-scroll">
+        <div className="grid grid-cols-1 gap-4 pb-12 mt-5 ">
             {userPosts.length === 0 && <p className="text-[20px] font-semibold col-span-2">{t("noOnePost")}</p>}
             {userPosts.map((post) => (
-                <PostItemModal key={post.uid} post={post} />
+                <PostItem key={post.uid} isProfile={true} post={post} />
             ))}
         </div>
     );

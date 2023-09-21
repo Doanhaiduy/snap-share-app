@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "~/Context/AuthContextProvider";
 import { updateProfile } from "firebase/auth";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db } from "~/firebase/firebase-config";
-import { v4 as id, v4 } from "uuid";
+import { db } from "~/firebase/firebase-config";
+import { v4 } from "uuid";
 import { setDoc, doc } from "firebase/firestore";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { provinces } from "./constans";
 import { ThemeContext } from "~/Context/ThemeContextProvider";
 import useCreateImage from "~/hooks/useCreateImage";
+import { motion } from "framer-motion";
+import { modalVariants } from "~/modalVariants";
 
 function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handleUpdateSuccess, t }) {
     const { currentUser } = useContext(AuthContext);
@@ -18,8 +19,6 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
     const [address, SetAddress] = useState(userInfo?.address);
     const [bio, setBio] = useState(userInfo?.bio);
     const [website, setWebsite] = useState(userInfo?.website);
-    const [imgAvatar, setImgAvatar] = useState(null);
-    const [imgCover, setImgCover] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [loadingImage, setLoadingImage] = useState(false);
     const { darkToggle } = useContext(ThemeContext);
@@ -155,7 +154,13 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
     return (
         <div className="relative z-[51] ">
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-black opacity-70 " onClick={handleCloseModal}></div>
-            <section className="max-w-4xl fixed top-[10%]  h-[80%] overflow-y-auto p-6 pb-12 none no-scrollbar  mx-auto left-[50%] w-[90%] translate-x-[-50%] bg-slate-600 rounded-md shadow-md dark:bg-[#282828]">
+            <motion.div
+                initial={{ transform: "translateX(-50%) scale(0)" }}
+                animate={{ transform: "translateX(-50%) scale(1)" }}
+                exit="hidden"
+                variants={modalVariants}
+                className="max-w-4xl fixed top-[10%] h-[80%] translate-x-[-50%] overflow-y-auto p-6 pb-12 none no-scrollbar w-[90%] left-[50%]  bg-slate-600 rounded-md shadow-md dark:bg-[#282828]"
+            >
                 <span
                     onClick={handleCloseModal}
                     className="text-white  text-[3rem] absolute right-[12px] top-[-6px] cursor-pointer"
@@ -358,7 +363,7 @@ function SettingProfile({ handleCloseModal, getUserInfo, userInfo, toast, handle
                         </button>
                     </div>
                 </form>
-            </section>
+            </motion.div>
         </div>
     );
 }

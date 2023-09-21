@@ -96,7 +96,7 @@ function CreatePost({ handleCloseModal }) {
                 className="fixed top-0 left-0 right-0 bottom-0 dark:bg-black bg-slate-600 opacity-70"
                 onClick={() => handleCloseModal()}
             ></div>
-            <div className="dark:text-white px-8 text-primary2 w-[80%] h-[60%] top-[10%] dark:bg-[#282828] bg-slate-100 fixed  left-0 right-0 overflow-y-auto p-6 pb-12 mx-auto  rounded-md shadow-md">
+            <div className="dark:text-white px-8 text-primary2 w-[80%] h-[60%] top-[10%] dark:bg-[#282828] bg-slate-100 fixed  left-0 right-0 overflow-y-auto no-scrollbar p-6 pb-12 mx-auto  rounded-md shadow-md">
                 {/* <span
                     className="absolute top-[20px] right-[20px] text-[2.4rem] cursor-pointer"
                     onClick={() => handleCloseModal()}

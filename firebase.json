@@ -21,6 +21,7 @@
             "port": 8080
         },
         "hosting": {
+            "public": "build",
             "port": 5000,
             "rewrites": [
                 {

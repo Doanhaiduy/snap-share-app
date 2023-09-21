@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
+import { motion } from "framer-motion";
+import { modalVariants } from "~/modalVariants";
 
 function PrivacyPolicy({ handleCloseModal }) {
     const { t } = useContext(MultiLanguageContext);
@@ -13,7 +15,13 @@ function PrivacyPolicy({ handleCloseModal }) {
                 className="fixed top-0 left-0 right-0 bottom-0 dark:bg-black bg-slate-600 opacity-70"
                 onClick={() => handleCloseModal()}
             ></div>
-            <div className="dark:text-white px-8 text-primary2 w-[80%] h-[80%] top-[10%] dark:bg-[#282828] bg-slate-100 fixed  left-0 right-0 overflow-y-auto p-6 pb-12 mx-auto  rounded-md shadow-md ">
+            <motion.div
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                variants={modalVariants}
+                className="dark:text-white px-8 no-scrollbar text-primary2 w-[80%] h-[80%] top-[10%] dark:bg-[#282828] bg-slate-100 fixed  left-0 right-0 overflow-y-auto p-6 pb-12 mx-auto  rounded-md shadow-md "
+            >
                 <span
                     className="absolute top-[20px] right-[20px] text-[2.4rem] cursor-pointer"
                     onClick={() => handleCloseModal()}
@@ -269,7 +277,7 @@ function PrivacyPolicy({ handleCloseModal }) {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </motion.div>
         </div>
     );
 }

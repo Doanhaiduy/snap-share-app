@@ -99,7 +99,11 @@ function PostItem({ post, limit, isProfile = false }) {
                     progress: undefined,
                     theme: darkToggle ? "dark" : "light",
                 });
-                getUserPost(null, limit);
+                if (isProfile) {
+                    await getUserPost(post.uidUser);
+                } else {
+                    await getUserPost(null, limit);
+                }
             } catch (error) {
                 console.log("Oops, an error occurred during deletion!", error);
             }
