@@ -18,6 +18,7 @@ import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
 import { ThemeContext } from "~/Context/ThemeContextProvider";
 import { v4 } from "uuid";
 import useNotifications from "~/hooks/useNotifications";
+import ShowImage from "../ShowImage/ShowImage";
 
 const { confirm } = Modal;
 
@@ -251,14 +252,20 @@ function PostItem({ post, limit, isProfile = false }) {
                         </div>
                     </span>
                 </div>
-                <div className="w-full">
+                {/* <div className="w-full">
                     <img
                         src={post.imagePost}
                         alt=""
                         className="mt-4 rounded-[12px] w-full object-cover cursor-pointer max-h-[500px]"
                         onClick={handleToggleModal}
                     />
-                </div>
+                </div> */}
+
+                {typeof post.imagePost === "string" ? (
+                    <ShowImage imgs={[post.imagePost]} />
+                ) : (
+                    <ShowImage imgs={post.imagePost} />
+                )}
                 <div className="py-4 flex gap-2 items-center text-[1.5rem] ">
                     <AiOutlineHeart className="text-[2rem] cursor-pointer" />
                     <span className="text-gray-400 dark:text-primary5  font-thin ">{post.like.length}</span>
