@@ -1,11 +1,11 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import languageEN from "./locales/en/en.json";
-import languageVI from "./locales/vi/vi.json";
-import languageKO from "./locales/ko/ko.json";
-import languageFR from "./locales/fr/fr.json";
-import languageTH from "./locales/th/th.json";
-import languageTW from "./locales/tw/tw.json";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import languageEN from './locales/en/en.json';
+import languageVI from './locales/vi/vi.json';
+import languageKO from './locales/ko/ko.json';
+import languageFR from './locales/fr/fr.json';
+import languageTH from './locales/th/th.json';
+import languageTW from './locales/tw/tw.json';
 
 i18n.use(initReactI18next) // passes i18n down to react-i18next
     .init({
@@ -32,8 +32,8 @@ i18n.use(initReactI18next) // passes i18n down to react-i18next
                 translation: languageTW,
             },
         },
-        lng: JSON.parse(localStorage.getItem("language")) || "en", // if you're using a language detector, do not define the lng option
-        fallbackLng: JSON.parse(localStorage.getItem("language")) || "en    ",
+        lng: JSON.parse(localStorage.getItem('language')) || 'en', // if you're using a language detector, do not define the lng option
+        fallbackLng: JSON.parse(localStorage.getItem('language')) || 'en',
 
         interpolation: {
             escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape

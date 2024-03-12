@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiCaretLeft, BiCaretRight } from "react-icons/bi";
+import { v4 } from "uuid";
 
 function ShowImage({ imgs }) {
     const [showModal, setShowModal] = useState(false);
@@ -158,6 +159,76 @@ function ShowImage({ imgs }) {
                     </div>
                 </div>
             )}
+            {/* <div
+                className={`w-[full]  grid grid-cols-4 gap-1 ${imgs.length <= 3 && "grid-cols-" + imgs.length}`}
+                onClick={handleShowModal}
+            >
+                {imgs.map((item, index) => {
+                    if (index === 1) {
+                        if (imgs.length === 2) {
+                            return (
+                                <img
+                                    className="cursor-pointer rounded-[12px] h-[400px] w-full object-cover "
+                                    onClick={() => setIndexImg(index)}
+                                    src={item}
+                                    key={v4()}
+                                    alt=""
+                                />
+                            );
+                        } else {
+                            return (
+                                <img
+                                    className="cursor-pointer rounded-[12px] h-[400px] w-full object-cover mt-[20px]"
+                                    onClick={() => setIndexImg(index)}
+                                    src={item}
+                                    key={v4()}
+                                    alt=""
+                                />
+                            );
+                        }
+                    }
+                    if (index === 3) {
+                        if (imgs.length === 4) {
+                            return (
+                                <img
+                                    className="cursor-pointer rounded-[12px] h-[400px] w-full mt-[20px] object-cover"
+                                    onClick={() => setIndexImg(index)}
+                                    src={item}
+                                    key={v4()}
+                                    alt=""
+                                />
+                            );
+                        } else {
+                            return (
+                                <div className="relative">
+                                    <img
+                                        className="cursor-pointer rounded-[12px] h-[400px] w-full mt-[20px] object-cover brightness-50"
+                                        onClick={() => setIndexImg(index)}
+                                        src={item}
+                                        key={v4()}
+                                        alt=""
+                                    />
+                                    <span className="cursor-pointer absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%] font-semibold text-gray-200 text-[24px]">
+                                        +{imgs?.length - 3}
+                                    </span>
+                                </div>
+                            );
+                        }
+                    }
+                    if (index > 3) {
+                        return null;
+                    }
+                    return (
+                        <img
+                            className="cursor-pointer rounded-[12px] h-[400px] w-full object-cover"
+                            onClick={() => setIndexImg(index)}
+                            src={item}
+                            alt=""
+                            key={v4()}
+                        />
+                    );
+                })}
+            </div> */}
         </div>
     );
 }

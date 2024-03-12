@@ -1,21 +1,21 @@
-import CreatePost2 from "./Components/CreatePost2/CreatePost2";
-import { useContext } from "react";
-import "~/App.css";
-import { AuthContext } from "~/Context/AuthContextProvider";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Protected from "~/routes/Protected";
-import { Spin } from "antd";
-import { MultiLanguageContext } from "~/Context/MultiLanguageContextProvider";
-import DefaultLayout from "~/layouts/DefaultLayout/DefaultLayout";
-import { publicRoutes, privateRoutes } from "~/routes";
-import Test1 from "./Components/Test1/Test1";
-import ShowImage from "./Components/ShowImage/ShowImage";
+import CreatePost2 from './Components/CreatePost2/CreatePost2';
+import { useContext } from 'react';
+import '~/App.css';
+import { AuthContext } from '~/Context/AuthContextProvider';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Protected from '~/routes/Protected';
+import { Spin } from 'antd';
+import { MultiLanguageContext } from '~/Context/MultiLanguageContextProvider';
+import DefaultLayout from '~/layouts/DefaultLayout/DefaultLayout';
+import { publicRoutes, privateRoutes } from '~/routes';
+import Test1 from './Components/Test1/Test1';
+import ShowImage from './Components/ShowImage/ShowImage';
 function App() {
     const { currentUser } = useContext(AuthContext);
     const { loading, t } = useContext(MultiLanguageContext);
     return loading ? (
-        <div className="flex justify-center items-center h-[100vh] text-[30px] bg-slate-200 dark:bg-primary2 dark:text-primary5">
-            {t("loading")}... <Spin />
+        <div className='flex justify-center items-center h-[100vh] text-[30px] bg-slate-200 dark:bg-primary2 dark:text-primary5'>
+            {t('loading')}... <Spin />
         </div>
     ) : (
         <BrowserRouter>
